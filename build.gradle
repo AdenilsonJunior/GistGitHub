@@ -1,6 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = "1.4.10"
+
+    ext {
+        compile_sdk_version = 30
+        build_tools_version = "30.0.2"
+        version_name = "1.0"
+        version_code = 1
+    }
+
     repositories {
         google()
         jcenter()
@@ -8,9 +16,6 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
@@ -21,6 +26,54 @@ allprojects {
     }
 }
 
+subprojects {
+    afterEvaluate { project ->
+        android {
+            compileSdkVersion compile_sdk_version
+            buildToolsVersion build_tools_version
+
+            defaultConfig {
+                versionName version_name
+                versionCode version_code
+
+            }
+
+            buildTypes {
+                release {
+                    minifyEnabled false
+                    proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                }
+            }
+
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+
+            kotlinOptions {
+                jvmTarget = JavaVersion.VERSION_1_8
+            }
+
+            dependencies {
+                def androidDependencies = rootProject.ext.androidDependencies
+                androidDependencies.each { implementation "${it.value}" }
+
+                def androidAnnotationProcessor = rootProject.ext.androidAnnotationProcessor
+                androidAnnotationProcessor.each { kapt "${it.value}"}
+            }
+        }
+
+        if (project.hasProperty('kotlin')) {
+            dependencies {
+                def testDependencies = rootProject.ext.testDependencies
+                testDependencies.each { testImplementation "${it.value}" }
+            }
+        }
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+apply from: 'dependencies.gradle'

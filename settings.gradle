@@ -1,2 +1,4 @@
+include ':base'
+include ':gist'
 include ':app'
 rootProject.name = "GistGitHub"
