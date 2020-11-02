@@ -1,13 +1,13 @@
 package br.com.adenilson.gistgithub.splash
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.adenilson.base.activity.BaseActivity
 import br.com.adenilson.base.navigator.Navigator
 import br.com.adenilson.gistgithub.R
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.activity_splash.button
+import javax.inject.Inject
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     @Inject
     lateinit var navigator: Navigator

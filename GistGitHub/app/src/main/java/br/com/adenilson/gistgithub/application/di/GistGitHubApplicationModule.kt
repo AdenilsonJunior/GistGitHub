@@ -4,9 +4,7 @@ import br.com.adenilson.base.navigator.Navigator
 import br.com.adenilson.gistgithub.navigator.NavigatorImpl
 import dagger.Binds
 import dagger.Module
-import javax.inject.Singleton
 
-@Singleton
 @Module
 abstract class GistGitHubApplicationModule {
 

@@ -1,10 +1,12 @@
 package br.com.adenilson.gistgithub.application
 
-import android.app.Application
+import br.com.adenilson.gistgithub.application.di.DaggerGistGitHubApplicationComponent
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 
-class GistGitHubApplication : Application() {
+class GistGitHubApplication : DaggerApplication() {
 
-    override fun onCreate() {
-        super.onCreate()
+    override fun applicationInjector(): AndroidInjector<out GistGitHubApplication> {
+        return DaggerGistGitHubApplicationComponent.factory().create(this)
     }
 }
