@@ -23,7 +23,6 @@ class SplashViewModel @Inject constructor() : BaseViewModel() {
     }
 
     sealed class SplashState {
-        object Finish: SplashState()
+        object Finish : SplashState()
     }
-
 }
