@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GistGitHub</string>
+    <string name="splash_gist">Gist</string>
 </resources>
