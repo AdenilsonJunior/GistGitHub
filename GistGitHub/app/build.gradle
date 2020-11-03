@@ -15,6 +15,11 @@ dependencies {
 
     implementation project(':gist')
     implementation project(':base')
+    implementation project(':data')
+    implementation project(':network')
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

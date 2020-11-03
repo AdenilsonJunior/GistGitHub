@@ -3,8 +3,11 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 dependencies {
     implementation project(':base')
+
+    api project(':data')
 }

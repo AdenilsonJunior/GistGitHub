@@ -2,6 +2,7 @@ package br.com.adenilson.base.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
+import javax.inject.Qualifier
 import kotlin.reflect.KClass
 
 @Target(
@@ -12,3 +13,9 @@ import kotlin.reflect.KClass
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 @MapKey
 annotation class ViewModelKey(val value: KClass<out ViewModel>)
+
+@Qualifier
+annotation class AndroidScheduler
+
+@Qualifier
+annotation class IOScheduler

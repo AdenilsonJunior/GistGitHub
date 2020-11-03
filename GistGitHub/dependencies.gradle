@@ -1,32 +1,47 @@
 ext {
 
+    // Common
+    rx_version = "3.0.0"
+    dagger_version = "2.29.1"
+
+    commonDependencies = [
+            kotlin        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            rx_android    : "io.reactivex.rxjava3:rxandroid:$rx_version",
+            rx_kotlin     : "io.reactivex.rxjava3:rxkotlin:$rx_version",
+            dagger        : "com.google.dagger:dagger:$dagger_version",
+            dagger_support: "com.google.dagger:dagger-android-support:$dagger_version"
+    ]
+
+    commonAnnotationProcessor = [
+            dagger        : "com.google.dagger:dagger-compiler:$dagger_version",
+            dagger_support: "com.google.dagger:dagger-android-processor:$dagger_version"
+    ]
+
     // Common Android
     core_ktx_version = "1.3.2"
     appcompat_version = "1.2.0"
     google_material_version = "1.2.0"
     constraint_layout_version = "2.0.4"
-    dagger_version = "2.29.1"
     lifecycle_version = "2.1.0"
-    rx_version = "3.0.0"
+    swipe_refresh_layout_version = "1.1.0"
+    glide_version = "4.11.0"
 
     androidDependencies = [
-            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
             core_ktx            : "androidx.core:core-ktx:$core_ktx_version",
             app_compat          : "androidx.appcompat:appcompat:$appcompat_version",
             google_material     : "com.google.android.material:material:$google_material_version",
             constraint_layout   : "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
-            dagger              : "com.google.dagger:dagger:$dagger_version",
-            dagger_support      : "com.google.dagger:dagger-android-support:$dagger_version",
             lifecycle_extensions: "android.arch.lifecycle:extensions:$lifecycle_version",
             lifecycle_viewmodel : "android.arch.lifecycle:viewmodel:$lifecycle_version",
             lifeCycle_livedata  : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
-            rx_android          : "io.reactivex.rxjava3:rxandroid:$rx_version",
-            rx_kotlin           : "io.reactivex.rxjava3:rxkotlin:$rx_version"
+            swipe_refresh_layout: "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout_version",
+            navigation_fragment : "androidx.navigation:navigation-fragment-ktx:$nav_version",
+            navigation_ui       : "androidx.navigation:navigation-ui-ktx:$nav_version",
+            glide               : "com.github.bumptech.glide:glide:$glide_version"
     ]
 
     androidAnnotationProcessor = [
-            dagger        : "com.google.dagger:dagger-compiler:$dagger_version",
-            dagger_support: "com.google.dagger:dagger-android-processor:$dagger_version"
+            glide         : "com.github.bumptech.glide:compiler:$glide_version"
     ]
 
     // Unit Test

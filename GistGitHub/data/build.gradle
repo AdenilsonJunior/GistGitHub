@@ -1,0 +1,9 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'kotlin-kapt'
+}
+
+dependencies {
+    api project(':network')
+}

@@ -12,6 +12,5 @@ abstract class SplashActivityModule {
     @Binds
     @IntoMap
     @ViewModelKey(SplashViewModel::class)
-    internal abstract fun bindScoreFormViewModel(viewModel: SplashViewModel): ViewModel
-
+    abstract fun bindSplashViewModel(viewModel: SplashViewModel): ViewModel
 }

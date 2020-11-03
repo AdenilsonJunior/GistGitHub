@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="gist_list_title">Lista de Gists</string>
+    <string name="content_description_start_gist">Favoritar Gist</string>
+    <plurals name="gist_files_count">
+        <item quantity="one">%1$d arquivo</item>
+        <item quantity="other">%1$d arquivos</item>
+    </plurals>
 </resources>

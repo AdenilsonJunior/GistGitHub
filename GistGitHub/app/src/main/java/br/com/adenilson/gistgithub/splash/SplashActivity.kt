@@ -26,7 +26,6 @@ class SplashActivity : BaseActivity() {
         setContentView(R.layout.activity_splash)
         setupViewModel()
         viewModel.load()
-
     }
 
     private fun setupViewModel() {
