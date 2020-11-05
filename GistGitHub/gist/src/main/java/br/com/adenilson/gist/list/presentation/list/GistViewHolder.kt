@@ -8,6 +8,7 @@ import br.com.adenilson.gist.R
 import br.com.adenilson.gist.list.domain.model.Gist
 import kotlinx.android.synthetic.main.item_gist.view.imageViewAvatar
 import kotlinx.android.synthetic.main.item_gist.view.textViewFilesCount
+import kotlinx.android.synthetic.main.item_gist.view.textViewGistType
 import kotlinx.android.synthetic.main.item_gist.view.textViewUserName
 
 class GistViewHolder(
@@ -21,6 +22,10 @@ class GistViewHolder(
             imageViewAvatar.loadFromUrl(item.owner.avatarUrl, R.drawable.placeholder_user)
             textViewFilesCount.text =
                 context.resources.getQuantityString(R.plurals.gist_files_count, item.files.size, item.files.size)
+            textViewGistType.text = item.gistType
+            itemView.setOnClickListener {
+                viewTypesListener.invoke(item)
+            }
         }
     }
 }

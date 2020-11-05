@@ -1,59 +1,40 @@
 package br.com.adenilson.gist.list.presentation.list
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import br.com.adenilson.base.domain.Executor
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import br.com.adenilson.base.presentation.BaseViewModel
-import br.com.adenilson.gist.list.domain.interactor.GetGistListInteractor
 import br.com.adenilson.gist.list.domain.model.Gist
-import io.reactivex.rxjava3.kotlin.subscribeBy
+import br.com.adenilson.gist.list.presentation.list.paging.GistListDataSource
 import javax.inject.Inject
 
 class GistListViewModel @Inject constructor(
-    private val getGistListInteractor: GetGistListInteractor,
-    private val executor: Executor
+    private val pagingSource: GistListDataSource
 ) : BaseViewModel() {
 
-    private val _loadingState: MutableLiveData<LoadingState> = MutableLiveData()
-    val loadingState: LiveData<LoadingState> = _loadingState
+    companion object {
+        private const val PAGE_SIZE = 30
+        private const val PRE_FETCH_DISTANCE = 10
+        private const val ENABLE_PLACEHOLDERS = false
+        private const val INITIAL_KEY_PAGE = 0
+    }
 
-    private val _gistListState: MutableLiveData<GistListState> = MutableLiveData()
-    val gistListState: LiveData<GistListState> = _gistListState
+    var pagedList: LiveData<PagingData<Gist>>? = null
 
     fun loadGist() {
-        executor.execute(getGistListInteractor, Unit)
-            .doOnSubscribe { _loadingState.postValue(LoadingState.Start) }
-            .doFinally { _loadingState.postValue(LoadingState.Finish) }
-            .subscribeBy(
-                onSuccess = {
-                    _gistListState.postValue(
-                        GistListState.Loaded(
-                            it
-                        )
-                    )
-                },
-                onError = {
-                    _gistListState.postValue(
-                        GistListState.Error(
-                            it
-                        )
-                    )
-                }
-            )
+        pagedList = Pager(
+            PagingConfig(
+                PAGE_SIZE,
+                PRE_FETCH_DISTANCE,
+                ENABLE_PLACEHOLDERS
+            ),
+            INITIAL_KEY_PAGE
+        ) { pagingSource }.liveData
     }
 
-    fun clearStates() {
-        _gistListState.value = null
-        _loadingState.value = null
-    }
-
-    sealed class GistListState {
-        data class Loaded(val model: List<Gist>) : GistListState()
-        data class Error(val throwable: Throwable) : GistListState()
-    }
-
-    sealed class LoadingState {
-        object Start : LoadingState()
-        object Finish : LoadingState()
+    override fun onCleared() {
+        super.onCleared()
     }
 }

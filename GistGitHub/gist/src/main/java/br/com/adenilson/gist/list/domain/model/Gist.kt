@@ -5,4 +5,6 @@ data class Gist(
     val webId: String,
     val owner: Owner,
     val files: List<File>
-)
+) {
+    val gistType = files.minBy { it.filename }?.filename.orEmpty()
+}

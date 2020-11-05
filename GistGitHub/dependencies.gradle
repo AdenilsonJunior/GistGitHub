@@ -25,6 +25,7 @@ ext {
     lifecycle_version = "2.1.0"
     swipe_refresh_layout_version = "1.1.0"
     glide_version = "4.11.0"
+    paging_version = "3.0.0-alpha08"
 
     androidDependencies = [
             core_ktx            : "androidx.core:core-ktx:$core_ktx_version",
@@ -37,11 +38,14 @@ ext {
             swipe_refresh_layout: "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout_version",
             navigation_fragment : "androidx.navigation:navigation-fragment-ktx:$nav_version",
             navigation_ui       : "androidx.navigation:navigation-ui-ktx:$nav_version",
-            glide               : "com.github.bumptech.glide:glide:$glide_version"
+            glide               : "com.github.bumptech.glide:glide:$glide_version",
+            paging              : "androidx.paging:paging-runtime:$paging_version",
+            paging_rx           : "androidx.paging:paging-rxjava3:$paging_version"
+
     ]
 
     androidAnnotationProcessor = [
-            glide         : "com.github.bumptech.glide:compiler:$glide_version"
+            glide: "com.github.bumptech.glide:compiler:$glide_version"
     ]
 
     // Unit Test

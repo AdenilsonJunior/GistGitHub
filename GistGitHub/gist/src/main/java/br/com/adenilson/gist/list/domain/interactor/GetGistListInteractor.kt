@@ -7,14 +7,16 @@ import br.com.adenilson.gist.list.domain.model.Gist
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
-interface GetGistListInteractor : Interactor<Unit, Single<List<Gist>>>
+interface GetGistListInteractor : Interactor<GetGistListInteractor.Params, Single<List<Gist>>> {
+    class Params(val page: Int)
+}
 
 class GetGistListInteractorImpl @Inject constructor(
     private val repository: GistRepository,
     private val mapper: GistListMapper
 ) : GetGistListInteractor {
 
-    override fun execute(params: Unit): Single<List<Gist>> {
-        return repository.getGistList().map(mapper::mapToPresentation)
+    override fun execute(params: GetGistListInteractor.Params): Single<List<Gist>> {
+        return repository.getGistList(page = params.page).map(mapper::mapToPresentation)
     }
 }

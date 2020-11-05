@@ -6,14 +6,14 @@ import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
 interface GistRemoteDataSet {
-    fun getGistList(): Single<List<GistResponse>>
+    fun getGistList(page: Int): Single<List<GistResponse>>
 }
 
 class GistRemoteDataSetImpl @Inject constructor(
     private val api: GistsAPI
 ) : GistRemoteDataSet {
 
-    override fun getGistList(): Single<List<GistResponse>> {
-        return api.getGists(0)
+    override fun getGistList(page: Int): Single<List<GistResponse>> {
+        return api.getGists(page)
     }
 }
