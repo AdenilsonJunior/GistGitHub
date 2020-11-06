@@ -3,8 +3,15 @@
     <string name="gist_list_title">Lista de Gists</string>
     <string name="content_description_start_gist">Favoritar Gist</string>
     <string name="gist_connection_message_error">Erro de conexão</string>
+    <string name="gist_details_title">Detalhes</string>
+    <string name="gist_text_file_size">%1$d bytes</string>
+    <string name="gist_last_update">Atualizado em: %1$s</string>
     <plurals name="gist_files_count">
         <item quantity="one">%1$d arquivo</item>
         <item quantity="other">%1$d arquivos</item>
+    </plurals>
+    <plurals name="gist_files_header_count">
+        <item quantity="one">%1$d Arquivo</item>
+        <item quantity="other">%1$d Arquivos</item>
     </plurals>
 </resources>

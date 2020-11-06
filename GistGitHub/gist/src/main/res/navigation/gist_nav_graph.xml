@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/fragmentGistList"
-    android:id="@+id/gist_nav_graph.xml">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gist_nav_graph.xml"
+    app:startDestination="@id/fragmentGistList">
 
     <fragment
         android:id="@+id/fragmentGistList"
+        android:name="br.com.adenilson.gist.presentation.list.GistListFragment"
         android:label="@string/gist_list_title"
-        android:name="br.com.adenilson.gist.list.presentation.list.GistListFragment"
         tools:layout="@layout/fragment_gist_list">
 
+        <action
+            android:id="@+id/gistListFragmentToGistDetailsFragment"
+            app:destination="@id/fragmentGistDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/fragmentGistDetails"
+        android:name="br.com.adenilson.gist.presentation.details.GistDetailsFragment"
+        android:label="@string/gist_details_title"
+        tools:layout="@layout/fragment_gist_details">
+
+        <argument
+            android:name="gist"
+            app:argType="br.com.adenilson.gist.domain.model.Gist" />
+
+    </fragment>
+
 
 </navigation>
