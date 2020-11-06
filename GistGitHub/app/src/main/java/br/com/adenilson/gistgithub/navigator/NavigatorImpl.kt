@@ -9,7 +9,6 @@ import br.com.adenilson.gist.GistActivity
 import br.com.adenilson.gistgithub.R
 import javax.inject.Inject
 
-
 class NavigatorImpl @Inject constructor() : Navigator {
 
     override fun navigateToGistListActivity(context: Context) {

@@ -1,6 +1,5 @@
 package br.com.adenilson.base.navigator
 
-import android.app.Activity
 import android.content.Context
 
 interface Navigator {

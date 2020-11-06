@@ -68,5 +68,4 @@ class GistDetailsAdapter(private val viewTypesListener: ViewTypesListener<GistDe
             }
         }
     }
-
 }

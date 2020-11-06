@@ -16,5 +16,4 @@ data class Gist(
 
     val gistType: String
         get() = files.minBy { it.filename }?.filename.orEmpty()
-
 }

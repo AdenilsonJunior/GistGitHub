@@ -21,8 +21,8 @@ data class FileItem(
     val rawUrl: String,
     val language: String?,
     val size: Long
-):  GistDetailsItem()
+) : GistDetailsItem()
 
 data class UpdateDateItem(
     val date: Date
-): GistDetailsItem()
+) : GistDetailsItem()

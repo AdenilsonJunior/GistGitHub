@@ -23,7 +23,7 @@ class DetailsSpaceItemDecoration(private val context: Context) : RecyclerView.It
             val childPosition = parent.getChildAdapterPosition(view)
             if (childPosition > HEADER_POSITION) {
 
-                if(childPosition != FILE_HEADER_POSITION) {
+                if (childPosition != FILE_HEADER_POSITION) {
                     outRect.top = 16.dpToPx(this)
                 }
                 outRect.left = 24.dpToPx(this)

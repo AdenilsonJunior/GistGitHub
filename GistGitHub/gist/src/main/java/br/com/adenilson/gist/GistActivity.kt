@@ -6,7 +6,6 @@ import androidx.navigation.findNavController
 import br.com.adenilson.base.androidextensions.setupToolbarWithNavigationController
 import br.com.adenilson.base.navigator.Navigator
 import br.com.adenilson.base.presentation.BaseActivity
-import br.com.adenilson.gist.R
 import kotlinx.android.synthetic.main.layout_toolbar.toolbar
 import javax.inject.Inject
 
