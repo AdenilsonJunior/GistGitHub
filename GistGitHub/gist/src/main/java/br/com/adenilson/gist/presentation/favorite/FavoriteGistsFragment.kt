@@ -4,10 +4,38 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.adenilson.base.androidextensions.showLongToast
 import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
+import br.com.adenilson.gist.presentation.favorite.adapter.FavoriteGistsAdapter
+import br.com.adenilson.gist.presentation.list.adapter.ListSpaceItemDecoration
+import br.com.adenilson.gist.presentation.model.Gist
+import kotlinx.android.synthetic.main.fragment_favorite_gists.recyclerViewFavoriteGists
+import javax.inject.Inject
 
 class FavoriteGistsFragment : BaseFragment() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: FavoriteGistsViewModel by lazy {
+        ViewModelProviders.of(this, viewModelFactory).get(FavoriteGistsViewModel::class.java)
+    }
+
+    private val adapter: FavoriteGistsAdapter by lazy {
+        FavoriteGistsAdapter(
+            viewTypesListener = {
+
+            },
+            favoriteClickListener = {
+
+            }
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,5 +47,49 @@ class FavoriteGistsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        setupViewModel()
+    }
+
+    private fun setupRecyclerView() {
+        recyclerViewFavoriteGists.layoutManager = LinearLayoutManager(requireContext())
+        recyclerViewFavoriteGists.addItemDecoration(ListSpaceItemDecoration(requireContext()))
+        recyclerViewFavoriteGists.adapter = adapter
+    }
+
+    private fun setupViewModel() {
+        viewModel.loadingState.observe(viewLifecycleOwner, this::onLoading)
+        viewModel.favoriteGistsState.observe(viewLifecycleOwner, this::onFavoriteGists)
+        viewModel.loadFavorites()
+    }
+
+    private fun onFavoriteGists(state: FavoriteGistsViewModel.FavoriteGistsState) {
+        when(state) {
+            is FavoriteGistsViewModel.FavoriteGistsState.onLoaded -> loadFavoriteGists(state.gists)
+            is FavoriteGistsViewModel.FavoriteGistsState.onError -> showError()
+        }
+    }
+
+    private fun showError() {
+        requireContext().showLongToast("Não foi possível carregar os favoritos.")
+    }
+
+    private fun loadFavoriteGists(gists: List<Gist>) {
+        adapter.data = gists
+    }
+
+    private fun onLoading(state: FavoriteGistsViewModel.LoadingState) {
+        when(state) {
+            FavoriteGistsViewModel.LoadingState.Start -> showLoading()
+            FavoriteGistsViewModel.LoadingState.End -> hideLoading()
+        }
+    }
+
+    private fun hideLoading() {
+
+    }
+
+    private fun showLoading() {
+
     }
 }

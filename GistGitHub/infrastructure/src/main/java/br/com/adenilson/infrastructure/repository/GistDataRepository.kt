@@ -24,4 +24,8 @@ class GistDataRepository @Inject constructor(
     override fun favoriteGist(gist: GistModel): Completable {
         return localDataSet.favoriteGist(gist)
     }
+
+    override fun getFavoriteGists(): Single<List<GistModel>> {
+        return localDataSet.getFavoriteGists()
+    }
 }

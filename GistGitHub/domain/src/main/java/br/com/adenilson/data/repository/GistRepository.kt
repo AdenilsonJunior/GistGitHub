@@ -8,4 +8,5 @@ interface GistRepository {
     fun getGistList(page: Int): Single<List<GistModel>>
     fun unFavoriteGist(gist: GistModel): Completable
     fun favoriteGist(gist: GistModel): Completable
+    fun getFavoriteGists(): Single<List<GistModel>>
 }

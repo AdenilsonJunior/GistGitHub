@@ -28,7 +28,7 @@ class Converters {
 
     @TypeConverter
     fun filesFromJson(filesString: String): List<FileEntity> {
-        val listType = TypeToken.getArray(FileEntity::class.java).type
+        val listType = object : TypeToken<List<FileEntity>>() {}.type
         return Gson().fromJson(JsonParser.parseString(filesString), listType)
     }
 

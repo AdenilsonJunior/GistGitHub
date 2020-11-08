@@ -15,8 +15,7 @@ import br.com.adenilson.gist.presentation.model.Gist
 class GistListAdapter(
     private val listener: ViewTypesListener<Gist>,
     private val favoriteClickListener: ViewTypesListener<Gist>
-) :
-    PagingDataAdapter<Gist, AbstractViewHolder<Gist>>(DIFF_UTIL) {
+) : PagingDataAdapter<Gist, AbstractViewHolder<Gist>>(DIFF_UTIL) {
 
     private val factory = GistListFactory()
 
