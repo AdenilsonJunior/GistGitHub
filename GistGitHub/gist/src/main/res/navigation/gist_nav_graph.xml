@@ -24,7 +24,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 
@@ -42,10 +42,17 @@
 
     <fragment
         android:id="@+id/fragmentFavoriteGists"
+        android:name="br.com.adenilson.gist.presentation.favorite.FavoriteGistsFragment"
         android:label="@string/gist_favorites_title"
-        tools:layout="@layout/fragment_favorite_gists"
-        android:name="br.com.adenilson.gist.presentation.favorite.FavoriteGistsFragment">
+        tools:layout="@layout/fragment_favorite_gists">
 
+        <action
+            android:id="@+id/favoriteGistsFragmentToGistDetailsFragment"
+            app:destination="@id/fragmentGistDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
 

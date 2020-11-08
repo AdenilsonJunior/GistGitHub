@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.adenilson.base.androidextensions.showLongToast
 import br.com.adenilson.base.presentation.BaseFragment
@@ -29,6 +30,7 @@ class FavoriteGistsFragment : BaseFragment() {
     private val adapter: FavoriteGistsAdapter by lazy {
         FavoriteGistsAdapter(
             viewTypesListener = {
+                findNavController().navigate(FavoriteGistsFragmentDirections.favoriteGistsFragmentToGistDetailsFragment(it))
 
             },
             favoriteClickListener = {
