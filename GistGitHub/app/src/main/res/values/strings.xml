@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">GistGitHub</string>
+    <string name="app_name">Gists</string>
     <string name="splash_gist">Gist</string>
-    <string name="gist_url_error">Erro ao tentar abrir a url.</string>
+    <string name="gist_url_error">Could not possible to open this url.</string>
+    <string name="gist_by">by GitHub</string>
 </resources>

@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="gist_list_title">Lista de Gists</string>
-    <string name="content_description_start_gist">Favoritar Gist</string>
-    <string name="gist_connection_message_error">Erro de conexão: %1$s</string>
-    <string name="gist_details_title">Detalhes</string>
+    <string name="gist_list_title">Gists List</string>
+    <string name="content_description_start_gist">Favorite Gist</string>
+    <string name="gist_connection_message_error">Connection Error: %1$s</string>
+    <string name="gist_details_title">Details</string>
     <string name="gist_text_file_size">%1$d bytes</string>
-    <string name="gist_last_update">Atualizado em: %1$s</string>
-    <string name="gists_favorites">Favoritos</string>
-    <string name="gist_favorites_title">Favoritos</string>
-    <string name="gist_list_empty">Não há nada por aqui :/</string>
-    <string name="gist_favorite_error_load">Não foi possível carregar os favoritos.</string>
-    <string name="gist_favorite_error">Não foi possível favoritar.</string>
-    <string name="gist_load_list_error">Não foi possível carregar a lista: %1$s</string>
-    <string name="gist_button_text_try_again">Tentar novamente</string>
-    <string name="gist_list_error">Algo deu errado :/</string>
-    <string name="gist_hint_search">Pesquisar</string>
+    <string name="gist_last_update">Updated at: %1$s</string>
+    <string name="gists_favorites">Favorites</string>
+    <string name="gist_favorites_title">Favorites</string>
+    <string name="gist_list_empty">There is nothing here :/</string>
+    <string name="gist_favorite_error_load">Could not possible to load the favorites.</string>
+    <string name="gist_favorite_error">Could not possible favorite this gists.</string>
+    <string name="gist_load_list_error">Could not possible to load the list: %1$s</string>
+    <string name="gist_button_text_try_again">Try again</string>
+    <string name="gist_hint_search">Search</string>
     <plurals name="gist_files_count">
-        <item quantity="one">%1$d arquivo</item>
-        <item quantity="other">%1$d arquivos</item>
+        <item quantity="one">%1$d file</item>
+        <item quantity="other">%1$d files</item>
     </plurals>
     <plurals name="gist_files_header_count">
-        <item quantity="one">%1$d Arquivo</item>
-        <item quantity="other">%1$d Arquivos</item>
+        <item quantity="one">%1$d File</item>
+        <item quantity="other">%1$d Files</item>
     </plurals>
 </resources>
