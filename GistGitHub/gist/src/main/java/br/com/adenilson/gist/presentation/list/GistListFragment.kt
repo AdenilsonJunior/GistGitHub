@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -24,10 +25,16 @@ import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
 import br.com.adenilson.gist.presentation.list.adapter.GistListAdapter
 import br.com.adenilson.gist.presentation.list.adapter.ListSpaceItemDecoration
+import com.jakewharton.rxbinding4.widget.afterTextChangeEvents
+import com.jakewharton.rxbinding4.widget.textChanges
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.kotlin.subscribeBy
+import kotlinx.android.synthetic.main.fragment_gist_list.editTextSearch
 import kotlinx.android.synthetic.main.fragment_gist_list.layoutError
 import kotlinx.android.synthetic.main.fragment_gist_list.recyclerViewGist
 import kotlinx.android.synthetic.main.fragment_gist_list.swipeRefreshLayout
 import java.io.IOException
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class GistListFragment : BaseFragment() {
@@ -71,7 +78,7 @@ class GistListFragment : BaseFragment() {
                 },
                 refreshError = { error ->
                     swipeRefreshLayout.isRefreshing = false
-                    layoutError.show()
+//                    layoutError.show()
                     handleError(error)
                 },
                 appendError = { error ->
@@ -119,11 +126,19 @@ class GistListFragment : BaseFragment() {
         setHasOptionsMenu(true)
         setupSwipeRefreshLayout()
         setupRecyclerView()
-        viewModel.loadGist()
+        setupSearchEditText()
         viewModel.pagedList?.cachedIn(viewLifecycleOwner.lifecycle)?.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
         viewModel.favoriteGistState.observe(viewLifecycleOwner, this::onFavorite)
+    }
+
+    private fun setupSearchEditText() {
+        editTextSearch.afterTextChangeEvents().skipInitialValue().debounce(1, TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy {
+                viewModel.loadGist(it.editable?.toString().orEmpty())
+            }
     }
 
     private fun onFavorite(state: GistListViewModel.FavoriteGistState) {

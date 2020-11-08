@@ -9,7 +9,10 @@ import javax.inject.Inject
 
 interface GetGistListInteractor :
     Interactor<GetGistListInteractor.Params, Single<List<Gist>>> {
-    class Params(val page: Int)
+    class Params(
+        val usernameToFilter: String,
+        val page: Int
+    )
 }
 
 class GetGistListInteractorImpl @Inject constructor(
@@ -18,7 +21,13 @@ class GetGistListInteractorImpl @Inject constructor(
 ) : GetGistListInteractor {
 
     override fun execute(params: GetGistListInteractor.Params): Single<List<Gist>> {
-        return repository.getGistList(page = params.page).map { list ->
+        val repositoryCall = if (params.usernameToFilter.isBlank()) {
+            repository.getGistList(page = params.page)
+        } else {
+            repository.getGistsByUsername(username = params.usernameToFilter, page = params.page)
+        }
+
+        return repositoryCall.map { list ->
             list.map { mapper.mapTo(it) }
         }
     }

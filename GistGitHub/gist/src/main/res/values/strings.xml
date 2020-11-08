@@ -14,6 +14,7 @@
     <string name="gist_load_list_error">Não foi possível carregar a lista</string>
     <string name="gist_button_text_try_again">Tentar novamente</string>
     <string name="gist_list_error">Algo deu errado :/</string>
+    <string name="gist_hint_search">Pesquisar</string>
     <plurals name="gist_files_count">
         <item quantity="one">%1$d arquivo</item>
         <item quantity="other">%1$d arquivos</item>

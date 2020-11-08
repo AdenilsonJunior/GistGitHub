@@ -37,15 +37,18 @@ class GistListViewModel @Inject constructor(
         loadGist()
     }
 
-    fun loadGist(): LiveData<PagingData<Gist>>? {
+    fun loadGist(username: String = ""): LiveData<PagingData<Gist>>? {
         return Pager(
             PagingConfig(
                 PAGE_SIZE,
                 PRE_FETCH_DISTANCE,
-                ENABLE_PLACEHOLDERS
+                ENABLE_PLACEHOLDERS,
+                PAGE_SIZE
             ),
             INITIAL_KEY_PAGE
-        ) { gistListDataSource.get() }.liveData.cachedIn(viewModelScope)
+        ) { gistListDataSource.get().apply {
+            usernameToFilter =  username
+        } }.liveData.cachedIn(viewModelScope)
     }
 
     fun favoriteClick(gist: Gist) {

@@ -28,4 +28,8 @@ class GistDataRepository @Inject constructor(
     override fun getFavoriteGists(): Single<List<GistModel>> {
         return localDataSet.getFavoriteGists()
     }
+
+    override fun getGistsByUsername(username: String, page: Int): Single<List<GistModel>> {
+        return remoteDataSet.getGistsByUsername(username, page)
+    }
 }
