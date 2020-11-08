@@ -61,4 +61,8 @@ class GistListAdapter(
             }
         }
     }
+
+    fun updateFavoriteGist(gist: Gist) {
+        notifyDataSetChanged()
+    }
 }

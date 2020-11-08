@@ -2,21 +2,24 @@ package br.com.adenilson.gist.presentation.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import androidx.paging.liveData
-import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.base.presentation.BaseViewModel
+import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.gist.domain.datasource.GistListDataSource
 import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractor
 import br.com.adenilson.gist.presentation.model.Gist
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import javax.inject.Inject
+import javax.inject.Provider
 
 class GistListViewModel @Inject constructor(
-    private val pagingSource: GistListDataSource,
     private val executor: Executor,
+    private val gistListDataSource: Provider<GistListDataSource>,
     private val favoriteGistInteractor: FavoriteGistInteractor
 ) : BaseViewModel() {
 
@@ -30,24 +33,26 @@ class GistListViewModel @Inject constructor(
     private var _favoriteGistState: MutableLiveData<FavoriteGistState> = MutableLiveData()
     val favoriteGistState: LiveData<FavoriteGistState> = _favoriteGistState
 
-    var pagedList: LiveData<PagingData<Gist>>? = null
+    val pagedList: LiveData<PagingData<Gist>>? by lazy {
+        loadGist()
+    }
 
-    fun loadGist() {
-        pagedList = Pager(
+    fun loadGist(): LiveData<PagingData<Gist>>? {
+        return Pager(
             PagingConfig(
                 PAGE_SIZE,
                 PRE_FETCH_DISTANCE,
                 ENABLE_PLACEHOLDERS
             ),
             INITIAL_KEY_PAGE
-        ) { pagingSource }.liveData
+        ) { gistListDataSource.get() }.liveData.cachedIn(viewModelScope)
     }
 
     fun favoriteClick(gist: Gist) {
         executor.execute(favoriteGistInteractor, gist)
             .subscribeBy(
                 onComplete = {
-                    _favoriteGistState.postValue(FavoriteGistState.Success)
+                    _favoriteGistState.postValue(FavoriteGistState.Success(gist))
                 },
                 onError = {
                     _favoriteGistState.postValue(FavoriteGistState.Error)
@@ -56,7 +61,7 @@ class GistListViewModel @Inject constructor(
     }
 
     sealed class FavoriteGistState {
-        object Error: FavoriteGistState()
-        object Success: FavoriteGistState()
+        object Error : FavoriteGistState()
+        data class Success(val gist: Gist) : FavoriteGistState()
     }
 }

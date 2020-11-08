@@ -41,11 +41,6 @@ class FavoriteGistsAdapter(
         return factory.type(data[position])
     }
 
-    fun updateUnFavoriteGist(gist: Gist) {
-        val index = data.indexOfFirst { it.id == gist.id }
-        notifyItemChanged(index)
-    }
-
     fun updateFavoriteGist(gist: Gist) {
         val index = data.indexOfFirst { it.id == gist.id }
         notifyItemChanged(index)

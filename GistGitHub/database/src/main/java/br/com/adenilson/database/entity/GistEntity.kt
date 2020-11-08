@@ -3,10 +3,11 @@ package br.com.adenilson.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.Date
 
-@Entity(tableName = "gist")
+@Entity(tableName = "gist", indices = [Index(value = ["web_id"], unique = true)])
 class GistEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long?,

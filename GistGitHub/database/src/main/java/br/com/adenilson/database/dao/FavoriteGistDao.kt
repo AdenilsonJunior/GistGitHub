@@ -3,6 +3,7 @@ package br.com.adenilson.database.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import br.com.adenilson.database.entity.GistEntity
 
@@ -15,6 +16,6 @@ interface FavoriteGistDao {
     @Delete
     fun delete(favoriteGistEntity: GistEntity)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(favoriteGistEntity: GistEntity)
 }

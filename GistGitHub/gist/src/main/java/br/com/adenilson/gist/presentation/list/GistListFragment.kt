@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
+import androidx.paging.cachedIn
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.adenilson.base.androidextensions.isSourceError
 import br.com.adenilson.base.androidextensions.isSourceLoading
@@ -21,6 +22,7 @@ import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
 import br.com.adenilson.gist.presentation.list.adapter.GistListAdapter
 import br.com.adenilson.gist.presentation.list.adapter.ListSpaceItemDecoration
+import br.com.adenilson.gist.presentation.model.Gist
 import com.bumptech.glide.load.HttpException
 import kotlinx.android.synthetic.main.fragment_gist_list.recyclerViewGist
 import kotlinx.android.synthetic.main.fragment_gist_list.swipeRefreshLayout
@@ -94,7 +96,7 @@ class GistListFragment : BaseFragment() {
         setupSwipeRefreshLayout()
         setupRecyclerView()
         viewModel.loadGist()
-        viewModel.pagedList?.observe(viewLifecycleOwner) {
+        viewModel.pagedList?.cachedIn(viewLifecycleOwner.lifecycle)?.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
         viewModel.favoriteGistState.observe(viewLifecycleOwner, this::onFavorite)
@@ -102,9 +104,17 @@ class GistListFragment : BaseFragment() {
 
     private fun onFavorite(state: GistListViewModel.FavoriteGistState) {
         when(state) {
-            GistListViewModel.FavoriteGistState.Success -> onFavoriteSuccess()
-            GistListViewModel.FavoriteGistState.Error -> onFavoriteError()
+            is GistListViewModel.FavoriteGistState.Success -> updateFavoriteGist(state.gist)
+            is GistListViewModel.FavoriteGistState.Error -> showError()
         }
+    }
+
+    private fun showError() {
+        requireContext().showLongToast("Não foi possível favoritar esse gist.")
+    }
+
+    private fun updateFavoriteGist(gist: Gist) {
+        adapter.updateFavoriteGist(gist)
     }
 
     private fun onFavoriteError() {
@@ -132,7 +142,7 @@ class GistListFragment : BaseFragment() {
             )
         )
         swipeRefreshLayout.setOnRefreshListener {
-            viewModel.loadGist()
+            adapter.refresh()
         }
     }
 

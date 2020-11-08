@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "4e76673fa1c6362e85be88f0cd1164d2",
+    "identityHash": "d128783e6c65207d9509d98d96a90491",
     "entities": [
       {
         "tableName": "gist",
@@ -69,7 +69,16 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_gist_web_id",
+            "unique": true,
+            "columnNames": [
+              "web_id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_gist_web_id` ON `${TABLE_NAME}` (`web_id`)"
+          }
+        ],
         "foreignKeys": []
       },
       {
@@ -158,7 +167,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4e76673fa1c6362e85be88f0cd1164d2')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd128783e6c65207d9509d98d96a90491')"
     ]
   }
 }

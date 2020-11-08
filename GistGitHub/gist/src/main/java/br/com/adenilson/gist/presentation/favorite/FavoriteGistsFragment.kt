@@ -63,16 +63,12 @@ class FavoriteGistsFragment : BaseFragment() {
     }
 
     private fun onFavoriteGists(state: FavoriteGistsViewModel.FavoriteGistsState) {
-        when(state) {
+        when (state) {
             is FavoriteGistsViewModel.FavoriteGistsState.Loaded -> loadFavoriteGists(state.gists)
             is FavoriteGistsViewModel.FavoriteGistsState.Error -> showError()
             is FavoriteGistsViewModel.FavoriteGistsState.Favorite -> updateFavoriteGist(state.gist)
-            is FavoriteGistsViewModel.FavoriteGistsState.UnFavorite -> updateUnFavoriteGist(state.gist)
+            is FavoriteGistsViewModel.FavoriteGistsState.UnFavorite -> updateFavoriteGist(state.gist)
         }
-    }
-
-    private fun updateUnFavoriteGist(gist: Gist) {
-        adapter.updateUnFavoriteGist(gist)
     }
 
     private fun updateFavoriteGist(gist: Gist) {
