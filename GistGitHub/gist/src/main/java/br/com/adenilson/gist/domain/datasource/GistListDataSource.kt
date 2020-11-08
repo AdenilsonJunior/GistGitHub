@@ -18,7 +18,10 @@ class GistListDataSource @Inject constructor(
 
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Gist>> {
         val page = params.key ?: 0
-        return executor.execute(getGistListInteractor, GetGistListInteractor.Params(usernameToFilter, page))
+        return executor.execute(
+            getGistListInteractor,
+            GetGistListInteractor.Params(usernameToFilter, page)
+        )
             .flatMap { executor.execute(updateIsFavoriteGistsInteractor, it) }
             .map { gists ->
                 try {
@@ -26,7 +29,6 @@ class GistListDataSource @Inject constructor(
                         data = gists,
                         prevKey = null,
                         nextKey = page + 1
-
                     )
                 } catch (e: Exception) {
                     LoadResult.Error<Int, Gist>(e)

@@ -1,12 +1,14 @@
 package br.com.adenilson.gist.presentation.list
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -16,6 +18,7 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.cachedIn
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.adenilson.base.androidextensions.checkSourceLoadState
+import br.com.adenilson.base.androidextensions.hideKeyboard
 import br.com.adenilson.base.androidextensions.showIndefiniteSnackBar
 import br.com.adenilson.base.androidextensions.showSnackBar
 import br.com.adenilson.base.presentation.BaseFragment
@@ -88,7 +91,12 @@ class GistListFragment : BaseFragment() {
             ) {
                 adapter.retry()
             }
-            else -> showSnackBar(getString(R.string.gist_load_list_error, throwable.localizedMessage))
+            else -> showSnackBar(
+                getString(
+                    R.string.gist_load_list_error,
+                    throwable.localizedMessage
+                )
+            )
         }
     }
 
@@ -128,8 +136,14 @@ class GistListFragment : BaseFragment() {
         editTextSearch.afterTextChangeEvents().skipInitialValue().debounce(1, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy {
-                viewModel.loadGist(it.editable?.toString().orEmpty())
+                viewModel.makeSearch(it.editable.toString())
             }
+        editTextSearch.setOnEditorActionListener { _: View?, actionId: Int, _: KeyEvent? ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                requireActivity().hideKeyboard()
+                true
+            } else false
+        }
     }
 
     private fun onFavorite(state: GistListViewModel.FavoriteGistState) {

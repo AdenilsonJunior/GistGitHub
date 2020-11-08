@@ -25,7 +25,7 @@ class GistListViewModel @Inject constructor(
 
     companion object {
         private const val PAGE_SIZE = 30
-        private const val PRE_FETCH_DISTANCE = 10
+        private const val PRE_FETCH_DISTANCE = 5
         private const val ENABLE_PLACEHOLDERS = false
         private const val INITIAL_KEY_PAGE = 0
     }
@@ -37,7 +37,12 @@ class GistListViewModel @Inject constructor(
         loadGist()
     }
 
-    fun loadGist(username: String = ""): LiveData<PagingData<Gist>>? {
+    private var pageSize = PAGE_SIZE
+    private var usernameQuery = ""
+
+    var dataSource: GistListDataSource? = null
+
+    private fun loadGist(): LiveData<PagingData<Gist>>? {
         return Pager(
             PagingConfig(
                 PAGE_SIZE,
@@ -46,9 +51,12 @@ class GistListViewModel @Inject constructor(
                 PAGE_SIZE
             ),
             INITIAL_KEY_PAGE
-        ) { gistListDataSource.get().apply {
-            usernameToFilter = username
-        } }.liveData.cachedIn(viewModelScope)
+        ) {
+            gistListDataSource.get().apply {
+                usernameToFilter = usernameQuery
+                dataSource = this
+            }
+        }.liveData.cachedIn(viewModelScope)
     }
 
     fun favoriteClick(gist: Gist) {
@@ -61,6 +69,13 @@ class GistListViewModel @Inject constructor(
                     _favoriteGistState.postValue(FavoriteGistState.Error)
                 }
             )
+    }
+
+    fun makeSearch(query: String) {
+        dataSource?.run {
+            usernameQuery = query
+            invalidate()
+        }
     }
 
     sealed class FavoriteGistState {
