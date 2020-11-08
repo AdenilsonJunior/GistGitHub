@@ -28,7 +28,7 @@ class GistViewHolder(
             itemView.setOnClickListener {
                 viewTypesListener.invoke(item)
             }
-            if(item.favorite) {
+            if (item.favorite) {
                 imageViewFavorite.setImageResource(R.drawable.ic_star)
             } else {
                 imageViewFavorite.setImageResource(R.drawable.ic_empty_star)

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.adenilson.base.navigator.Navigator
 import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
-import br.com.adenilson.data.model.GistModel
 import br.com.adenilson.gist.presentation.details.adapter.DetailsSpaceItemDecoration
 import br.com.adenilson.gist.presentation.details.adapter.FileItem
 import br.com.adenilson.gist.presentation.details.adapter.GistDetailsAdapter

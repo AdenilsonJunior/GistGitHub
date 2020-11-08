@@ -8,6 +8,12 @@
     <string name="gist_last_update">Atualizado em: %1$s</string>
     <string name="gists_favorites">Favoritos</string>
     <string name="gist_favorites_title">Favoritos</string>
+    <string name="gist_list_empty">Não há nada por aqui :/</string>
+    <string name="gist_favorite_error_load">Não foi possível carregar os favoritos.</string>
+    <string name="gist_favorite_error">Error</string>
+    <string name="gist_load_list_error">Não foi possível carregar a lista</string>
+    <string name="gist_button_text_try_again">Tentar novamente</string>
+    <string name="gist_list_error">Algo deu errado :/</string>
     <plurals name="gist_files_count">
         <item quantity="one">%1$d arquivo</item>
         <item quantity="other">%1$d arquivos</item>

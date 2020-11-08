@@ -9,12 +9,16 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.adenilson.base.androidextensions.showLongToast
+import br.com.adenilson.base.androidextensions.hide
+import br.com.adenilson.base.androidextensions.show
+import br.com.adenilson.base.androidextensions.showSnackBar
 import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
 import br.com.adenilson.gist.presentation.favorite.adapter.FavoriteGistsAdapter
 import br.com.adenilson.gist.presentation.list.adapter.ListSpaceItemDecoration
 import br.com.adenilson.gist.presentation.model.Gist
+import kotlinx.android.synthetic.main.fragment_favorite_gists.layoutEmpty
+import kotlinx.android.synthetic.main.fragment_favorite_gists.layoutLoading
 import kotlinx.android.synthetic.main.fragment_favorite_gists.recyclerViewFavoriteGists
 import javax.inject.Inject
 
@@ -30,8 +34,9 @@ class FavoriteGistsFragment : BaseFragment() {
     private val adapter: FavoriteGistsAdapter by lazy {
         FavoriteGistsAdapter(
             viewTypesListener = {
-                findNavController().navigate(FavoriteGistsFragmentDirections.favoriteGistsFragmentToGistDetailsFragment(it))
-
+                findNavController().navigate(
+                    FavoriteGistsFragmentDirections.favoriteGistsFragmentToGistDetailsFragment(it)
+                )
             },
             favoriteClickListener = {
                 viewModel.favoriteGist(it)
@@ -61,7 +66,23 @@ class FavoriteGistsFragment : BaseFragment() {
 
     private fun setupViewModel() {
         viewModel.favoriteGistsState.observe(viewLifecycleOwner, this::onFavoriteGists)
+        viewModel.loadingState.observe(viewLifecycleOwner, this::onLoading)
         viewModel.loadFavorites()
+    }
+
+    private fun onLoading(state: FavoriteGistsViewModel.LoadingState) {
+        when (state) {
+            FavoriteGistsViewModel.LoadingState.Start -> showLoading()
+            FavoriteGistsViewModel.LoadingState.End -> hideLoading()
+        }
+    }
+
+    private fun hideLoading() {
+        layoutLoading.hide()
+    }
+
+    private fun showLoading() {
+        layoutLoading.show()
     }
 
     private fun onFavoriteGists(state: FavoriteGistsViewModel.FavoriteGistsState) {
@@ -70,7 +91,12 @@ class FavoriteGistsFragment : BaseFragment() {
             is FavoriteGistsViewModel.FavoriteGistsState.Error -> showError()
             is FavoriteGistsViewModel.FavoriteGistsState.Favorite -> updateFavoriteGist(state.gist)
             is FavoriteGistsViewModel.FavoriteGistsState.UnFavorite -> updateFavoriteGist(state.gist)
+            FavoriteGistsViewModel.FavoriteGistsState.Empty -> showEmpty()
         }
+    }
+
+    private fun showEmpty() {
+        layoutEmpty.show()
     }
 
     private fun updateFavoriteGist(gist: Gist) {
@@ -78,10 +104,11 @@ class FavoriteGistsFragment : BaseFragment() {
     }
 
     private fun showError() {
-        requireContext().showLongToast("Não foi possível carregar os favoritos.")
+        showSnackBar(getString(R.string.gist_favorite_error_load))
     }
 
     private fun loadFavoriteGists(gists: List<Gist>) {
+        layoutEmpty.hide()
         adapter.data = gists
     }
 }

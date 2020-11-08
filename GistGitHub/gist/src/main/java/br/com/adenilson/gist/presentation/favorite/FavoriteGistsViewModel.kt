@@ -16,14 +16,23 @@ class FavoriteGistsViewModel @Inject constructor(
     private val favoriteGistsInteractor: FavoriteGistInteractor
 ) : BaseViewModel() {
 
+    private val _loadingState: MutableLiveData<LoadingState> = MutableLiveData()
+    val loadingState: LiveData<LoadingState> = _loadingState
+
     private val _favoriteGistsState: MutableLiveData<FavoriteGistsState> = MutableLiveData()
     val favoriteGistsState: LiveData<FavoriteGistsState> = _favoriteGistsState
 
     fun loadFavorites() {
         executor.execute(getFavoriteGistsInteractor, Unit)
+            .doOnSubscribe { _loadingState.postValue(LoadingState.Start) }
+            .doFinally { _loadingState.postValue(LoadingState.End) }
             .subscribeBy(
-                onSuccess = {
-                    _favoriteGistsState.postValue(FavoriteGistsState.Loaded(it))
+                onSuccess = { gists ->
+                    if (gists.isNullOrEmpty()) {
+                        _favoriteGistsState.postValue(FavoriteGistsState.Empty)
+                    } else {
+                        _favoriteGistsState.postValue(FavoriteGistsState.Loaded(gists))
+                    }
                 },
                 onError = {
                     _favoriteGistsState.postValue(FavoriteGistsState.Error(it))
@@ -35,14 +44,13 @@ class FavoriteGistsViewModel @Inject constructor(
         executor.execute(favoriteGistsInteractor, gist)
             .subscribeBy(
                 onComplete = {
-                    if(gist.favorite) {
+                    if (gist.favorite) {
                         _favoriteGistsState.postValue(FavoriteGistsState.Favorite(gist))
                     } else {
                         _favoriteGistsState.postValue(FavoriteGistsState.UnFavorite(gist))
                     }
                 },
                 onError = {
-
                 }
             )
     }
@@ -50,8 +58,9 @@ class FavoriteGistsViewModel @Inject constructor(
     sealed class FavoriteGistsState {
         data class Loaded(val gists: List<Gist>) : FavoriteGistsState()
         data class Error(val throwable: Throwable) : FavoriteGistsState()
-        data class Favorite(val gist: Gist): FavoriteGistsState()
-        data class UnFavorite(val gist: Gist): FavoriteGistsState()
+        data class Favorite(val gist: Gist) : FavoriteGistsState()
+        data class UnFavorite(val gist: Gist) : FavoriteGistsState()
+        object Empty : FavoriteGistsState()
     }
 
     sealed class LoadingState {

@@ -23,7 +23,6 @@ abstract class NetworkModule {
             return OkHttpClient.Builder().addInterceptor(interceptor).build()
         }
 
-
         @Singleton
         @Provides
         fun providesRetrofit(client: OkHttpClient): Retrofit =
@@ -37,7 +36,5 @@ abstract class NetworkModule {
         @Singleton
         @Provides
         fun providesGistAPI(retrofit: Retrofit): GistsAPI = retrofit.create(GistsAPI::class.java)
-
-
     }
 }

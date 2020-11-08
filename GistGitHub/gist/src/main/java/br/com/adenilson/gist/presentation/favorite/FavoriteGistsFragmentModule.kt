@@ -2,7 +2,6 @@ package br.com.adenilson.gist.presentation.favorite
 
 import androidx.lifecycle.ViewModel
 import br.com.adenilson.base.di.ViewModelKey
-import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractor
 import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractorImpl
 import br.com.adenilson.gist.domain.interactor.GetFavoriteGistsInteractor
@@ -13,7 +12,6 @@ import br.com.adenilson.gist.domain.mapper.GistModelMapper
 import br.com.adenilson.gist.domain.mapper.GistModelMapperImpl
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.multibindings.IntoMap
 
 @Module

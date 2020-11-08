@@ -5,7 +5,6 @@ import br.com.adenilson.base.androidextensions.loadFromUrl
 import br.com.adenilson.base.presentation.adapter.AbstractViewHolder
 import br.com.adenilson.base.presentation.adapter.ViewTypesListener
 import br.com.adenilson.gist.R
-import br.com.adenilson.data.model.GistModel
 import br.com.adenilson.gist.presentation.model.Gist
 import kotlinx.android.synthetic.main.item_favorite_gist.view.imageViewAvatar
 import kotlinx.android.synthetic.main.item_favorite_gist.view.imageViewFavorite
@@ -19,7 +18,7 @@ class FavoriteGistViewHolder(val view: View, val listener: ViewTypesListener<Gis
             textViewGistName.text = item.gistType
             textViewUserName.text = item.owner.name
             imageViewAvatar.loadFromUrl(item.owner.avatarUrl, R.drawable.placeholder_user)
-            if(item.favorite) {
+            if (item.favorite) {
                 imageViewFavorite.setImageResource(R.drawable.ic_star)
             } else {
                 imageViewFavorite.setImageResource(R.drawable.ic_empty_star)

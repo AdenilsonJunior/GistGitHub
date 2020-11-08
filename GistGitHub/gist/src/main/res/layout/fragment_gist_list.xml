@@ -20,4 +20,8 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <include
+        android:id="@+id/layoutError"
+        layout="@layout/layout_error"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

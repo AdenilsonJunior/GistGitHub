@@ -9,7 +9,6 @@ import br.com.adenilson.database.entity.GistEntity
 import br.com.adenilson.database.entity.FileEntity
 import br.com.adenilson.database.entity.OwnerEntity
 
-
 @Database(
     entities = [
         GistEntity::class,

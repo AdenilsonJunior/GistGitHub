@@ -15,17 +15,19 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.cachedIn
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.adenilson.base.androidextensions.isSourceError
-import br.com.adenilson.base.androidextensions.isSourceLoading
-import br.com.adenilson.base.androidextensions.showLongToast
+import br.com.adenilson.base.androidextensions.checkSourceLoadState
+import br.com.adenilson.base.androidextensions.hide
+import br.com.adenilson.base.androidextensions.show
+import br.com.adenilson.base.androidextensions.showIndefiniteSnackBar
+import br.com.adenilson.base.androidextensions.showSnackBar
 import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
 import br.com.adenilson.gist.presentation.list.adapter.GistListAdapter
 import br.com.adenilson.gist.presentation.list.adapter.ListSpaceItemDecoration
-import br.com.adenilson.gist.presentation.model.Gist
-import com.bumptech.glide.load.HttpException
+import kotlinx.android.synthetic.main.fragment_gist_list.layoutError
 import kotlinx.android.synthetic.main.fragment_gist_list.recyclerViewGist
 import kotlinx.android.synthetic.main.fragment_gist_list.swipeRefreshLayout
+import java.io.IOException
 import javax.inject.Inject
 
 class GistListFragment : BaseFragment() {
@@ -54,9 +56,26 @@ class GistListFragment : BaseFragment() {
 
     private val loadingState: (CombinedLoadStates) -> Unit = { combinedLoadStates ->
         with(combinedLoadStates) {
-            swipeRefreshLayout.isRefreshing = isSourceLoading()
-            isSourceError(
+            checkSourceLoadState(
+                notLoading = {
+                    layoutError.hide()
+                    swipeRefreshLayout.isRefreshing = false
+                },
+                appendLoading = {
+                    layoutError.hide()
+                    swipeRefreshLayout.isRefreshing = true
+                },
+                refreshLoading = {
+                    layoutError.hide()
+                    swipeRefreshLayout.isRefreshing = true
+                },
                 refreshError = { error ->
+                    swipeRefreshLayout.isRefreshing = false
+                    layoutError.show()
+                    handleError(error)
+                },
+                appendError = { error ->
+                    swipeRefreshLayout.isRefreshing = false
                     handleError(error)
                 }
             )
@@ -65,8 +84,13 @@ class GistListFragment : BaseFragment() {
 
     private fun handleError(throwable: Throwable) {
         when (throwable) {
-            is HttpException -> requireContext().showLongToast(getString(R.string.gist_connection_message_error))
-            else -> requireContext().showLongToast(throwable.localizedMessage.orEmpty())
+            is IOException -> showIndefiniteSnackBar(
+                getString(R.string.gist_connection_message_error),
+                getString(R.string.gist_button_text_try_again)
+            ) {
+                adapter.retry()
+            }
+            else -> showSnackBar(getString(R.string.gist_load_list_error))
         }
     }
 
@@ -84,7 +108,7 @@ class GistListFragment : BaseFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.menuFavorites -> findNavController().navigate(GistListFragmentDirections.gistListFragmentToFavoriteGistsFragment())
         }
         return super.onOptionsItemSelected(item)
@@ -103,29 +127,19 @@ class GistListFragment : BaseFragment() {
     }
 
     private fun onFavorite(state: GistListViewModel.FavoriteGistState) {
-        when(state) {
-            is GistListViewModel.FavoriteGistState.Success -> updateFavoriteGist(state.gist)
-            is GistListViewModel.FavoriteGistState.Error -> showError()
+        when (state) {
+            is GistListViewModel.FavoriteGistState.Success -> updateFavoriteGist()
+            is GistListViewModel.FavoriteGistState.Error -> onFavoriteError()
         }
     }
 
-    private fun showError() {
-        requireContext().showLongToast("Não foi possível favoritar esse gist.")
-    }
-
-    private fun updateFavoriteGist(gist: Gist) {
-        adapter.updateFavoriteGist(gist)
+    private fun updateFavoriteGist() {
+        adapter.notifyDataSetChanged()
     }
 
     private fun onFavoriteError() {
-        requireContext().showLongToast("Error")
+        showSnackBar(getString(R.string.gist_favorite_error))
     }
-
-    private fun onFavoriteSuccess() {
-        requireContext().showLongToast("Successo")
-    }
-
-
 
     private fun setupRecyclerView() {
         recyclerViewGist.layoutManager = LinearLayoutManager(requireContext())

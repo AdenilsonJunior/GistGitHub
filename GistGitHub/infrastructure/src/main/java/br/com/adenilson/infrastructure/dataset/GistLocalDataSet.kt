@@ -21,14 +21,14 @@ class GistLocalDataSetImpl @Inject constructor(
 ) : GistLocalDataSet {
 
     override fun favoriteGist(gist: GistModel): Completable {
-        return Completable.create { emitter->
+        return Completable.create { emitter ->
             appDatabase.favoriteGistDao().insert(entityMapper.mapTo(gist))
             emitter.onComplete()
         }
     }
 
     override fun unFavoriteGist(gist: GistModel): Completable {
-        return Completable.create {emitter ->
+        return Completable.create { emitter ->
             appDatabase.favoriteGistDao().delete(entityMapper.mapTo(gist))
             emitter.onComplete()
         }

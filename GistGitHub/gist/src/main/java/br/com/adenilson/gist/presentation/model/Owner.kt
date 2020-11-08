@@ -8,4 +8,4 @@ data class Owner(
     val id: Long? = null,
     val avatarUrl: String,
     val name: String
-): Parcelable
+) : Parcelable

@@ -11,4 +11,4 @@ data class File(
     val rawUrl: String,
     val language: String?,
     val size: Long
-): Parcelable
+) : Parcelable
