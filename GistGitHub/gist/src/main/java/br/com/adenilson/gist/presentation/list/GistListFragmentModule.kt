@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import br.com.adenilson.base.di.ViewModelKey
 import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.gist.domain.datasource.GistListDataSource
+import br.com.adenilson.gist.domain.interactor.UpdateIsFavoriteGistsInteractor
+import br.com.adenilson.gist.domain.interactor.UpdateIsFavoriteGistsInteractorImpl
 import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractor
 import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractorImpl
 import br.com.adenilson.gist.domain.interactor.GetGistListInteractor
@@ -37,12 +39,16 @@ abstract class GistListFragmentModule {
     @Binds
     abstract fun bindGistModelMapper(impl: GistModelMapperImpl): GistModelMapper
 
+    @Binds
+    abstract fun bindCheckIsFavoriteGistsInteractorImpl(impl: UpdateIsFavoriteGistsInteractorImpl): UpdateIsFavoriteGistsInteractor
+
     companion object {
         @Provides
         fun providesGistDataSource(
-            interactor: GetGistListInteractor,
+            getGistListInteractor: GetGistListInteractor,
+            updateIsFavoriteGistsInteractor: UpdateIsFavoriteGistsInteractor,
             executor: Executor
         ): GistListDataSource =
-            GistListDataSource(executor, interactor)
+            GistListDataSource(executor, getGistListInteractor, updateIsFavoriteGistsInteractor)
     }
 }
