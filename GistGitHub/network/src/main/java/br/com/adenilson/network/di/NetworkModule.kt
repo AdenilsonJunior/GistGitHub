@@ -1,9 +1,6 @@
 package br.com.adenilson.network.di
 
-import br.com.adenilson.network.GistRemoteDataSet
-import br.com.adenilson.network.GistRemoteDataSetImpl
 import br.com.adenilson.network.api.GistsAPI
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -13,9 +10,6 @@ import javax.inject.Singleton
 
 @Module
 abstract class NetworkModule {
-
-    @Binds
-    abstract fun bindGistRemoteDataSet(impl: GistRemoteDataSetImpl): GistRemoteDataSet
 
     companion object {
         private const val API_URL = "https://api.github.com/"

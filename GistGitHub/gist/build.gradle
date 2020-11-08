@@ -9,5 +9,5 @@ plugins {
 dependencies {
     implementation project(':base')
 
-    api project(':data')
+    api project(':domain')
 }

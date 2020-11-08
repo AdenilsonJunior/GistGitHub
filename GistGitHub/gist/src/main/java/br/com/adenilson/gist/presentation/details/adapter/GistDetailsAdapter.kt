@@ -57,12 +57,12 @@ class GistDetailsAdapter(private val viewTypesListener: ViewTypesListener<GistDe
         override fun holder(
             type: Int,
             view: View,
-            listener: ViewTypesListener<GistDetailsItem>
+            vararg listener: ViewTypesListener<GistDetailsItem>
         ): AbstractViewHolder<*> {
             return when (type) {
                 R.layout.item_gist_header -> HeaderViewHolder(view)
                 R.layout.item_file_header -> FilesHeaderViewHolder(view)
-                R.layout.item_file -> FileViewHolder(view, listener)
+                R.layout.item_file -> FileViewHolder(view, listener[0])
                 R.layout.item_update_date -> UpdateDateViewHolder(view)
                 else -> throw InvalidViewTypeException()
             }

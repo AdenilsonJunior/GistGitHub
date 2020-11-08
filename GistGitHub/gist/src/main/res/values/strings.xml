@@ -6,6 +6,8 @@
     <string name="gist_details_title">Detalhes</string>
     <string name="gist_text_file_size">%1$d bytes</string>
     <string name="gist_last_update">Atualizado em: %1$s</string>
+    <string name="gists_favorites">Favoritos</string>
+    <string name="gist_favorites_title">Favoritos</string>
     <plurals name="gist_files_count">
         <item quantity="one">%1$d arquivo</item>
         <item quantity="other">%1$d arquivos</item>

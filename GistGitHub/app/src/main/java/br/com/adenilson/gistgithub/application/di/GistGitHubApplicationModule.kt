@@ -1,11 +1,14 @@
 package br.com.adenilson.gistgithub.application.di
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
-import br.com.adenilson.base.di.AndroidScheduler
-import br.com.adenilson.base.di.IOScheduler
-import br.com.adenilson.base.domain.Executor
-import br.com.adenilson.base.domain.ExecutorImpl
+import br.com.adenilson.core.domain.Executor
+import br.com.adenilson.core.domain.ExecutorImpl
 import br.com.adenilson.base.navigator.Navigator
+import br.com.adenilson.core.di.AndroidScheduler
+import br.com.adenilson.core.di.ApplicationContext
+import br.com.adenilson.core.di.IOScheduler
+import br.com.adenilson.gistgithub.application.GistGitHubApplication
 import br.com.adenilson.gistgithub.di.factory.ViewModelFactory
 import br.com.adenilson.gistgithub.navigator.NavigatorImpl
 import dagger.Binds
@@ -35,5 +38,9 @@ abstract class GistGitHubApplicationModule {
         @IOScheduler
         @Provides
         fun providesIOScheduler(): Scheduler = Schedulers.io()
+
+        @Provides
+        @ApplicationContext
+        fun providesContext(app: GistGitHubApplication): Context = app.applicationContext
     }
 }

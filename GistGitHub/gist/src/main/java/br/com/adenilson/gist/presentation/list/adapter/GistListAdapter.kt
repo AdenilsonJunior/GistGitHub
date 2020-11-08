@@ -10,16 +10,19 @@ import br.com.adenilson.base.presentation.adapter.AbstractViewHolder
 import br.com.adenilson.base.presentation.adapter.ViewTypesFactory
 import br.com.adenilson.base.presentation.adapter.ViewTypesListener
 import br.com.adenilson.gist.R
-import br.com.adenilson.gist.domain.model.Gist
+import br.com.adenilson.gist.presentation.model.Gist
 
-class GistListAdapter(private val listener: ViewTypesListener<Gist>) :
+class GistListAdapter(
+    private val listener: ViewTypesListener<Gist>,
+    private val favoriteClickListener: ViewTypesListener<Gist>
+) :
     PagingDataAdapter<Gist, AbstractViewHolder<Gist>>(DIFF_UTIL) {
 
     private val factory = GistListFactory()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AbstractViewHolder<Gist> {
         return parent.inflate(viewType).let { view ->
-            factory.holder(viewType, view, listener)
+            factory.holder(viewType, view, listener, favoriteClickListener)
         }
     }
 
@@ -42,9 +45,9 @@ class GistListAdapter(private val listener: ViewTypesListener<Gist>) :
         override fun holder(
             type: Int,
             view: View,
-            listener: ViewTypesListener<Gist>
+            vararg listener: ViewTypesListener<Gist>
         ): AbstractViewHolder<Gist> {
-            return GistViewHolder(view, listener)
+            return GistViewHolder(view, listener[0], listener[1])
         }
     }
 

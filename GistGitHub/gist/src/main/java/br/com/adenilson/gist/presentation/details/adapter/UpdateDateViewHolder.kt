@@ -1,7 +1,7 @@
 package br.com.adenilson.gist.presentation.details.adapter
 
 import android.view.View
-import br.com.adenilson.base.extensions.parseToString
+import br.com.adenilson.core.extensions.parseToString
 import br.com.adenilson.base.presentation.adapter.AbstractViewHolder
 import br.com.adenilson.gist.R
 import kotlinx.android.synthetic.main.item_update_date.view.textViewLastUpdate

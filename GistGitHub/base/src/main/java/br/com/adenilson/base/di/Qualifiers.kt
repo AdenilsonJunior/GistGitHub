@@ -13,9 +13,3 @@ import kotlin.reflect.KClass
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 @MapKey
 annotation class ViewModelKey(val value: KClass<out ViewModel>)
-
-@Qualifier
-annotation class AndroidScheduler
-
-@Qualifier
-annotation class IOScheduler

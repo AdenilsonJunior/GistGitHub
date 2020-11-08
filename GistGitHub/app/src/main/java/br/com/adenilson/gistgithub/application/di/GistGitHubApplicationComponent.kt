@@ -1,9 +1,8 @@
 package br.com.adenilson.gistgithub.application.di
 
-import br.com.adenilson.data.RepositoryModule
 import br.com.adenilson.gistgithub.application.GistGitHubApplication
 import br.com.adenilson.gistgithub.di.module.AndroidBindingModule
-import br.com.adenilson.network.di.NetworkModule
+import br.com.adenilson.infrastructure.di.InfrastructureModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
@@ -15,8 +14,7 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         GistGitHubApplicationModule::class,
         AndroidBindingModule::class,
-        RepositoryModule::class,
-        NetworkModule::class
+        InfrastructureModule::class
     ]
 )
 interface GistGitHubApplicationComponent : AndroidInjector<GistGitHubApplication> {

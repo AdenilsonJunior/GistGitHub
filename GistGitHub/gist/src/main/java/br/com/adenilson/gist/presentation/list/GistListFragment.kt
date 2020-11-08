@@ -2,6 +2,9 @@ package br.com.adenilson.gist.presentation.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -33,13 +36,18 @@ class GistListFragment : BaseFragment() {
     }
 
     private val adapter by lazy {
-        GistListAdapter {
-            findNavController().navigate(
-                GistListFragmentDirections.gistListFragmentToGistDetailsFragment(
-                    it
+        GistListAdapter(
+            listener = {
+                findNavController().navigate(
+                    GistListFragmentDirections.gistListFragmentToGistDetailsFragment(
+                        it
+                    )
                 )
-            )
-        }
+            },
+            favoriteClickListener = {
+                viewModel.favoriteClick(it)
+            }
+        )
     }
 
     private val loadingState: (CombinedLoadStates) -> Unit = { combinedLoadStates ->
@@ -68,15 +76,46 @@ class GistListFragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_gist_list, container, false)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_favorite, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.menuFavorites -> findNavController().navigate(GistListFragmentDirections.gistListFragmentToFavoriteGistsFragment())
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         setupSwipeRefreshLayout()
         setupRecyclerView()
         viewModel.loadGist()
         viewModel.pagedList?.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
+        viewModel.favoriteGistState.observe(viewLifecycleOwner, this::onFavorite)
     }
+
+    private fun onFavorite(state: GistListViewModel.FavoriteGistState) {
+        when(state) {
+            GistListViewModel.FavoriteGistState.Success -> onFavoriteSuccess()
+            GistListViewModel.FavoriteGistState.Error -> onFavoriteError()
+        }
+    }
+
+    private fun onFavoriteError() {
+        requireContext().showLongToast("Error")
+    }
+
+    private fun onFavoriteSuccess() {
+        requireContext().showLongToast("Successo")
+    }
+
+
 
     private fun setupRecyclerView() {
         recyclerViewGist.layoutManager = LinearLayoutManager(requireContext())

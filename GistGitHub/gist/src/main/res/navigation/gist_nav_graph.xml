@@ -18,6 +18,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/gistListFragmentToFavoriteGistsFragment"
+            app:destination="@id/fragmentFavoriteGists"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
     </fragment>
 
@@ -29,7 +36,15 @@
 
         <argument
             android:name="gist"
-            app:argType="br.com.adenilson.gist.domain.model.Gist" />
+            app:argType="br.com.adenilson.gist.presentation.model.Gist" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentFavoriteGists"
+        android:label="@string/gist_favorites_title"
+        tools:layout="@layout/fragment_favorite_gists"
+        android:name="br.com.adenilson.gist.presentation.favorite.FavoriteGistsFragment">
 
     </fragment>
 

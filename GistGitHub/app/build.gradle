@@ -5,6 +5,11 @@ plugins {
     id 'kotlin-android-extensions'
 }
 
+ext {
+    room_version = "2.2.5"
+
+}
+
 android {
     defaultConfig {
         applicationId "br.com.adenilson"
@@ -15,12 +20,15 @@ dependencies {
 
     implementation project(':gist')
     implementation project(':base')
-    implementation project(':data')
+    implementation project(':domain')
     implementation project(':network')
+    implementation project(':database')
+    implementation project(':infrastructure')
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
 }

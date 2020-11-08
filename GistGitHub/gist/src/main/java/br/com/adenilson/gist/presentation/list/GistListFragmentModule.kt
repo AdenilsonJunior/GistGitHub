@@ -2,12 +2,16 @@ package br.com.adenilson.gist.presentation.list
 
 import androidx.lifecycle.ViewModel
 import br.com.adenilson.base.di.ViewModelKey
-import br.com.adenilson.base.domain.Executor
-import br.com.adenilson.gist.domain.datasouruce.GistListDataSource
+import br.com.adenilson.core.domain.Executor
+import br.com.adenilson.gist.domain.datasource.GistListDataSource
+import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractor
+import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractorImpl
 import br.com.adenilson.gist.domain.interactor.GetGistListInteractor
 import br.com.adenilson.gist.domain.interactor.GetGistListInteractorImpl
-import br.com.adenilson.gist.domain.mapper.GistListMapper
-import br.com.adenilson.gist.domain.mapper.GistListMapperImpl
+import br.com.adenilson.gist.domain.mapper.GistMapper
+import br.com.adenilson.gist.domain.mapper.GistMapperImpl
+import br.com.adenilson.gist.domain.mapper.GistModelMapper
+import br.com.adenilson.gist.domain.mapper.GistModelMapperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -25,7 +29,13 @@ abstract class GistListFragmentModule {
     abstract fun bindGetGistListInteractor(impl: GetGistListInteractorImpl): GetGistListInteractor
 
     @Binds
-    abstract fun bindGistListMapper(impl: GistListMapperImpl): GistListMapper
+    abstract fun bindFavoriteGistInteractor(impl: FavoriteGistInteractorImpl): FavoriteGistInteractor
+
+    @Binds
+    abstract fun bindGisMapper(impl: GistMapperImpl): GistMapper
+
+    @Binds
+    abstract fun bindGistModelMapper(impl: GistModelMapperImpl): GistModelMapper
 
     companion object {
         @Provides

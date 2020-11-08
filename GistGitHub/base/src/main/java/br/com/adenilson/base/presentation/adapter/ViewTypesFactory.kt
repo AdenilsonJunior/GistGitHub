@@ -4,7 +4,7 @@ import android.view.View
 
 interface ViewTypesFactory<T> {
     fun type(model: T): Int
-    fun holder(type: Int, view: View, listener: ViewTypesListener<T>): AbstractViewHolder<*>
+    fun holder(type: Int, view: View, vararg listener: ViewTypesListener<T>): AbstractViewHolder<*>
 }
 
 typealias ViewTypesListener<T> = (T) -> Unit

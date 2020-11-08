@@ -16,8 +16,8 @@ class ListSpaceItemDecoration(private val context: Context) : RecyclerView.ItemD
     ) {
         with(context) {
             outRect.top = 16.dpToPx(this)
-            outRect.left = 24.dpToPx(this)
-            outRect.right = 24.dpToPx(this)
+            outRect.left = 16.dpToPx(this)
+            outRect.right = 16.dpToPx(this)
 
             if (parent.getChildAdapterPosition(view) == state.itemCount - 1) {
                 outRect.bottom = 16.dpToPx(this)
