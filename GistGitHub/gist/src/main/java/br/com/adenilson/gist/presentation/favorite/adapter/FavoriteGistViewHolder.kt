@@ -8,6 +8,7 @@ import br.com.adenilson.gist.R
 import br.com.adenilson.data.model.GistModel
 import br.com.adenilson.gist.presentation.model.Gist
 import kotlinx.android.synthetic.main.item_favorite_gist.view.imageViewAvatar
+import kotlinx.android.synthetic.main.item_favorite_gist.view.imageViewFavorite
 import kotlinx.android.synthetic.main.item_favorite_gist.view.textViewGistName
 import kotlinx.android.synthetic.main.item_favorite_gist.view.textViewUserName
 
@@ -18,6 +19,14 @@ class FavoriteGistViewHolder(val view: View, val listener: ViewTypesListener<Gis
             textViewGistName.text = item.gistType
             textViewUserName.text = item.owner.name
             imageViewAvatar.loadFromUrl(item.owner.avatarUrl, R.drawable.placeholder_user)
+            if(item.favorite) {
+                imageViewFavorite.setImageResource(R.drawable.ic_star)
+            } else {
+                imageViewFavorite.setImageResource(R.drawable.ic_empty_star)
+            }
+            imageViewFavorite.setOnClickListener {
+                favoriteClickListener(item)
+            }
         }
 
         itemView.setOnClickListener { listener(item) }

@@ -15,10 +15,11 @@ class FavoriteGistInteractorImpl @Inject constructor(
 ) : FavoriteGistInteractor {
 
     override fun execute(params: Gist): Completable {
+        params.favorite = !params.favorite
         return if (params.favorite) {
-            repository.unFavoriteGist(mapper.mapTo(params))
-        } else {
             repository.favoriteGist(mapper.mapTo(params))
+        } else {
+            repository.unFavoriteGist(mapper.mapTo(params))
         }
     }
 }

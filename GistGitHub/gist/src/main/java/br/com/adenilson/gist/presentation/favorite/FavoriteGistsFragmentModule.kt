@@ -9,6 +9,8 @@ import br.com.adenilson.gist.domain.interactor.GetFavoriteGistsInteractor
 import br.com.adenilson.gist.domain.interactor.GetFavoriteGistsInteractorImpl
 import br.com.adenilson.gist.domain.mapper.GistMapper
 import br.com.adenilson.gist.domain.mapper.GistMapperImpl
+import br.com.adenilson.gist.domain.mapper.GistModelMapper
+import br.com.adenilson.gist.domain.mapper.GistModelMapperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -30,4 +32,7 @@ abstract class FavoriteGistsFragmentModule {
 
     @Binds
     abstract fun bindGistMapper(impl: GistMapperImpl): GistMapper
+
+    @Binds
+    abstract fun bindGistModelMapper(impl: GistModelMapperImpl): GistModelMapper
 }

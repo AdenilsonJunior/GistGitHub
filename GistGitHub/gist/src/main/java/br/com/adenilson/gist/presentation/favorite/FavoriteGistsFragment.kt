@@ -32,7 +32,7 @@ class FavoriteGistsFragment : BaseFragment() {
 
             },
             favoriteClickListener = {
-
+                viewModel.favoriteGist(it)
             }
         )
     }
@@ -58,16 +58,25 @@ class FavoriteGistsFragment : BaseFragment() {
     }
 
     private fun setupViewModel() {
-        viewModel.loadingState.observe(viewLifecycleOwner, this::onLoading)
         viewModel.favoriteGistsState.observe(viewLifecycleOwner, this::onFavoriteGists)
         viewModel.loadFavorites()
     }
 
     private fun onFavoriteGists(state: FavoriteGistsViewModel.FavoriteGistsState) {
         when(state) {
-            is FavoriteGistsViewModel.FavoriteGistsState.onLoaded -> loadFavoriteGists(state.gists)
-            is FavoriteGistsViewModel.FavoriteGistsState.onError -> showError()
+            is FavoriteGistsViewModel.FavoriteGistsState.Loaded -> loadFavoriteGists(state.gists)
+            is FavoriteGistsViewModel.FavoriteGistsState.Error -> showError()
+            is FavoriteGistsViewModel.FavoriteGistsState.Favorite -> updateFavoriteGist(state.gist)
+            is FavoriteGistsViewModel.FavoriteGistsState.UnFavorite -> updateUnFavoriteGist(state.gist)
         }
+    }
+
+    private fun updateUnFavoriteGist(gist: Gist) {
+        adapter.updateUnFavoriteGist(gist)
+    }
+
+    private fun updateFavoriteGist(gist: Gist) {
+        adapter.updateFavoriteGist(gist)
     }
 
     private fun showError() {
@@ -76,20 +85,5 @@ class FavoriteGistsFragment : BaseFragment() {
 
     private fun loadFavoriteGists(gists: List<Gist>) {
         adapter.data = gists
-    }
-
-    private fun onLoading(state: FavoriteGistsViewModel.LoadingState) {
-        when(state) {
-            FavoriteGistsViewModel.LoadingState.Start -> showLoading()
-            FavoriteGistsViewModel.LoadingState.End -> hideLoading()
-        }
-    }
-
-    private fun hideLoading() {
-
-    }
-
-    private fun showLoading() {
-
     }
 }

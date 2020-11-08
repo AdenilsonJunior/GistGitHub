@@ -12,7 +12,7 @@ data class Gist(
     val files: List<File>,
     val description: String?,
     val lastUpdate: Date?,
-    val favorite: Boolean = false
+    var favorite: Boolean = false
 ) : Parcelable {
     val gistType: String
         get() = files.minBy { it.filename }?.filename.orEmpty()
