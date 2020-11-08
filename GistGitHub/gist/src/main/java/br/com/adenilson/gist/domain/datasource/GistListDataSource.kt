@@ -36,5 +36,4 @@ class GistListDataSource @Inject constructor(
                 Single.just(LoadResult.Error(it))
             }
     }
-
 }

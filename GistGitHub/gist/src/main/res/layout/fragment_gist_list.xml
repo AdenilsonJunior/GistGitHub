@@ -59,9 +59,4 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <include
-        android:id="@+id/layoutError"
-        layout="@layout/layout_error"
-        tools:visibility="gone" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

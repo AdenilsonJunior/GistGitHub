@@ -2,7 +2,7 @@
 <resources>
     <string name="gist_list_title">Lista de Gists</string>
     <string name="content_description_start_gist">Favoritar Gist</string>
-    <string name="gist_connection_message_error">Erro de conexão</string>
+    <string name="gist_connection_message_error">Erro de conexão: %1$s</string>
     <string name="gist_details_title">Detalhes</string>
     <string name="gist_text_file_size">%1$d bytes</string>
     <string name="gist_last_update">Atualizado em: %1$s</string>
@@ -10,8 +10,8 @@
     <string name="gist_favorites_title">Favoritos</string>
     <string name="gist_list_empty">Não há nada por aqui :/</string>
     <string name="gist_favorite_error_load">Não foi possível carregar os favoritos.</string>
-    <string name="gist_favorite_error">Error</string>
-    <string name="gist_load_list_error">Não foi possível carregar a lista</string>
+    <string name="gist_favorite_error">Não foi possível favoritar.</string>
+    <string name="gist_load_list_error">Não foi possível carregar a lista: %1$s</string>
     <string name="gist_button_text_try_again">Tentar novamente</string>
     <string name="gist_list_error">Algo deu errado :/</string>
     <string name="gist_hint_search">Pesquisar</string>

@@ -47,7 +47,7 @@ class GistListViewModel @Inject constructor(
             ),
             INITIAL_KEY_PAGE
         ) { gistListDataSource.get().apply {
-            usernameToFilter =  username
+            usernameToFilter = username
         } }.liveData.cachedIn(viewModelScope)
     }
 

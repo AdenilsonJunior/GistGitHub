@@ -7,7 +7,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -17,8 +16,6 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.cachedIn
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.adenilson.base.androidextensions.checkSourceLoadState
-import br.com.adenilson.base.androidextensions.hide
-import br.com.adenilson.base.androidextensions.show
 import br.com.adenilson.base.androidextensions.showIndefiniteSnackBar
 import br.com.adenilson.base.androidextensions.showSnackBar
 import br.com.adenilson.base.presentation.BaseFragment
@@ -26,11 +23,9 @@ import br.com.adenilson.gist.R
 import br.com.adenilson.gist.presentation.list.adapter.GistListAdapter
 import br.com.adenilson.gist.presentation.list.adapter.ListSpaceItemDecoration
 import com.jakewharton.rxbinding4.widget.afterTextChangeEvents
-import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_gist_list.editTextSearch
-import kotlinx.android.synthetic.main.fragment_gist_list.layoutError
 import kotlinx.android.synthetic.main.fragment_gist_list.recyclerViewGist
 import kotlinx.android.synthetic.main.fragment_gist_list.swipeRefreshLayout
 import java.io.IOException
@@ -65,20 +60,16 @@ class GistListFragment : BaseFragment() {
         with(combinedLoadStates) {
             checkSourceLoadState(
                 notLoading = {
-                    layoutError.hide()
                     swipeRefreshLayout.isRefreshing = false
                 },
                 appendLoading = {
-                    layoutError.hide()
                     swipeRefreshLayout.isRefreshing = true
                 },
                 refreshLoading = {
-                    layoutError.hide()
                     swipeRefreshLayout.isRefreshing = true
                 },
                 refreshError = { error ->
                     swipeRefreshLayout.isRefreshing = false
-//                    layoutError.show()
                     handleError(error)
                 },
                 appendError = { error ->
@@ -92,12 +83,12 @@ class GistListFragment : BaseFragment() {
     private fun handleError(throwable: Throwable) {
         when (throwable) {
             is IOException -> showIndefiniteSnackBar(
-                getString(R.string.gist_connection_message_error),
+                getString(R.string.gist_connection_message_error, throwable.localizedMessage),
                 getString(R.string.gist_button_text_try_again)
             ) {
                 adapter.retry()
             }
-            else -> showSnackBar(getString(R.string.gist_load_list_error))
+            else -> showSnackBar(getString(R.string.gist_load_list_error, throwable.localizedMessage))
         }
     }
 

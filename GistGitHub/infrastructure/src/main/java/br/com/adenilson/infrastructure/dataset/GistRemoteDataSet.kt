@@ -21,7 +21,7 @@ class GistRemoteDataSetImpl @Inject constructor(
     override fun getGistList(page: Int): Single<List<GistModel>> {
         return api.getGists(page).map(mapper::mapTo)
             .onErrorResumeNext {
-                if(it is HttpException) {
+                if (it is HttpException) {
                     Single.error(IOException(it.message))
                 } else {
                     Single.error(it)
@@ -32,7 +32,7 @@ class GistRemoteDataSetImpl @Inject constructor(
     override fun getGistsByUsername(username: String, page: Int): Single<List<GistModel>> {
         return api.getGistsByUsername(username, page).map(mapper::mapTo)
             .onErrorResumeNext {
-                if(it is HttpException) {
+                if (it is HttpException) {
                     Single.error(IOException(it.message))
                 } else {
                     Single.error(it)
