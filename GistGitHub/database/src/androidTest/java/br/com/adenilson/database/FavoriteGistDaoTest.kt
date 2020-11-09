@@ -185,5 +185,4 @@ class FavoriteGistDaoTest {
         val result = dao.getFavoriteGists()
         assertEquals(2, result.size)
     }
-
 }

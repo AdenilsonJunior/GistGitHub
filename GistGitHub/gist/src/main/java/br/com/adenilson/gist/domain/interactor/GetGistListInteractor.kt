@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 interface GetGistListInteractor :
     Interactor<GetGistListInteractor.Params, Single<List<Gist>>> {
-    class Params(
+    data class Params(
         val usernameToFilter: String,
         val page: Int
     )

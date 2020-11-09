@@ -20,10 +20,8 @@ import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 import java.io.IOException
 
-
 @RunWith(MockitoJUnitRunner::class)
 class GistRemoteDataSetTest {
-
 
     private lateinit var dataSet: GistRemoteDataSet
 
@@ -85,7 +83,6 @@ class GistRemoteDataSetTest {
         val page = 1
         val username = "username"
         whenever(api.getGistsByUsername(any(), any())).thenReturn(Single.error(IOException()))
-        whenever(mapper.mapTo(any())).thenReturn(gistsModel)
         dataSet.getGistsByUsername(username, page).test().run {
             assertNotComplete()
             assertError(IOException::class.java)

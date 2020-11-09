@@ -8,7 +8,6 @@ import br.com.adenilson.database.dao.FavoriteGistDao
 import br.com.adenilson.database.entity.GistEntity
 import br.com.adenilson.infrastructure.mapper.GistEntityMapper
 import br.com.adenilson.infrastructure.mapper.GistModelMapper
-import br.com.adenilson.infrastructure.mapper.GistModelMapperTest
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
@@ -25,7 +24,6 @@ import java.util.Date
 
 @RunWith(MockitoJUnitRunner::class)
 class GistLocalDataSetTest {
-
 
     private lateinit var localDataSet: GistLocalDataSet
 

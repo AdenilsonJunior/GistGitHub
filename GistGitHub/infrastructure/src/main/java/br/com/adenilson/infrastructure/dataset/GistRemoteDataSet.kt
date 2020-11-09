@@ -31,7 +31,6 @@ class GistRemoteDataSetImpl @Inject constructor(
             }
     }
 
-
     override fun getGistsByUsername(username: String, page: Int): Single<List<GistModel>> {
         return api.getGistsByUsername(username, page).map { gists ->
             gists.map { mapper.mapTo(it) }

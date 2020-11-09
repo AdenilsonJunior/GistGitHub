@@ -193,7 +193,6 @@ class GistDataRepositoryTest {
         }
     }
 
-
     private val currentDate = Date()
     private val gistModel = GistModel(
         id = null,

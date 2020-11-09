@@ -4,9 +4,7 @@ import junit.framework.TestCase.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
-import java.text.ParseException
 import java.util.Calendar
-import java.util.Date
 
 @RunWith(MockitoJUnitRunner::class)
 class DateExtTest {

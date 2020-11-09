@@ -76,5 +76,4 @@ class GistModelMapperTest {
             assertEquals(expected, this)
         }
     }
-
 }

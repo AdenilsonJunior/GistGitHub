@@ -24,10 +24,8 @@ class StringExtTest {
         assertEquals(expected.toString(), date.toString())
     }
 
-
     @Test(expected = ParseException::class)
     fun `should throws error trying parse a invalid pattern server`() {
         "2020-11-08".parseToDate()
     }
-
 }
