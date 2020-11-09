@@ -133,7 +133,9 @@ class GistListFragment : BaseFragment() {
     }
 
     private fun setupSearchEditText() {
-        editTextSearch.afterTextChangeEvents().skipInitialValue().debounce(1, TimeUnit.SECONDS)
+        editTextSearch.afterTextChangeEvents()
+            .debounce(1, TimeUnit.SECONDS)
+            .skip(1)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy {
                 viewModel.makeSearch(it.editable.toString())
