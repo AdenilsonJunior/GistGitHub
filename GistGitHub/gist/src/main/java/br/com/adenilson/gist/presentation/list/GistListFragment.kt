@@ -40,7 +40,7 @@ open class GistListFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: GistListViewModel by lazy {
+    val viewModel: GistListViewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(GistListViewModel::class.java)
     }
 

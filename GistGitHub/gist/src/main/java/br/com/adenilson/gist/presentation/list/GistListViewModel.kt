@@ -38,7 +38,6 @@ class GistListViewModel @Inject constructor(
     }
 
     private var usernameQuery = ""
-
     var dataSource: GistListDataSource? = null
 
     private fun loadGist(): LiveData<PagingData<Gist>>? {

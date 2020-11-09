@@ -20,7 +20,7 @@ import br.com.adenilson.gist.presentation.model.Gist
 import kotlinx.android.synthetic.main.fragment_gist_details.recyclerViewDetails
 import javax.inject.Inject
 
-class GistDetailsFragment : BaseFragment() {
+open class GistDetailsFragment : BaseFragment() {
 
     @Inject
     lateinit var navigator: Navigator
@@ -28,7 +28,7 @@ class GistDetailsFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: GistDetailsViewModel by lazy {
+    val viewModel: GistDetailsViewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(GistDetailsViewModel::class.java)
     }
 
