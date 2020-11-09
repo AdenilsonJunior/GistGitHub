@@ -51,6 +51,7 @@ class FavoriteGistsViewModel @Inject constructor(
                     }
                 },
                 onError = {
+                    _favoriteGistsState.postValue(FavoriteGistsState.Error(it))
                 }
             )
     }

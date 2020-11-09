@@ -37,7 +37,6 @@ class GistListViewModel @Inject constructor(
         loadGist()
     }
 
-    private var pageSize = PAGE_SIZE
     private var usernameQuery = ""
 
     var dataSource: GistListDataSource? = null

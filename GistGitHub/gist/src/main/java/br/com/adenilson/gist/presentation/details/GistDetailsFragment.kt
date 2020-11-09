@@ -68,7 +68,6 @@ class GistDetailsFragment : BaseFragment() {
     private fun onPrepareGist(state: GistDetailsViewModel.GistDetailsState) {
         when (state) {
             is GistDetailsViewModel.GistDetailsState.Prepared -> bindDetails(state.list)
-            GistDetailsViewModel.GistDetailsState.Loading -> TODO()
         }
     }
 

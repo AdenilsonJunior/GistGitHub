@@ -65,7 +65,6 @@ class GistDetailsViewModel @Inject constructor() : BaseViewModel() {
     }
 
     sealed class GistDetailsState {
-        object Loading : GistDetailsState()
         data class Prepared(val list: List<GistDetailsItem>) : GistDetailsState()
     }
 }
