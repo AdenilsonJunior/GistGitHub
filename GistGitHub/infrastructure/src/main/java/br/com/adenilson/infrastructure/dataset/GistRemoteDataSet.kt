@@ -1,7 +1,7 @@
 package br.com.adenilson.infrastructure.dataset
 
 import br.com.adenilson.data.model.GistModel
-import br.com.adenilson.infrastructure.mapper.GistModelListMapper
+import br.com.adenilson.infrastructure.mapper.GistResponseMapper
 import br.com.adenilson.network.api.GistsAPI
 import io.reactivex.rxjava3.core.Single
 import retrofit2.HttpException
@@ -15,11 +15,13 @@ interface GistRemoteDataSet {
 
 class GistRemoteDataSetImpl @Inject constructor(
     private val api: GistsAPI,
-    private val mapper: GistModelListMapper
+    private val mapper: GistResponseMapper
 ) : GistRemoteDataSet {
 
     override fun getGistList(page: Int): Single<List<GistModel>> {
-        return api.getGists(page).map(mapper::mapTo)
+        return api.getGists(page).map { gists ->
+            gists.map { mapper.mapTo(it) }
+        }
             .onErrorResumeNext {
                 if (it is HttpException) {
                     Single.error(IOException(it.message))
@@ -29,8 +31,11 @@ class GistRemoteDataSetImpl @Inject constructor(
             }
     }
 
+
     override fun getGistsByUsername(username: String, page: Int): Single<List<GistModel>> {
-        return api.getGistsByUsername(username, page).map(mapper::mapTo)
+        return api.getGistsByUsername(username, page).map { gists ->
+            gists.map { mapper.mapTo(it) }
+        }
             .onErrorResumeNext {
                 if (it is HttpException) {
                     Single.error(IOException(it.message))

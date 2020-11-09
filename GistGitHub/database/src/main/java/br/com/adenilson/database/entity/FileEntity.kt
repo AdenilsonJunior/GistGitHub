@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "file")
-class FileEntity(
+data class FileEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long?,
     val filename: String,

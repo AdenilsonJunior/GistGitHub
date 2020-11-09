@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 import java.util.Date
 
 @Entity(tableName = "gist", indices = [Index(value = ["web_id"], unique = true)])
-class GistEntity(
+data class GistEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long?,
     @ColumnInfo(name = "web_id")

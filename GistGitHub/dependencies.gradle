@@ -29,6 +29,8 @@ ext {
     swipe_refresh_layout_version = "1.1.0"
     glide_version = "4.11.0"
     paging_version = "3.0.0-alpha08"
+    android_test_runner_version = "1.0.2"
+    android_text_core_version = "1.3.0"
 
     androidDependencies = [
             core_ktx            : "androidx.core:core-ktx:$core_ktx_version",
@@ -43,7 +45,10 @@ ext {
             navigation_ui       : "androidx.navigation:navigation-ui-ktx:$nav_version",
             glide               : "com.github.bumptech.glide:glide:$glide_version",
             paging              : "androidx.paging:paging-runtime:$paging_version",
-            paging_rx           : "androidx.paging:paging-rxjava3:$paging_version"
+            paging_rx           : "androidx.paging:paging-rxjava3:$paging_version",
+            android_test_runner : "com.android.support.test:runner:$android_test_runner_version",
+            android_test_rules  : "com.android.support.test:rules:$android_test_runner_version",
+            android_test_core   : "androidx.test:core:$android_text_core_version"
 
     ]
 
@@ -57,13 +62,15 @@ ext {
     mockito_version = "2.23.4"
     mockito_kotlin_version = "2.2.0"
     android_x_core_testing_version = "2.1.0"
+    mockito_inline_version = "2.13.0"
 
     testDependencies = [
             junit_runner     : "androidx.test:runner:$test_runner_version",
             junit            : "junit:junit:$junit_version",
             mockito_core     : "org.mockito:mockito-core:$mockito_version",
             mockito_kotlin2  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version",
-            arch_core_testing: "androidx.arch.core:core-testing:$android_x_core_testing_version"
+            arch_core_testing: "androidx.arch.core:core-testing:$android_x_core_testing_version",
+            mockito_inline   : "org.mockito:mockito-inline:$mockito_inline_version"
     ]
 }
 

@@ -10,19 +10,17 @@ import br.com.adenilson.network.model.GistResponse
 import br.com.adenilson.network.model.OwnerResponse
 import javax.inject.Inject
 
-interface GistModelListMapper : Mapper<List<GistResponse>, List<GistModel>>
+interface GistResponseMapper : Mapper<GistResponse, GistModel>
 
-class GistModelListMapperImpl @Inject constructor() : GistModelListMapper {
-    override fun mapTo(params: List<GistResponse>): List<GistModel> {
-        return params.map { gistResponse ->
-            GistModel(
-                webId = gistResponse.id,
-                owner = mapOwner(gistResponse.owner),
-                files = mapFiles(gistResponse.files),
-                description = gistResponse.description,
-                lastUpdate = gistResponse.lastUpdate.parseToDate()
-            )
-        }
+class GistResponseMapperImpl @Inject constructor() : GistResponseMapper {
+    override fun mapTo(params: GistResponse): GistModel {
+        return GistModel(
+            webId = params.id,
+            owner = mapOwner(params.owner),
+            files = mapFiles(params.files),
+            description = params.description,
+            lastUpdate = params.lastUpdate.parseToDate()
+        )
     }
 
     private fun mapOwner(owner: OwnerResponse): OwnerModel {

@@ -10,7 +10,7 @@ import br.com.adenilson.database.entity.GistEntity
 @Dao
 interface FavoriteGistDao {
 
-    @Query("SELECT * FROM gist")
+    @Query("SELECT * FROM gist WHERE gist.favorite = 1")
     fun getFavoriteGists(): List<GistEntity>
 
     @Delete
