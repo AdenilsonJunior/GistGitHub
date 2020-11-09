@@ -4,7 +4,7 @@ import br.com.adenilson.gistgithub.application.di.DaggerGistGitHubApplicationCom
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
-class GistGitHubApplication : DaggerApplication() {
+open class GistGitHubApplication : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out GistGitHubApplication> {
         return DaggerGistGitHubApplicationComponent.factory().create(this)
