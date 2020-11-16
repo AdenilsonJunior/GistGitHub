@@ -18,6 +18,7 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.cachedIn
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.adenilson.base.androidextensions.checkSourceLoadState
+import br.com.adenilson.base.androidextensions.dismissSnackbar
 import br.com.adenilson.base.androidextensions.hideKeyboard
 import br.com.adenilson.base.androidextensions.showIndefiniteSnackBar
 import br.com.adenilson.base.androidextensions.showSnackBar
@@ -183,6 +184,7 @@ open class GistListFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
+        dismissSnackbar()
         adapter.removeLoadStateListener(loadingState)
         super.onDestroyView()
     }

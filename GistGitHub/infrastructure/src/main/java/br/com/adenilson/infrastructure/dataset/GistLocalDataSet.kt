@@ -22,6 +22,7 @@ class GistLocalDataSetImpl @Inject constructor(
 
     override fun favoriteGist(gist: GistModel): Completable {
         return Completable.create { emitter ->
+            gist.favorite = true
             appDatabase.favoriteGistDao().insert(entityMapper.mapTo(gist))
             emitter.onComplete()
         }

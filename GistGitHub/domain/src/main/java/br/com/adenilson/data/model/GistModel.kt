@@ -9,7 +9,7 @@ data class GistModel(
     val files: List<FileModel>,
     val description: String?,
     val lastUpdate: Date?,
-    val favorite: Boolean = false
+    var favorite: Boolean = false
 ) {
     val gistType: String
         get() = files.minBy { it.filename }?.filename.orEmpty()

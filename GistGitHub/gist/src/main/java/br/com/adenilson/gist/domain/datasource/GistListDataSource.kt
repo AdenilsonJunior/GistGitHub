@@ -31,7 +31,7 @@ class GistListDataSource @Inject constructor(
                         nextKey = if (gists.isNotEmpty()) page + 1 else null
                     )
                 } catch (e: Exception) {
-                    LoadResult.Error<Int, Gist>(e)
+                    LoadResult.Error(e)
                 }
             }
             .onErrorResumeNext {
