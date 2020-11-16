@@ -21,3 +21,8 @@ data class GistEntity(
     val lastUpdate: Date?,
     val favorite: Boolean
 )
+
+data class DeleteGist(
+    @ColumnInfo(name = "web_id")
+    val webId: String
+)

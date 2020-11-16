@@ -22,6 +22,7 @@ import br.com.adenilson.base.androidextensions.dismissSnackbar
 import br.com.adenilson.base.androidextensions.hideKeyboard
 import br.com.adenilson.base.androidextensions.showIndefiniteSnackBar
 import br.com.adenilson.base.androidextensions.showSnackBar
+import br.com.adenilson.base.domain.exception.UserNotFoundException
 import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
 import br.com.adenilson.gist.presentation.list.adapter.GistListAdapter
@@ -86,8 +87,11 @@ open class GistListFragment : BaseFragment() {
 
     private fun handleError(throwable: Throwable) {
         when (throwable) {
+            is UserNotFoundException -> showSnackBar(
+                getString(R.string.gist_user_not_found)
+            )
             is IOException -> showIndefiniteSnackBar(
-                getString(R.string.gist_connection_message_error, throwable.localizedMessage),
+                getString(R.string.gist_connection_message_error),
                 getString(R.string.gist_button_text_try_again)
             ) {
                 adapter.retry()

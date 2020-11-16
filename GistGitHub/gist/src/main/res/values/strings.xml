@@ -2,7 +2,7 @@
 <resources>
     <string name="gist_list_title">Gists List</string>
     <string name="content_description_start_gist">Favorite Gist</string>
-    <string name="gist_connection_message_error">Connection Error: %1$s</string>
+    <string name="gist_connection_message_error">Connection Error.</string>
     <string name="gist_details_title">Details</string>
     <string name="gist_text_file_size">%1$d bytes</string>
     <string name="gist_last_update">Updated at: %1$s</string>
@@ -14,6 +14,7 @@
     <string name="gist_load_list_error">Could not possible to load the list: %1$s</string>
     <string name="gist_button_text_try_again">Try again</string>
     <string name="gist_hint_search">Search</string>
+    <string name="gist_user_not_found">User not found.</string>
     <plurals name="gist_files_count">
         <item quantity="one">%1$d file</item>
         <item quantity="other">%1$d files</item>

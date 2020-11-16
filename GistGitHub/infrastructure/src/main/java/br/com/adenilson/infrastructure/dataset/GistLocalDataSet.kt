@@ -2,6 +2,7 @@ package br.com.adenilson.infrastructure.dataset
 
 import br.com.adenilson.data.model.GistModel
 import br.com.adenilson.database.AppDatabase
+import br.com.adenilson.database.entity.DeleteGist
 import br.com.adenilson.infrastructure.mapper.GistEntityMapper
 import br.com.adenilson.infrastructure.mapper.GistModelMapper
 import io.reactivex.rxjava3.core.Completable
@@ -30,7 +31,8 @@ class GistLocalDataSetImpl @Inject constructor(
 
     override fun unFavoriteGist(gist: GistModel): Completable {
         return Completable.create { emitter ->
-            appDatabase.favoriteGistDao().delete(entityMapper.mapTo(gist))
+            appDatabase.favoriteGistDao().delete(DeleteGist(gist.webId))
+
             emitter.onComplete()
         }
     }
