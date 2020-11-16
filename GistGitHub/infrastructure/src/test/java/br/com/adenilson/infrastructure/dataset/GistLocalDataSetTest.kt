@@ -102,14 +102,12 @@ class GistLocalDataSetTest {
             webId = "webId"
         )
         val entityMock = Mockito.mock(GistEntity::class.java)
-        whenever(entityMapper.mapTo(any())).thenReturn(entityMock)
         localDataSet.unFavoriteGist(gistModel).test().run {
             assertComplete()
             assertNoErrors()
 
             verify(appDatabase, times(1)).favoriteGistDao()
             verify(favoriteGistDao, times(1)).delete(any())
-            verify(entityMapper, times(1)).mapTo(eq(gistModel))
             verifyNoMoreInteractions(appDatabase, favoriteGistDao, entityMapper)
         }
     }
