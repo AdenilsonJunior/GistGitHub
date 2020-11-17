@@ -2,8 +2,8 @@ package br.com.adenilson.gistgithub.di.module
 
 import br.com.adenilson.gist.GistActivity
 import br.com.adenilson.gist.GistFragmentsModule
-import br.com.adenilson.gistgithub.splash.SplashActivity
-import br.com.adenilson.gistgithub.splash.SplashActivityModule
+import br.com.adenilson.splash.SplashActivity
+import br.com.adenilson.splash.SplashActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

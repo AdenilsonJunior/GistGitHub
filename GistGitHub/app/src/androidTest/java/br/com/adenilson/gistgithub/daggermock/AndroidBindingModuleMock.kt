@@ -5,8 +5,8 @@ import br.com.adenilson.gistgithub.android.features.details.GistDetailsFragmentM
 import br.com.adenilson.gistgithub.android.features.details.TestGistDetailsFragment
 import br.com.adenilson.gistgithub.android.features.list.GistListFragmentModuleMock
 import br.com.adenilson.gistgithub.android.features.list.TestGistListFragment
-import br.com.adenilson.gistgithub.splash.SplashActivity
-import br.com.adenilson.gistgithub.splash.SplashActivityModule
+import br.com.adenilson.splash.SplashActivity
+import br.com.adenilson.splash.SplashActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

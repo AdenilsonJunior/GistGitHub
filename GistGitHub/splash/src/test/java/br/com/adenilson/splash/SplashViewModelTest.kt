@@ -1,4 +1,4 @@
-package br.com.adenilson.gistgithub.splash
+package br.com.adenilson.splash
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer

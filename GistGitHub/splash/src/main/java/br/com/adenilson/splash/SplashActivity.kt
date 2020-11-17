@@ -1,4 +1,4 @@
-package br.com.adenilson.gistgithub.splash
+package br.com.adenilson.splash
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import br.com.adenilson.base.navigator.Navigator
 import br.com.adenilson.base.presentation.BaseActivity
-import br.com.adenilson.gistgithub.R
 import javax.inject.Inject
 
 class SplashActivity : BaseActivity() {

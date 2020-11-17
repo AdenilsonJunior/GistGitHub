@@ -1,3 +1,4 @@
+include ':splash'
 include ':infrastructure'
 include ':core'
 include ':database'

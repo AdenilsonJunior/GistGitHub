@@ -1,4 +1,4 @@
-package br.com.adenilson.gistgithub.splash
+package br.com.adenilson.splash
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
