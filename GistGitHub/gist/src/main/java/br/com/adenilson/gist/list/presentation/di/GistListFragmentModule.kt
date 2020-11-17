@@ -5,17 +5,17 @@ import br.com.adenilson.base.presentation.viewmodel.ViewModelKey
 import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.gist.common.data.repository.GistRepository
 import br.com.adenilson.gist.common.data.repository.GistRepositoryImpl
-import br.com.adenilson.gist.list.domain.datasource.GistListDataSource
-import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCase
-import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCaseImpl
-import br.com.adenilson.gist.list.domain.usecase.GetGistListUseCase
-import br.com.adenilson.gist.list.domain.usecase.GetGistListUseCaseImpl
-import br.com.adenilson.gist.list.domain.usecase.UpdateIsFavoriteGistsUseCase
-import br.com.adenilson.gist.list.domain.usecase.UpdateIsFavoriteGistsUseCaseImpl
 import br.com.adenilson.gist.common.domain.mapper.GistEntityMapper
 import br.com.adenilson.gist.common.domain.mapper.GistEntityMapperImpl
 import br.com.adenilson.gist.common.domain.mapper.GistRemoteMapper
 import br.com.adenilson.gist.common.domain.mapper.GistRemoteMapperImpl
+import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCase
+import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCaseImpl
+import br.com.adenilson.gist.list.domain.datasource.GistListDataSource
+import br.com.adenilson.gist.list.domain.usecase.GetGistListUseCase
+import br.com.adenilson.gist.list.domain.usecase.GetGistListUseCaseImpl
+import br.com.adenilson.gist.list.domain.usecase.UpdateIsFavoriteGistsUseCase
+import br.com.adenilson.gist.list.domain.usecase.UpdateIsFavoriteGistsUseCaseImpl
 import br.com.adenilson.gist.list.presentation.GistListViewModel
 import dagger.Binds
 import dagger.Module
@@ -52,9 +52,8 @@ abstract class GistListFragmentModule {
         @Provides
         fun providesGistDataSource(
             getGistListUseCase: GetGistListUseCase,
-            updateIsFavoriteGistsUseCase: UpdateIsFavoriteGistsUseCase,
             executor: Executor
         ): GistListDataSource =
-            GistListDataSource(executor, getGistListUseCase, updateIsFavoriteGistsUseCase)
+            GistListDataSource(executor, getGistListUseCase)
     }
 }

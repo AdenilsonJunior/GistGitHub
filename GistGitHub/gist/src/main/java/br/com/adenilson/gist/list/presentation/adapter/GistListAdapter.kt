@@ -57,7 +57,7 @@ class GistListAdapter(
             }
 
             override fun areContentsTheSame(oldItem: Gist, newItem: Gist): Boolean {
-                return oldItem == newItem
+                return oldItem.webId == newItem.webId
             }
         }
     }

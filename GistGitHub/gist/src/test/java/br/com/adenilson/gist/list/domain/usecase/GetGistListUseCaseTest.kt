@@ -1,5 +1,6 @@
 package br.com.adenilson.gist.list.domain.usecase
 
+import br.com.adenilson.database.entity.GistEntity
 import br.com.adenilson.gist.common.data.repository.GistRepository
 import br.com.adenilson.gist.common.domain.mapper.GistRemoteMapper
 import br.com.adenilson.gist.common.domain.model.Gist
@@ -40,15 +41,16 @@ class GetGistListUseCaseTest {
             page = 1,
             perPage = 30
         )
-        val mockGistList =
-            listOf(Mockito.mock(GistResponse::class.java), Mockito.mock(GistResponse::class.java))
+
         whenever(repository.getGistList(any(), any())).thenReturn(Single.just(mockGistList))
+        whenever(repository.getFavoriteGists()).thenReturn(Single.just(mockFavoriteGistList))
         whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(Gist::class.java))
         useCase.execute(params).test().run {
             assertComplete()
             assertNoErrors()
 
             verify(repository, times(1)).getGistList(eq(params.page), eq(params.perPage))
+            verify(repository, times(1)).getFavoriteGists()
             verify(mapper, times(mockGistList.size)).mapTo(any())
             verifyNoMoreInteractions(repository, mapper)
         }
@@ -61,9 +63,12 @@ class GetGistListUseCaseTest {
             page = 1,
             perPage = 30
         )
-        val mockGistList =
-            listOf(Mockito.mock(GistResponse::class.java), Mockito.mock(GistResponse::class.java))
-        whenever(repository.getGistsByUsername(any(), any(), any())).thenReturn(Single.just(mockGistList))
+        whenever(repository.getGistsByUsername(any(), any(), any())).thenReturn(
+            Single.just(
+                mockGistList
+            )
+        )
+        whenever(repository.getFavoriteGists()).thenReturn(Single.just(mockFavoriteGistList))
         whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(Gist::class.java))
         useCase.execute(params).test().run {
             assertComplete()
@@ -74,13 +79,14 @@ class GetGistListUseCaseTest {
                 eq(params.page),
                 eq(params.perPage)
             )
+            verify(repository, times(1)).getFavoriteGists()
             verify(mapper, times(mockGistList.size)).mapTo(any())
             verifyNoMoreInteractions(repository, mapper)
         }
     }
 
     @Test
-    fun `should not get gist list given repository throws exception`() {
+    fun `should not get gist list given repository gist list throws exception`() {
         val params = GetGistListUseCase.Params(
             usernameToFilter = "filter",
             page = 1,
@@ -93,6 +99,7 @@ class GetGistListUseCaseTest {
                 any()
             )
         ).thenReturn(Single.error(IOException()))
+        whenever(repository.getFavoriteGists()).thenReturn(Single.just(mockFavoriteGistList))
         useCase.execute(params).test().run {
             assertNotComplete()
             assertError(IOException::class.java)
@@ -102,8 +109,43 @@ class GetGistListUseCaseTest {
                 eq(params.page),
                 eq(params.perPage)
             )
+            verify(repository, times(1)).getFavoriteGists()
             verifyNoMoreInteractions(repository)
             verifyZeroInteractions(mapper)
         }
     }
+
+    @Test
+    fun `should get gist list even repository favorite gist list throws exception`() {
+        val params = GetGistListUseCase.Params(
+            usernameToFilter = "filter",
+            page = 1,
+            perPage = 30
+        )
+        whenever(
+            repository.getGistsByUsername(
+                any(),
+                any(),
+                any()
+            )
+        ).thenReturn(Single.just(mockGistList))
+        whenever(repository.getFavoriteGists()).thenReturn(Single.error(IOException()))
+        useCase.execute(params).test().run {
+            assertComplete()
+            assertNoErrors()
+
+            verify(repository, times(1)).getGistsByUsername(
+                eq(params.usernameToFilter),
+                eq(params.page),
+                eq(params.perPage)
+            )
+            verify(repository, times(1)).getFavoriteGists()
+            verifyNoMoreInteractions(repository)
+            verifyZeroInteractions(mapper)
+        }
+    }
+
+    private val mockGistList =
+        listOf(Mockito.mock(GistResponse::class.java), Mockito.mock(GistResponse::class.java))
+    private val mockFavoriteGistList = listOf(Mockito.mock(GistEntity::class.java))
 }
