@@ -37,17 +37,18 @@ class GetGistListInteractorTest {
     fun `should get gist list without filter with success`() {
         val params = GetGistListInteractor.Params(
             usernameToFilter = "",
-            page = 1
+            page = 1,
+            perPage = 30
         )
         val mockGistList =
             listOf(Mockito.mock(GistResponse::class.java), Mockito.mock(GistResponse::class.java))
-        whenever(repository.getGistList(any())).thenReturn(Single.just(mockGistList))
+        whenever(repository.getGistList(any(), any())).thenReturn(Single.just(mockGistList))
         whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(Gist::class.java))
         interactor.execute(params).test().run {
             assertComplete()
             assertNoErrors()
 
-            verify(repository, times(1)).getGistList(eq(params.page))
+            verify(repository, times(1)).getGistList(eq(params.page), eq(params.perPage))
             verify(mapper, times(mockGistList.size)).mapTo(any())
             verifyNoMoreInteractions(repository, mapper)
         }
@@ -57,11 +58,12 @@ class GetGistListInteractorTest {
     fun `should get gist list filtered with success`() {
         val params = GetGistListInteractor.Params(
             usernameToFilter = "filter",
-            page = 1
+            page = 1,
+            perPage = 30
         )
         val mockGistList =
             listOf(Mockito.mock(GistResponse::class.java), Mockito.mock(GistResponse::class.java))
-        whenever(repository.getGistsByUsername(any(), any())).thenReturn(Single.just(mockGistList))
+        whenever(repository.getGistsByUsername(any(), any(), any())).thenReturn(Single.just(mockGistList))
         whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(Gist::class.java))
         interactor.execute(params).test().run {
             assertComplete()
@@ -69,7 +71,8 @@ class GetGistListInteractorTest {
 
             verify(repository, times(1)).getGistsByUsername(
                 eq(params.usernameToFilter),
-                eq(params.page)
+                eq(params.page),
+                eq(params.perPage)
             )
             verify(mapper, times(mockGistList.size)).mapTo(any())
             verifyNoMoreInteractions(repository, mapper)
@@ -80,10 +83,12 @@ class GetGistListInteractorTest {
     fun `should not get gist list given repository throws exception`() {
         val params = GetGistListInteractor.Params(
             usernameToFilter = "filter",
-            page = 1
+            page = 1,
+            perPage = 30
         )
         whenever(
             repository.getGistsByUsername(
+                any(),
                 any(),
                 any()
             )
@@ -94,7 +99,8 @@ class GetGistListInteractorTest {
 
             verify(repository, times(1)).getGistsByUsername(
                 eq(params.usernameToFilter),
-                eq(params.page)
+                eq(params.page),
+                eq(params.perPage)
             )
             verifyNoMoreInteractions(repository)
             verifyZeroInteractions(mapper)

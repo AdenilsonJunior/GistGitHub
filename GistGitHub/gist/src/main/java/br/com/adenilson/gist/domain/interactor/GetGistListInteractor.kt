@@ -11,7 +11,8 @@ interface GetGistListInteractor :
     Interactor<GetGistListInteractor.Params, Single<List<Gist>>> {
     data class Params(
         val usernameToFilter: String,
-        val page: Int
+        val page: Int,
+        val perPage: Int
     )
 }
 
@@ -22,9 +23,13 @@ class GetGistListInteractorImpl @Inject constructor(
 
     override fun execute(params: GetGistListInteractor.Params): Single<List<Gist>> {
         val repositoryCall = if (params.usernameToFilter.isBlank()) {
-            repository.getGistList(page = params.page)
+            repository.getGistList(page = params.page, params.perPage)
         } else {
-            repository.getGistsByUsername(username = params.usernameToFilter, page = params.page)
+            repository.getGistsByUsername(
+                username = params.usernameToFilter,
+                page = params.page,
+                params.perPage
+            )
         }
 
         return repositoryCall.map { list ->

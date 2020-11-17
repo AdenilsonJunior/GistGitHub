@@ -8,12 +8,13 @@ import retrofit2.http.Query
 
 interface GistsAPI {
 
-    @GET("gists/public?per_page=30")
-    fun getGists(@Query("page") page: Int): Single<List<GistResponse>>
+    @GET("gists/public")
+    fun getGists(@Query("page") page: Int, @Query("per_page") perPage: Int): Single<List<GistResponse>>
 
-    @GET("users/{username}/gists?per_page_30")
+    @GET("users/{username}/gists")
     fun getGistsByUsername(
         @Path("username") username: String,
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
     ): Single<List<GistResponse>>
 }

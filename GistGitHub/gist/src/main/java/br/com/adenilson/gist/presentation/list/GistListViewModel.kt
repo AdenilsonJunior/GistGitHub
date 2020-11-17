@@ -45,12 +45,12 @@ class GistListViewModel @Inject constructor(
             PagingConfig(
                 PAGE_SIZE,
                 PRE_FETCH_DISTANCE,
-                ENABLE_PLACEHOLDERS,
-                PAGE_SIZE
+                ENABLE_PLACEHOLDERS
             ),
             INITIAL_KEY_PAGE
         ) {
             gistListDataSource.get().apply {
+                perPage = PAGE_SIZE
                 usernameToFilter = usernameQuery
                 dataSource = this
             }

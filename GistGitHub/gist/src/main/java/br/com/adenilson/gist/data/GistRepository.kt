@@ -12,11 +12,11 @@ import java.io.IOException
 import javax.inject.Inject
 
 interface GistRepository {
-    fun getGistList(page: Int): Single<List<GistResponse>>
+    fun getGistList(page: Int, perPage: Int): Single<List<GistResponse>>
     fun unFavoriteGist(gist: GistEntity): Completable
     fun favoriteGist(gist: GistEntity): Completable
     fun getFavoriteGists(): Single<List<GistEntity>>
-    fun getGistsByUsername(username: String, page: Int): Single<List<GistResponse>>
+    fun getGistsByUsername(username: String, page: Int, perPage: Int): Single<List<GistResponse>>
 }
 
 class GistRepositoryImpl @Inject constructor(
@@ -24,8 +24,8 @@ class GistRepositoryImpl @Inject constructor(
     private val database: AppDatabase
 ) : GistRepository {
 
-    override fun getGistList(page: Int): Single<List<GistResponse>> {
-        return api.getGists(page)
+    override fun getGistList(page: Int, perPage: Int): Single<List<GistResponse>> {
+        return api.getGists(page, perPage)
             .onErrorResumeNext {
                 if (it is HttpException) {
                     Single.error(IOException(it.message))
@@ -59,8 +59,8 @@ class GistRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getGistsByUsername(username: String, page: Int): Single<List<GistResponse>> {
-        return api.getGistsByUsername(username, page)
+    override fun getGistsByUsername(username: String, page: Int, perPage: Int): Single<List<GistResponse>> {
+        return api.getGistsByUsername(username, page, perPage)
             .onErrorResumeNext {
                 if (it is HttpException) {
                     Single.error(IOException(it.message))

@@ -67,8 +67,9 @@ class GistRepositoryTest {
     @Test
     fun `should get gist list with success`() {
         val page = 1
-        whenever(api.getGists(any())).thenReturn(Single.just(gistsResponse))
-        repository.getGistList(page).test().apply {
+        val perPage = 30
+        whenever(api.getGists(any(), any())).thenReturn(Single.just(gistsResponse))
+        repository.getGistList(page, perPage).test().apply {
             assertComplete()
             assertNoErrors()
 
@@ -76,7 +77,7 @@ class GistRepositoryTest {
                 it.size == gistsResponse.size
             }
 
-            verify(api, times(1)).getGists(eq(page))
+            verify(api, times(1)).getGists(eq(page), eq(perPage))
             verifyNoMoreInteractions(api)
             verifyZeroInteractions(database)
         }
@@ -85,12 +86,13 @@ class GistRepositoryTest {
     @Test
     fun `should get gist list with error`() {
         val page = 1
-        whenever(api.getGists(any())).thenReturn(Single.error(IOException()))
-        repository.getGistList(page).test().apply {
+        val perPage = 30
+        whenever(api.getGists(any(), any())).thenReturn(Single.error(IOException()))
+        repository.getGistList(page, perPage).test().apply {
             assertNotComplete()
             assertError(Exception::class.java)
 
-            verify(api, times(1)).getGists(eq(page))
+            verify(api, times(1)).getGists(eq(page), eq(perPage))
             verifyNoMoreInteractions(api)
             verifyZeroInteractions(database)
         }
@@ -99,9 +101,10 @@ class GistRepositoryTest {
     @Test
     fun `should get gist list by username with success`() {
         val page = 1
+        val perPage = 30
         val username = "username"
-        whenever(api.getGistsByUsername(any(), any())).thenReturn(Single.just(gistsResponse))
-        repository.getGistsByUsername(username, page).test().apply {
+        whenever(api.getGistsByUsername(any(), any(), any())).thenReturn(Single.just(gistsResponse))
+        repository.getGistsByUsername(username, page, perPage).test().apply {
             assertComplete()
             assertNoErrors()
 
@@ -109,7 +112,7 @@ class GistRepositoryTest {
                 it.size == gistsResponse.size
             }
 
-            verify(api, times(1)).getGistsByUsername(eq(username), eq(page))
+            verify(api, times(1)).getGistsByUsername(eq(username), eq(page), eq(perPage))
             verifyNoMoreInteractions(api)
             verifyZeroInteractions(database)
         }
@@ -118,13 +121,14 @@ class GistRepositoryTest {
     @Test
     fun `should get gist list by username with error`() {
         val page = 1
+        val perPage = 30
         val username = "username"
-        whenever(api.getGistsByUsername(any(), any())).thenReturn(Single.error(IOException()))
-        repository.getGistsByUsername(username, page).test().apply {
+        whenever(api.getGistsByUsername(any(), any(), any())).thenReturn(Single.error(IOException()))
+        repository.getGistsByUsername(username, page, perPage).test().apply {
             assertNotComplete()
             assertError(Exception::class.java)
 
-            verify(api, times(1)).getGistsByUsername(eq(username), eq(page))
+            verify(api, times(1)).getGistsByUsername(eq(username), eq(page), eq(perPage))
             verifyNoMoreInteractions(api)
             verifyZeroInteractions(database)
         }

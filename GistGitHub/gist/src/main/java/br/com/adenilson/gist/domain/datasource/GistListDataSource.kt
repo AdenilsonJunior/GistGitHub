@@ -16,13 +16,18 @@ class GistListDataSource @Inject constructor(
     private val updateIsFavoriteGistsInteractor: UpdateIsFavoriteGistsInteractor
 ) : RxPagingSource<Int, Gist>() {
 
+    companion object {
+        private const val PER_PAGE_DEFAULT = 30
+    }
+
     var usernameToFilter = ""
+    var perPage = PER_PAGE_DEFAULT
 
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Gist>> {
         val page = params.key ?: 0
         return executor.execute(
             getGistListInteractor,
-            GetGistListInteractor.Params(usernameToFilter, page)
+            GetGistListInteractor.Params(usernameToFilter, page, perPage)
         )
             .flatMap { executor.execute(updateIsFavoriteGistsInteractor, it) }
             .map { gists ->
