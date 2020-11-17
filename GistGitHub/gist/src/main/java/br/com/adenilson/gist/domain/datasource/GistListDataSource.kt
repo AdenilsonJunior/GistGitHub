@@ -1,13 +1,12 @@
 package br.com.adenilson.gist.domain.datasource
 
 import androidx.paging.rxjava3.RxPagingSource
-import br.com.adenilson.base.domain.exception.UserNotFoundException
+import br.com.adenilson.base.domain.exception.UserHasNoGistsException
 import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.gist.domain.interactor.GetGistListInteractor
 import br.com.adenilson.gist.domain.interactor.UpdateIsFavoriteGistsInteractor
 import br.com.adenilson.gist.presentation.model.Gist
 import io.reactivex.rxjava3.core.Single
-import java.io.IOException
 import javax.inject.Inject
 
 class GistListDataSource @Inject constructor(
@@ -32,30 +31,26 @@ class GistListDataSource @Inject constructor(
             .flatMap { executor.execute(updateIsFavoriteGistsInteractor, it) }
             .map { gists ->
                 try {
-                    LoadResult.Page(
-                        data = gists,
-                        prevKey = null,
-                        nextKey = if (gists.isNotEmpty()) page + 1 else null
-                    )
-                } catch (e: Exception) {
-                    if (isUserNotFound(e)) {
-                        LoadResult.Error(UserNotFoundException())
+                    if (userHasGists(gists, page)) {
+                        LoadResult.Page(
+                            data = gists,
+                            prevKey = null,
+                            nextKey = if (gists.isNotEmpty()) page + 1 else null
+                        )
                     } else {
-                        LoadResult.Error(e)
+                        LoadResult.Error(UserHasNoGistsException())
                     }
+                } catch (e: Exception) {
+                    LoadResult.Error(e)
                 }
             }
             .onErrorResumeNext {
-                val exception = if (isUserNotFound(it)) {
-                    UserNotFoundException()
-                } else {
-                    it
-                }
-                Single.just(LoadResult.Error(exception))
+                Single.just(LoadResult.Error(it))
             }
     }
 
-    private fun isUserNotFound(e: Throwable): Boolean {
-        return e is IOException && e.message?.contains("404") == true && usernameToFilter.isNotBlank()
-    }
+    private fun userHasGists(
+        gists: List<Gist>,
+        page: Int
+    ) = gists.isNotEmpty() || page != 0
 }

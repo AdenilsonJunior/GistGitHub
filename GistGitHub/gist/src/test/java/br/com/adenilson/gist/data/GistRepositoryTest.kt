@@ -1,5 +1,7 @@
 package br.com.adenilson.gist.data
 
+import br.com.adenilson.base.domain.exception.ConnectionException
+import br.com.adenilson.base.domain.exception.UserNotFoundException
 import br.com.adenilson.database.AppDatabase
 import br.com.adenilson.database.dao.FavoriteGistDao
 import br.com.adenilson.database.entity.DeleteGist
@@ -17,11 +19,14 @@ import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import com.nhaarman.mockitokotlin2.verifyZeroInteractions
 import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.rxjava3.core.Single
+import okhttp3.ResponseBody
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
+import retrofit2.HttpException
+import retrofit2.Response
 import java.io.IOException
 import java.util.Date
 
@@ -99,6 +104,36 @@ class GistRepositoryTest {
     }
 
     @Test
+    fun `should get gist list with connection error given api returns http 403`() {
+        val page = 1
+        val perPage = 30
+        whenever(api.getGists(any(), any())).thenReturn(Single.error(http403Exception))
+        repository.getGistList(page, perPage).test().apply {
+            assertNotComplete()
+            assertError(ConnectionException::class.java)
+
+            verify(api, times(1)).getGists(eq(page), eq(perPage))
+            verifyNoMoreInteractions(api)
+            verifyZeroInteractions(database)
+        }
+    }
+
+    @Test
+    fun `should get gist list with user not found error given api returns http 404`() {
+        val page = 1
+        val perPage = 30
+        whenever(api.getGists(any(), any())).thenReturn(Single.error(http404Exception))
+        repository.getGistList(page, perPage).test().apply {
+            assertNotComplete()
+            assertError(UserNotFoundException::class.java)
+
+            verify(api, times(1)).getGists(eq(page), eq(perPage))
+            verifyNoMoreInteractions(api)
+            verifyZeroInteractions(database)
+        }
+    }
+
+    @Test
     fun `should get gist list by username with success`() {
         val page = 1
         val perPage = 30
@@ -123,10 +158,60 @@ class GistRepositoryTest {
         val page = 1
         val perPage = 30
         val username = "username"
-        whenever(api.getGistsByUsername(any(), any(), any())).thenReturn(Single.error(IOException()))
+        whenever(
+            api.getGistsByUsername(
+                any(),
+                any(),
+                any()
+            )
+        ).thenReturn(Single.error(IOException()))
         repository.getGistsByUsername(username, page, perPage).test().apply {
             assertNotComplete()
             assertError(Exception::class.java)
+
+            verify(api, times(1)).getGistsByUsername(eq(username), eq(page), eq(perPage))
+            verifyNoMoreInteractions(api)
+            verifyZeroInteractions(database)
+        }
+    }
+
+    @Test
+    fun `should get gist list by username with connection error given api returns http 403`() {
+        val page = 1
+        val perPage = 30
+        val username = "username"
+        whenever(
+            api.getGistsByUsername(
+                any(),
+                any(),
+                any()
+            )
+        ).thenReturn(Single.error(http403Exception))
+        repository.getGistsByUsername(username, page, perPage).test().apply {
+            assertNotComplete()
+            assertError(ConnectionException::class.java)
+
+            verify(api, times(1)).getGistsByUsername(eq(username), eq(page), eq(perPage))
+            verifyNoMoreInteractions(api)
+            verifyZeroInteractions(database)
+        }
+    }
+
+    @Test
+    fun `should get gist list by username with user not found error given api returns http 404`() {
+        val page = 1
+        val perPage = 30
+        val username = "username"
+        whenever(
+            api.getGistsByUsername(
+                any(),
+                any(),
+                any()
+            )
+        ).thenReturn(Single.error(http404Exception))
+        repository.getGistsByUsername(username, page, perPage).test().apply {
+            assertNotComplete()
+            assertError(UserNotFoundException::class.java)
 
             verify(api, times(1)).getGistsByUsername(eq(username), eq(page), eq(perPage))
             verifyNoMoreInteractions(api)
@@ -186,4 +271,10 @@ class GistRepositoryTest {
         Mockito.mock(GistEntity::class.java),
         Mockito.mock(GistEntity::class.java)
     )
+
+    private val http403Exception =
+        HttpException(Response.error<HttpException>(403, Mockito.mock(ResponseBody::class.java)))
+
+    private val http404Exception =
+        HttpException(Response.error<HttpException>(404, Mockito.mock(ResponseBody::class.java)))
 }
