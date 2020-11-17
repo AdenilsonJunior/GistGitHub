@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import br.com.adenilson.base.androidextensions.dpToPx
+import br.com.adenilson.gist.R
 
 class ListSpaceItemDecoration(private val context: Context) : RecyclerView.ItemDecoration() {
 
@@ -15,12 +15,13 @@ class ListSpaceItemDecoration(private val context: Context) : RecyclerView.ItemD
         state: RecyclerView.State
     ) {
         with(context) {
-            outRect.top = 16.dpToPx(this)
-            outRect.left = 16.dpToPx(this)
-            outRect.right = 16.dpToPx(this)
+            val listSpace = resources.getDimensionPixelSize(R.dimen.list_space)
+            outRect.top = listSpace
+            outRect.left = listSpace
+            outRect.right = listSpace
 
             if (parent.getChildAdapterPosition(view) == state.itemCount - 1) {
-                outRect.bottom = 16.dpToPx(this)
+                outRect.bottom = listSpace
             }
         }
     }

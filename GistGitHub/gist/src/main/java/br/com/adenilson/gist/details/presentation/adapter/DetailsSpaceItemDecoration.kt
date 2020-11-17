@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import br.com.adenilson.base.androidextensions.dpToPx
+import br.com.adenilson.gist.R
 
 class DetailsSpaceItemDecoration(private val context: Context) : RecyclerView.ItemDecoration() {
 
@@ -24,13 +24,13 @@ class DetailsSpaceItemDecoration(private val context: Context) : RecyclerView.It
             if (childPosition > HEADER_POSITION) {
 
                 if (childPosition != FILE_HEADER_POSITION) {
-                    outRect.top = 16.dpToPx(this)
+                    outRect.top = resources.getDimensionPixelSize(R.dimen.details_item_top)
                 }
-                outRect.left = 24.dpToPx(this)
-                outRect.right = 24.dpToPx(this)
+                outRect.left = resources.getDimensionPixelSize(R.dimen.details_item_start)
+                outRect.right = resources.getDimensionPixelSize(R.dimen.details_item_end)
 
                 if (childPosition == state.itemCount - 1) {
-                    outRect.bottom = 16.dpToPx(this)
+                    outRect.bottom = resources.getDimensionPixelSize(R.dimen.details_item_bottom)
                 }
             }
         }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="details_item_top">16dp</dimen>
+    <dimen name="details_item_bottom">16dp</dimen>
+    <dimen name="details_item_end">24dp</dimen>
+    <dimen name="details_item_start">24dp</dimen>
+    <dimen name="list_space">16dp</dimen>
+</resources>
