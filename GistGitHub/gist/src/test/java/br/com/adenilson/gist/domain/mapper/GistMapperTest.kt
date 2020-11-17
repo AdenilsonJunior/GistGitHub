@@ -1,11 +1,13 @@
 package br.com.adenilson.gist.domain.mapper
 
-import br.com.adenilson.data.model.FileModel
-import br.com.adenilson.data.model.GistModel
-import br.com.adenilson.data.model.OwnerModel
+import br.com.adenilson.core.extensions.SERVER_PATTERN
+import br.com.adenilson.core.extensions.parseToString
 import br.com.adenilson.gist.presentation.model.File
 import br.com.adenilson.gist.presentation.model.Gist
 import br.com.adenilson.gist.presentation.model.Owner
+import br.com.adenilson.network.model.FileResponse
+import br.com.adenilson.network.model.GistResponse
+import br.com.adenilson.network.model.OwnerResponse
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -16,35 +18,38 @@ import java.util.Date
 @RunWith(MockitoJUnitRunner::class)
 class GistMapperTest {
 
-    private lateinit var mapper: GistMapper
+    private lateinit var mapper: GistRemoteMapper
 
     @Before
     fun setup() {
-        mapper = GistMapperImpl()
+        mapper = GistRemoteMapperImpl()
     }
 
     @Test
     fun `should parse model to gist`() {
-        mapper.mapTo(gistModel).run {
-            assertEquals(expected, this)
+        mapper.mapTo(gistResponse).run {
+            assertEquals(expected.id, id)
+            assertEquals(expected.gistType, gistType)
+            assertEquals(expected.webId, webId)
+            assertEquals(expected.description, description)
+            assertEquals(expected.files, files)
+            assertEquals(expected.owner, owner)
+            assertEquals(expected.favorite, favorite)
+            assertEquals(expected.lastUpdate.toString(), lastUpdate.toString())
         }
     }
 
     private val currentDate = Date()
-    private val gistModel = GistModel(
-        id = 1,
+    private val gistResponse = GistResponse(
         description = "description",
-        lastUpdate = currentDate,
-        favorite = false,
-        webId = "webId",
-        owner = OwnerModel(
-            id = 1,
+        lastUpdate = currentDate.parseToString(SERVER_PATTERN),
+        id = "webId",
+        owner = OwnerResponse(
             avatarUrl = "avatarUrl",
-            name = "name"
+            login = "name"
         ),
-        files = listOf(
-            FileModel(
-                id = 1,
+        files = mapOf(
+            "filename" to FileResponse(
                 size = 1,
                 filename = "filename",
                 type = "type",
@@ -54,10 +59,10 @@ class GistMapperTest {
         )
     )
     private val expected = Gist(
-        id = 1,
+        id = null,
         files = listOf(
             File(
-                id = 1,
+                id = null,
                 size = 1,
                 filename = "filename",
                 language = "language",
@@ -66,7 +71,7 @@ class GistMapperTest {
             )
         ),
         owner = Owner(
-            id = 1,
+            id = null,
             name = "name",
             avatarUrl = "avatarUrl"
         ),

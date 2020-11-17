@@ -1,11 +1,11 @@
-package br.com.adenilson.infrastructure.mapper
+package br.com.adenilson.gist.domain.mapper
 
-import br.com.adenilson.data.model.FileModel
-import br.com.adenilson.data.model.GistModel
-import br.com.adenilson.data.model.OwnerModel
 import br.com.adenilson.database.entity.FileEntity
 import br.com.adenilson.database.entity.GistEntity
 import br.com.adenilson.database.entity.OwnerEntity
+import br.com.adenilson.gist.presentation.model.File
+import br.com.adenilson.gist.presentation.model.Gist
+import br.com.adenilson.gist.presentation.model.Owner
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -26,11 +26,11 @@ class GistEntityMapperTest {
     @Test
     fun `should map model to entity`() {
         val currentDate = Date()
-        val model = GistModel(
+        val model = Gist(
             id = 1,
             webId = "webId",
             favorite = true,
-            owner = OwnerModel(
+            owner = Owner(
                 id = 1,
                 name = "name",
                 avatarUrl = "avatarUrl"
@@ -38,7 +38,7 @@ class GistEntityMapperTest {
             lastUpdate = currentDate,
             description = "description",
             files = listOf(
-                FileModel(
+                File(
                     id = 1,
                     size = 1,
                     language = "language",

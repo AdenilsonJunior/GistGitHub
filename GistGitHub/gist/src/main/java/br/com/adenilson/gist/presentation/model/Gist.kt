@@ -15,5 +15,5 @@ data class Gist(
     var favorite: Boolean = false
 ) : Parcelable {
     val gistType: String
-        get() = files.minBy { it.filename }?.filename.orEmpty()
+        get() = files.minByOrNull { it.filename }?.filename.orEmpty()
 }

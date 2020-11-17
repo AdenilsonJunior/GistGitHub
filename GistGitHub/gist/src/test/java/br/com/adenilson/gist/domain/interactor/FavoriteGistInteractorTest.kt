@@ -1,8 +1,8 @@
 package br.com.adenilson.gist.domain.interactor
 
-import br.com.adenilson.data.model.GistModel
-import br.com.adenilson.data.repository.GistRepository
-import br.com.adenilson.gist.domain.mapper.GistModelMapper
+import br.com.adenilson.database.entity.GistEntity
+import br.com.adenilson.gist.data.GistRepository
+import br.com.adenilson.gist.domain.mapper.GistEntityMapper
 import br.com.adenilson.gist.presentation.model.Gist
 import br.com.adenilson.gist.presentation.model.Owner
 import com.nhaarman.mockitokotlin2.any
@@ -25,7 +25,7 @@ import java.util.Date
 class FavoriteGistInteractorTest {
 
     private lateinit var interactor: FavoriteGistInteractor
-    private val mapper: GistModelMapper = mock()
+    private val mapper: GistEntityMapper = mock()
     private val repository: GistRepository = mock()
 
     @Before
@@ -44,7 +44,7 @@ class FavoriteGistInteractorTest {
             files = listOf()
         )
         whenever(repository.favoriteGist(any())).thenReturn(Completable.complete())
-        whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(GistModel::class.java))
+        whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(GistEntity::class.java))
         interactor.execute(gist).test().run {
             assertComplete()
             assertNoErrors()
@@ -68,7 +68,7 @@ class FavoriteGistInteractorTest {
             files = listOf()
         )
         whenever(repository.unFavoriteGist(any())).thenReturn(Completable.complete())
-        whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(GistModel::class.java))
+        whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(GistEntity::class.java))
         interactor.execute(gist).test().run {
             assertComplete()
             assertNoErrors()
@@ -92,7 +92,7 @@ class FavoriteGistInteractorTest {
             files = listOf()
         )
         whenever(repository.unFavoriteGist(any())).thenReturn(Completable.error(Exception()))
-        whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(GistModel::class.java))
+        whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(GistEntity::class.java))
         interactor.execute(gist).test().run {
             assertNotComplete()
             assertError(Exception::class.java)
@@ -114,7 +114,7 @@ class FavoriteGistInteractorTest {
             files = listOf()
         )
         whenever(repository.favoriteGist(any())).thenReturn(Completable.error(Exception()))
-        whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(GistModel::class.java))
+        whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(GistEntity::class.java))
         interactor.execute(gist).test().run {
             assertNotComplete()
             assertError(Exception::class.java)

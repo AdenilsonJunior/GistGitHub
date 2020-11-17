@@ -8,8 +8,8 @@ plugins {
 
 dependencies {
     implementation project(':base')
+    implementation project(':network')
+    implementation project(':database')
 
     implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
-
-    api project(':domain')
 }

@@ -6,6 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.runner.AndroidJUnit4
 import br.com.adenilson.core.extensions.parseToString
 import br.com.adenilson.database.dao.FavoriteGistDao
+import br.com.adenilson.database.entity.DeleteGist
 import br.com.adenilson.database.entity.FileEntity
 import br.com.adenilson.database.entity.GistEntity
 import br.com.adenilson.database.entity.OwnerEntity
@@ -102,8 +103,11 @@ class FavoriteGistDaoTest {
                 )
             )
         )
+        val deleteGist = DeleteGist(
+            webId = "webId"
+        )
         dao.insert(entity)
-        dao.delete(entity)
+        dao.delete(deleteGist)
         val result = dao.getFavoriteGists()
         assertEquals(listOf<GistEntity>(), result)
     }

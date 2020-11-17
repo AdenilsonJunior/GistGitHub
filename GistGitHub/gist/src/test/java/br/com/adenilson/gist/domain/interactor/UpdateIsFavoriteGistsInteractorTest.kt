@@ -1,9 +1,9 @@
 package br.com.adenilson.gist.domain.interactor
 
-import br.com.adenilson.data.model.FileModel
-import br.com.adenilson.data.model.GistModel
-import br.com.adenilson.data.model.OwnerModel
-import br.com.adenilson.data.repository.GistRepository
+import br.com.adenilson.database.entity.FileEntity
+import br.com.adenilson.database.entity.GistEntity
+import br.com.adenilson.database.entity.OwnerEntity
+import br.com.adenilson.gist.data.GistRepository
 import br.com.adenilson.gist.presentation.model.File
 import br.com.adenilson.gist.presentation.model.Gist
 import br.com.adenilson.gist.presentation.model.Owner
@@ -62,29 +62,32 @@ class UpdateIsFavoriteGistsInteractorTest {
     }
 
     private val localFavoriteGists = listOf(
-        GistModel(
-            files = listOf(Mockito.mock(FileModel::class.java)),
-            owner = Mockito.mock(OwnerModel::class.java),
+        GistEntity(
+            files = listOf(Mockito.mock(FileEntity::class.java)),
+            owner = Mockito.mock(OwnerEntity::class.java),
             favorite = false,
             lastUpdate = Mockito.mock(Date::class.java),
             description = "",
-            webId = "favorite1"
+            webId = "favorite1",
+            id = 1
         ),
-        GistModel(
-            files = listOf(Mockito.mock(FileModel::class.java)),
-            owner = Mockito.mock(OwnerModel::class.java),
+        GistEntity(
+            files = listOf(Mockito.mock(FileEntity::class.java)),
+            owner = Mockito.mock(OwnerEntity::class.java),
             favorite = false,
             lastUpdate = Mockito.mock(Date::class.java),
             description = "",
-            webId = "favorite2"
+            webId = "favorite2",
+            id = 2
         ),
-        GistModel(
-            files = listOf(Mockito.mock(FileModel::class.java)),
-            owner = Mockito.mock(OwnerModel::class.java),
+        GistEntity(
+            files = listOf(Mockito.mock(FileEntity::class.java)),
+            owner = Mockito.mock(OwnerEntity::class.java),
             favorite = false,
             lastUpdate = Mockito.mock(Date::class.java),
             description = "",
-            webId = "favorite3"
+            webId = "favorite3",
+            id = 3
         )
     )
 

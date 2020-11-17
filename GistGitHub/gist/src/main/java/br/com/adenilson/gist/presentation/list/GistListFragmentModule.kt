@@ -3,17 +3,19 @@ package br.com.adenilson.gist.presentation.list
 import androidx.lifecycle.ViewModel
 import br.com.adenilson.base.viewmodel.ViewModelKey
 import br.com.adenilson.core.domain.Executor
+import br.com.adenilson.gist.data.GistRepository
+import br.com.adenilson.gist.data.GistRepositoryImpl
 import br.com.adenilson.gist.domain.datasource.GistListDataSource
-import br.com.adenilson.gist.domain.interactor.UpdateIsFavoriteGistsInteractor
-import br.com.adenilson.gist.domain.interactor.UpdateIsFavoriteGistsInteractorImpl
 import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractor
 import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractorImpl
 import br.com.adenilson.gist.domain.interactor.GetGistListInteractor
 import br.com.adenilson.gist.domain.interactor.GetGistListInteractorImpl
-import br.com.adenilson.gist.domain.mapper.GistMapper
-import br.com.adenilson.gist.domain.mapper.GistMapperImpl
-import br.com.adenilson.gist.domain.mapper.GistModelMapper
-import br.com.adenilson.gist.domain.mapper.GistModelMapperImpl
+import br.com.adenilson.gist.domain.interactor.UpdateIsFavoriteGistsInteractor
+import br.com.adenilson.gist.domain.interactor.UpdateIsFavoriteGistsInteractorImpl
+import br.com.adenilson.gist.domain.mapper.GistEntityMapper
+import br.com.adenilson.gist.domain.mapper.GistEntityMapperImpl
+import br.com.adenilson.gist.domain.mapper.GistRemoteMapper
+import br.com.adenilson.gist.domain.mapper.GistRemoteMapperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -34,13 +36,16 @@ abstract class GistListFragmentModule {
     abstract fun bindFavoriteGistInteractor(impl: FavoriteGistInteractorImpl): FavoriteGistInteractor
 
     @Binds
-    abstract fun bindGisMapper(impl: GistMapperImpl): GistMapper
+    abstract fun bindGisMapper(impl: GistRemoteMapperImpl): GistRemoteMapper
 
     @Binds
-    abstract fun bindGistModelMapper(impl: GistModelMapperImpl): GistModelMapper
+    abstract fun bindGistEntityMapper(impl: GistEntityMapperImpl): GistEntityMapper
 
     @Binds
     abstract fun bindCheckIsFavoriteGistsInteractorImpl(impl: UpdateIsFavoriteGistsInteractorImpl): UpdateIsFavoriteGistsInteractor
+
+    @Binds
+    abstract fun bindGistRepository(impl: GistRepositoryImpl): GistRepository
 
     companion object {
         @Provides

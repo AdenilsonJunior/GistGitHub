@@ -33,11 +33,8 @@ dependencies {
     implementation project(':gist')
     implementation project(':splash')
     implementation project(':base')
-    implementation project(':domain')
     implementation project(':network')
     implementation project(':database')
-    implementation project(':infrastructure')
-    implementation project(':core')
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
 
@@ -50,6 +47,7 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-android:$mockito_version"
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0'
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
     androidTestImplementation "androidx.navigation:navigation-testing:2.3.1"
 

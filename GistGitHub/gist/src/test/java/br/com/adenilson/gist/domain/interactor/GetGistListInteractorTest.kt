@@ -1,9 +1,9 @@
 package br.com.adenilson.gist.domain.interactor
 
-import br.com.adenilson.data.model.GistModel
-import br.com.adenilson.data.repository.GistRepository
-import br.com.adenilson.gist.domain.mapper.GistMapper
+import br.com.adenilson.gist.data.GistRepository
+import br.com.adenilson.gist.domain.mapper.GistRemoteMapper
 import br.com.adenilson.gist.presentation.model.Gist
+import br.com.adenilson.network.model.GistResponse
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
@@ -26,7 +26,7 @@ class GetGistListInteractorTest {
     private lateinit var interactor: GetGistListInteractor
 
     private val repository: GistRepository = mock()
-    private val mapper: GistMapper = mock()
+    private val mapper: GistRemoteMapper = mock()
 
     @Before
     fun setup() {
@@ -40,7 +40,7 @@ class GetGistListInteractorTest {
             page = 1
         )
         val mockGistList =
-            listOf(Mockito.mock(GistModel::class.java), Mockito.mock(GistModel::class.java))
+            listOf(Mockito.mock(GistResponse::class.java), Mockito.mock(GistResponse::class.java))
         whenever(repository.getGistList(any())).thenReturn(Single.just(mockGistList))
         whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(Gist::class.java))
         interactor.execute(params).test().run {
@@ -60,7 +60,7 @@ class GetGistListInteractorTest {
             page = 1
         )
         val mockGistList =
-            listOf(Mockito.mock(GistModel::class.java), Mockito.mock(GistModel::class.java))
+            listOf(Mockito.mock(GistResponse::class.java), Mockito.mock(GistResponse::class.java))
         whenever(repository.getGistsByUsername(any(), any())).thenReturn(Single.just(mockGistList))
         whenever(mapper.mapTo(any())).thenReturn(Mockito.mock(Gist::class.java))
         interactor.execute(params).test().run {

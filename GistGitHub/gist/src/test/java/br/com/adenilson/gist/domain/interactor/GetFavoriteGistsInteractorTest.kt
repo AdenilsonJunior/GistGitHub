@@ -1,8 +1,8 @@
 package br.com.adenilson.gist.domain.interactor
 
-import br.com.adenilson.data.model.GistModel
-import br.com.adenilson.data.repository.GistRepository
-import br.com.adenilson.gist.domain.mapper.GistMapper
+import br.com.adenilson.database.entity.GistEntity
+import br.com.adenilson.gist.data.GistRepository
+import br.com.adenilson.gist.domain.mapper.GistLocalMapper
 import br.com.adenilson.gist.presentation.model.Gist
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
@@ -25,7 +25,7 @@ class GetFavoriteGistsInteractorTest {
     private lateinit var interactor: GetFavoriteGistsInteractor
 
     private val repository: GistRepository = mock()
-    private val mapper: GistMapper = mock()
+    private val mapper: GistLocalMapper = mock()
 
     @Before
     fun setup() {
@@ -35,7 +35,7 @@ class GetFavoriteGistsInteractorTest {
     @Test
     fun `should get favorite gists with success`() {
         val gistsModel =
-            listOf(Mockito.mock(GistModel::class.java), Mockito.mock(GistModel::class.java))
+            listOf(Mockito.mock(GistEntity::class.java), Mockito.mock(GistEntity::class.java))
         whenever(repository.getFavoriteGists()).thenReturn(
             Single.just(gistsModel)
         )

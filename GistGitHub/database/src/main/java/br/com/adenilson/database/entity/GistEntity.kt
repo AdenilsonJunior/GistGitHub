@@ -21,7 +21,7 @@ data class GistEntity(
     val description: String?,
     @ColumnInfo(name = "last_update")
     val lastUpdate: Date?,
-    val favorite: Boolean
+    var favorite: Boolean
 )
 
 data class DeleteGist(

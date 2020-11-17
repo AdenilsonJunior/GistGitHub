@@ -1,19 +1,19 @@
-package br.com.adenilson.infrastructure.mapper
+package br.com.adenilson.gist.domain.mapper
 
 import br.com.adenilson.core.domain.Mapper
-import br.com.adenilson.data.model.FileModel
-import br.com.adenilson.data.model.GistModel
-import br.com.adenilson.data.model.OwnerModel
 import br.com.adenilson.database.entity.FileEntity
 import br.com.adenilson.database.entity.GistEntity
 import br.com.adenilson.database.entity.OwnerEntity
+import br.com.adenilson.gist.presentation.model.File
+import br.com.adenilson.gist.presentation.model.Gist
+import br.com.adenilson.gist.presentation.model.Owner
 import javax.inject.Inject
 
-interface GistModelMapper : Mapper<GistEntity, GistModel>
+interface GistLocalMapper : Mapper<GistEntity, Gist>
 
-class GistModelMapperImpl @Inject constructor() : GistModelMapper {
-    override fun mapTo(params: GistEntity): GistModel {
-        return GistModel(
+class GistLocalMapperImpl @Inject constructor() : GistLocalMapper {
+    override fun mapTo(params: GistEntity): Gist {
+        return Gist(
             id = params.id,
             description = params.description,
             lastUpdate = params.lastUpdate,
@@ -24,17 +24,17 @@ class GistModelMapperImpl @Inject constructor() : GistModelMapper {
         )
     }
 
-    private fun mapOwnerModel(owner: OwnerEntity): OwnerModel {
-        return OwnerModel(
+    private fun mapOwnerModel(owner: OwnerEntity): Owner {
+        return Owner(
             id = owner.id,
             avatarUrl = owner.avatarUrl,
             name = owner.name
         )
     }
 
-    private fun mapFilesModel(files: List<FileEntity>): List<FileModel> {
+    private fun mapFilesModel(files: List<FileEntity>): List<File> {
         return files.map { file ->
-            FileModel(
+            File(
                 id = file.id,
                 filename = file.filename,
                 type = file.type,
