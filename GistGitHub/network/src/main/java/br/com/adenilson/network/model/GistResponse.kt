@@ -1,26 +1,30 @@
 package br.com.adenilson.network.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class GistResponse(
     val id: String,
     val owner: OwnerResponse,
     val files: Map<String, FileResponse>,
     val description: String?,
-    @SerializedName("updated_at")
+    @Json(name = "updated_at")
     val lastUpdate: String
 )
 
+@JsonClass(generateAdapter = true)
 data class OwnerResponse(
     val login: String,
-    @SerializedName("avatar_url")
+    @Json(name = "avatar_url")
     val avatarUrl: String
 )
 
+@JsonClass(generateAdapter = true)
 data class FileResponse(
     val filename: String,
     val type: String,
-    @SerializedName("raw_url")
+    @Json(name = "raw_url")
     val rawUrl: String,
     val size: Long,
     val language: String?

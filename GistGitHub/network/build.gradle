@@ -5,12 +5,19 @@ plugins {
 }
 
 ext {
-    okhttp_intercepton = "4.6.0"
+    okhttp_intercepton_version = "4.6.0"
+    moshi_converter_version = "2.4.0"
+    moshi_version = "1.11.0"
 }
 
 dependencies {
+    implementation project(':core')
+
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_intercepton"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_intercepton_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$moshi_converter_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 }

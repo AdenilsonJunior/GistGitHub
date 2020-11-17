@@ -2,9 +2,9 @@ package br.com.adenilson.database.converter
 
 import androidx.room.TypeConverter
 import br.com.adenilson.database.entity.FileEntity
-import com.google.gson.Gson
-import com.google.gson.JsonParser
-import com.google.gson.reflect.TypeToken
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -14,6 +14,8 @@ class Converters {
     companion object {
         private const val SERVER_PATTERN = "yyyy-MM-dd'T'HH:mm:ss'Z'"
     }
+
+    private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
     @TypeConverter
     fun fromString(dateString: String): Date? {
@@ -26,13 +28,14 @@ class Converters {
     }
 
     @TypeConverter
-    fun filesFromJson(filesString: String): List<FileEntity> {
-        val listType = object : TypeToken<List<FileEntity>>() {}.type
-        return Gson().fromJson(JsonParser.parseString(filesString), listType)
+    fun filesFromJson(filesString: String): List<FileEntity>? {
+        val type = Types.newParameterizedType(List::class.java, FileEntity::class.java)
+        return moshi.adapter<List<FileEntity>>(type).fromJson(filesString)
     }
 
     @TypeConverter
     fun jsonFromFiles(files: List<FileEntity>): String {
-        return Gson().toJson(files)
+        val type = Types.newParameterizedType(List::class.java, FileEntity::class.java)
+        return moshi.adapter<List<FileEntity>>(type).toJson(files)
     }
 }

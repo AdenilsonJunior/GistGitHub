@@ -5,8 +5,10 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.squareup.moshi.JsonClass
 import java.util.Date
 
+@JsonClass(generateAdapter = true)
 @Entity(tableName = "gist", indices = [Index(value = ["web_id"], unique = true)])
 data class GistEntity(
     @PrimaryKey(autoGenerate = true)

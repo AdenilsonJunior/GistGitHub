@@ -10,3 +10,6 @@ annotation class IOScheduler
 
 @Qualifier
 annotation class ApplicationContext
+
+@Qualifier
+annotation class APIUrl

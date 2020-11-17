@@ -37,9 +37,9 @@ dependencies {
     implementation project(':network')
     implementation project(':database')
     implementation project(':infrastructure')
+    implementation project(':core')
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
     kaptAndroidTest "com.google.dagger:dagger-android-processor:$dagger_version"
@@ -48,7 +48,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$test_espresso_version"
     androidTestImplementation "org.mockito:mockito-core:$mockito_version"
     androidTestImplementation "org.mockito:mockito-android:$mockito_version"
-    androidTestImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0'
 
