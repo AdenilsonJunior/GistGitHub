@@ -22,7 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/primaryText"
             android:textSize="16sp"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toStartOf="@id/textViewSize"
