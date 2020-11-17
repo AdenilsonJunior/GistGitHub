@@ -1,4 +1,4 @@
-package br.com.adenilson.gist.presentation.util
+package br.com.adenilson.base.util
 
 import android.widget.ImageView
 import android.widget.TextView
@@ -8,14 +8,14 @@ import br.com.adenilson.base.androidextensions.hide
 import br.com.adenilson.base.androidextensions.loadFromUrl
 import br.com.adenilson.base.androidextensions.show
 
-@BindingAdapter("android:loadAvatar")
+@BindingAdapter("android:loadImageUrl")
 fun setAvatar(view: ImageView, url: String?) {
     url?.run {
         view.loadFromUrl(this, R.drawable.placeholder_user)
     }
 }
 
-@BindingAdapter("android:setGistDescription")
+@BindingAdapter("android:textOrGone")
 fun setGistDescription(view: TextView, description: String?) {
     if (description.isNullOrBlank()) {
         view.hide()

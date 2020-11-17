@@ -2,7 +2,9 @@
 <layout>
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="header"
             type="br.com.adenilson.gist.presentation.details.adapter.HeaderItem" />
@@ -22,8 +24,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:loadAvatar="@{header.avatar}"
             android:importantForAccessibility="no"
+            android:loadImageUrl="@{header.avatar}"
             android:scaleType="fitCenter"
             app:layout_constraintDimensionRatio="h, 3:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +40,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:textColor="@color/black"
             android:text="@{header.userName}"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constrainedWidth="true"
@@ -54,8 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
-            android:text="@{header.gistType}"
             android:layout_marginEnd="16dp"
+            android:text="@{header.gistType}"
             android:textSize="20sp"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
@@ -74,8 +76,8 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
             android:gravity="center"
-            android:setGistDescription="@{header.description}"
             android:textAlignment="center"
+            android:textOrGone="@{header.description}"
             android:textSize="12sp"
             android:visibility="gone"
             app:layout_constrainedWidth="true"
