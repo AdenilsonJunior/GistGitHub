@@ -1,6 +1,6 @@
 package br.com.adenilson.gistgithub.daggermock
 
-import br.com.adenilson.gist.commons.presentation.GistActivity
+import br.com.adenilson.gist.common.presentation.GistActivity
 import br.com.adenilson.gistgithub.android.features.details.GistDetailsFragmentModuleMock
 import br.com.adenilson.gistgithub.android.features.details.TestGistDetailsFragment
 import br.com.adenilson.gistgithub.android.features.list.GistListFragmentModuleMock

@@ -6,9 +6,9 @@ import br.com.adenilson.gist.details.presentation.adapter.FileItem
 import br.com.adenilson.gist.details.presentation.adapter.FilesHeaderItem
 import br.com.adenilson.gist.details.presentation.adapter.HeaderItem
 import br.com.adenilson.gist.details.presentation.adapter.UpdateDateItem
-import br.com.adenilson.gist.commons.domain.model.File
-import br.com.adenilson.gist.commons.domain.model.Gist
-import br.com.adenilson.gist.commons.domain.model.Owner
+import br.com.adenilson.gist.common.domain.model.File
+import br.com.adenilson.gist.common.domain.model.Gist
+import br.com.adenilson.gist.common.domain.model.Owner
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times

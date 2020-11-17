@@ -3,19 +3,19 @@ package br.com.adenilson.gist.list.presentation.di
 import androidx.lifecycle.ViewModel
 import br.com.adenilson.base.presentation.viewmodel.ViewModelKey
 import br.com.adenilson.core.domain.Executor
-import br.com.adenilson.gist.commons.data.repository.GistRepository
-import br.com.adenilson.gist.commons.data.repository.GistRepositoryImpl
+import br.com.adenilson.gist.common.data.repository.GistRepository
+import br.com.adenilson.gist.common.data.repository.GistRepositoryImpl
 import br.com.adenilson.gist.list.domain.datasource.GistListDataSource
-import br.com.adenilson.gist.commons.domain.interactor.FavoriteGistInteractor
-import br.com.adenilson.gist.commons.domain.interactor.FavoriteGistInteractorImpl
-import br.com.adenilson.gist.list.domain.interactor.GetGistListInteractor
-import br.com.adenilson.gist.list.domain.interactor.GetGistListInteractorImpl
-import br.com.adenilson.gist.list.domain.interactor.UpdateIsFavoriteGistsInteractor
-import br.com.adenilson.gist.list.domain.interactor.UpdateIsFavoriteGistsInteractorImpl
-import br.com.adenilson.gist.commons.domain.mapper.GistEntityMapper
-import br.com.adenilson.gist.commons.domain.mapper.GistEntityMapperImpl
-import br.com.adenilson.gist.commons.domain.mapper.GistRemoteMapper
-import br.com.adenilson.gist.commons.domain.mapper.GistRemoteMapperImpl
+import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCase
+import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCaseImpl
+import br.com.adenilson.gist.list.domain.usecase.GetGistListUseCase
+import br.com.adenilson.gist.list.domain.usecase.GetGistListUseCaseImpl
+import br.com.adenilson.gist.list.domain.usecase.UpdateIsFavoriteGistsUseCase
+import br.com.adenilson.gist.list.domain.usecase.UpdateIsFavoriteGistsUseCaseImpl
+import br.com.adenilson.gist.common.domain.mapper.GistEntityMapper
+import br.com.adenilson.gist.common.domain.mapper.GistEntityMapperImpl
+import br.com.adenilson.gist.common.domain.mapper.GistRemoteMapper
+import br.com.adenilson.gist.common.domain.mapper.GistRemoteMapperImpl
 import br.com.adenilson.gist.list.presentation.GistListViewModel
 import dagger.Binds
 import dagger.Module
@@ -31,10 +31,10 @@ abstract class GistListFragmentModule {
     abstract fun bindGistListViewModel(viewModel: GistListViewModel): ViewModel
 
     @Binds
-    abstract fun bindGetGistListInteractor(impl: GetGistListInteractorImpl): GetGistListInteractor
+    abstract fun bindGetGistListUseCase(impl: GetGistListUseCaseImpl): GetGistListUseCase
 
     @Binds
-    abstract fun bindFavoriteGistInteractor(impl: FavoriteGistInteractorImpl): FavoriteGistInteractor
+    abstract fun bindFavoriteGistUseCase(impl: FavoriteGistUseCaseImpl): FavoriteGistUseCase
 
     @Binds
     abstract fun bindGisMapper(impl: GistRemoteMapperImpl): GistRemoteMapper
@@ -43,7 +43,7 @@ abstract class GistListFragmentModule {
     abstract fun bindGistEntityMapper(impl: GistEntityMapperImpl): GistEntityMapper
 
     @Binds
-    abstract fun bindCheckIsFavoriteGistsInteractorImpl(impl: UpdateIsFavoriteGistsInteractorImpl): UpdateIsFavoriteGistsInteractor
+    abstract fun bindCheckIsFavoriteGistsUseCaseImpl(impl: UpdateIsFavoriteGistsUseCaseImpl): UpdateIsFavoriteGistsUseCase
 
     @Binds
     abstract fun bindGistRepository(impl: GistRepositoryImpl): GistRepository
@@ -51,10 +51,10 @@ abstract class GistListFragmentModule {
     companion object {
         @Provides
         fun providesGistDataSource(
-            getGistListInteractor: GetGistListInteractor,
-            updateIsFavoriteGistsInteractor: UpdateIsFavoriteGistsInteractor,
+            getGistListUseCase: GetGistListUseCase,
+            updateIsFavoriteGistsUseCase: UpdateIsFavoriteGistsUseCase,
             executor: Executor
         ): GistListDataSource =
-            GistListDataSource(executor, getGistListInteractor, updateIsFavoriteGistsInteractor)
+            GistListDataSource(executor, getGistListUseCase, updateIsFavoriteGistsUseCase)
     }
 }

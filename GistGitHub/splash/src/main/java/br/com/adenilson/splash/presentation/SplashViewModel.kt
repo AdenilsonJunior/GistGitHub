@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.com.adenilson.base.presentation.viewmodel.BaseViewModel
 import br.com.adenilson.core.domain.Executor
-import br.com.adenilson.core.domain.Interactor
+import br.com.adenilson.core.domain.UseCase
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import java.util.concurrent.TimeUnit
@@ -18,7 +18,7 @@ class SplashViewModel @Inject constructor(
     val splashState: LiveData<SplashState> = _splashState
 
     fun load() {
-        executor.execute(object : Interactor<Unit, Completable> {
+        executor.execute(object : UseCase<Unit, Completable> {
             override fun execute(params: Unit): Completable {
                 return Completable.complete()
             }

@@ -3,10 +3,10 @@ package br.com.adenilson.gist.favorite.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import br.com.adenilson.core.domain.ExecutorMock
-import br.com.adenilson.gist.commons.domain.interactor.FavoriteGistInteractor
-import br.com.adenilson.gist.favorite.domain.interactor.GetFavoriteGistsInteractor
-import br.com.adenilson.gist.commons.domain.model.Gist
-import br.com.adenilson.gist.commons.domain.model.Owner
+import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCase
+import br.com.adenilson.gist.favorite.domain.usecase.GetFavoriteGistsUseCase
+import br.com.adenilson.gist.common.domain.model.Gist
+import br.com.adenilson.gist.common.domain.model.Owner
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
@@ -31,8 +31,8 @@ class FavoriteGistsViewModelTest {
     private lateinit var viewModel: FavoriteGistsViewModel
 
     private val executor = ExecutorMock()
-    private val getFavoriteGistsInteractor: GetFavoriteGistsInteractor = mock()
-    private val favoriteGistsInteractor: FavoriteGistInteractor = mock()
+    private val getFavoriteGistsUseCase: GetFavoriteGistsUseCase = mock()
+    private val favoriteGistsUseCase: FavoriteGistUseCase = mock()
 
     private val favoriteObserver: Observer<FavoriteGistsViewModel.FavoriteGistsState> = mock()
     private val loadingObserver: Observer<FavoriteGistsViewModel.LoadingState> = mock()
@@ -40,7 +40,7 @@ class FavoriteGistsViewModelTest {
     @Before
     fun setup() {
         viewModel =
-            FavoriteGistsViewModel(executor, getFavoriteGistsInteractor, favoriteGistsInteractor)
+            FavoriteGistsViewModel(executor, getFavoriteGistsUseCase, favoriteGistsUseCase)
         viewModel.favoriteGistsState.observeForever(favoriteObserver)
         viewModel.loadingState.observeForever(loadingObserver)
     }
@@ -55,7 +55,7 @@ class FavoriteGistsViewModelTest {
             files = listOf(),
             favorite = false
         )
-        whenever(favoriteGistsInteractor.execute(any())).thenReturn(Completable.complete())
+        whenever(favoriteGistsUseCase.execute(any())).thenReturn(Completable.complete())
         viewModel.favoriteGist(gist)
         verify(favoriteObserver, times(1)).onChanged(
             eq(FavoriteGistsViewModel.FavoriteGistsState.UnFavorite(gist))
@@ -72,7 +72,7 @@ class FavoriteGistsViewModelTest {
             files = listOf(),
             favorite = true
         )
-        whenever(favoriteGistsInteractor.execute(any())).thenReturn(Completable.complete())
+        whenever(favoriteGistsUseCase.execute(any())).thenReturn(Completable.complete())
         viewModel.favoriteGist(gist)
         verify(favoriteObserver, times(1)).onChanged(
             eq(FavoriteGistsViewModel.FavoriteGistsState.Favorite(gist))
@@ -80,7 +80,7 @@ class FavoriteGistsViewModelTest {
     }
 
     @Test
-    fun `should not favorite a gist given interactor throws error`() {
+    fun `should not favorite a gist given use case throws error`() {
         val gist = Gist(
             webId = "",
             description = "",
@@ -90,7 +90,7 @@ class FavoriteGistsViewModelTest {
             favorite = false
         )
         val exception = Exception()
-        whenever(favoriteGistsInteractor.execute(any())).thenReturn(Completable.error(exception))
+        whenever(favoriteGistsUseCase.execute(any())).thenReturn(Completable.error(exception))
         viewModel.favoriteGist(gist)
         verify(favoriteObserver, times(1)).onChanged(
             eq(
@@ -101,7 +101,7 @@ class FavoriteGistsViewModelTest {
 
     @Test
     fun `should load favorite gist list with success`() {
-        whenever(getFavoriteGistsInteractor.execute(any())).thenReturn(
+        whenever(getFavoriteGistsUseCase.execute(any())).thenReturn(
             Single.just(gists)
         )
         viewModel.loadFavorites()
@@ -112,7 +112,7 @@ class FavoriteGistsViewModelTest {
 
     @Test
     fun `should return empty state given favorite list is empty`() {
-        whenever(getFavoriteGistsInteractor.execute(any())).thenReturn(
+        whenever(getFavoriteGistsUseCase.execute(any())).thenReturn(
             Single.just(listOf())
         )
         viewModel.loadFavorites()
@@ -124,7 +124,7 @@ class FavoriteGistsViewModelTest {
     @Test
     fun `should return error state given favorite list throws error`() {
         val exception = Exception()
-        whenever(getFavoriteGistsInteractor.execute(any())).thenReturn(
+        whenever(getFavoriteGistsUseCase.execute(any())).thenReturn(
             Single.error(exception)
         )
         viewModel.loadFavorites()

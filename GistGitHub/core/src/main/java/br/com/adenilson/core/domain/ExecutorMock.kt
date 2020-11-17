@@ -17,30 +17,30 @@ class ExecutorMock : Executor {
     }
 
     override fun <PARAMS, RESPONSE> execute(
-        interactor: Interactor<PARAMS, Flowable1<RESPONSE>>,
+        useCase: UseCase<PARAMS, Flowable1<RESPONSE>>,
         params: PARAMS
     ): Flowable1<RESPONSE> {
-        return interactor.execute(params).observeOn(testScheduler)
+        return useCase.execute(params).observeOn(testScheduler)
     }
 
     override fun <PARAMS, RESPONSE> execute(
-        interactor: Interactor<PARAMS, Observable<RESPONSE>>,
+        useCase: UseCase<PARAMS, Observable<RESPONSE>>,
         params: PARAMS
     ): Observable<RESPONSE> {
-        return interactor.execute(params).observeOn(testScheduler)
+        return useCase.execute(params).observeOn(testScheduler)
     }
 
     override fun <PARAMS, RESPONSE> execute(
-        interactor: Interactor<PARAMS, Single<RESPONSE>>,
+        useCase: UseCase<PARAMS, Single<RESPONSE>>,
         params: PARAMS
     ): Single<RESPONSE> {
-        return interactor.execute(params).observeOn(testScheduler)
+        return useCase.execute(params).observeOn(testScheduler)
     }
 
     override fun <PARAMS> execute(
-        interactor: Interactor<PARAMS, Completable>,
+        useCase: UseCase<PARAMS, Completable>,
         params: PARAMS
     ): Completable {
-        return interactor.execute(params).observeOn(testScheduler)
+        return useCase.execute(params).observeOn(testScheduler)
     }
 }

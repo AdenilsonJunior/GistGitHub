@@ -4,9 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import br.com.adenilson.core.domain.ExecutorMock
 import br.com.adenilson.gist.list.domain.datasource.GistListDataSource
-import br.com.adenilson.gist.commons.domain.interactor.FavoriteGistInteractor
-import br.com.adenilson.gist.commons.domain.model.Gist
-import br.com.adenilson.gist.commons.domain.model.Owner
+import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCase
+import br.com.adenilson.gist.common.domain.model.Gist
+import br.com.adenilson.gist.common.domain.model.Owner
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
@@ -33,13 +33,13 @@ class GistListViewModelTest {
     private val executor = ExecutorMock()
     private val provider: Provider<GistListDataSource> = mock()
     private val dataSource: GistListDataSource = mock()
-    private val favoriteGistInteractor: FavoriteGistInteractor = mock()
+    private val favoriteGistUseCase: FavoriteGistUseCase = mock()
 
     private val favoriteGistStateObserver: Observer<GistListViewModel.FavoriteGistState> = mock()
 
     @Before
     fun setup() {
-        viewModel = GistListViewModel(executor, provider, favoriteGistInteractor)
+        viewModel = GistListViewModel(executor, provider, favoriteGistUseCase)
         viewModel.favoriteGistState.observeForever(favoriteGistStateObserver)
     }
 
@@ -61,7 +61,7 @@ class GistListViewModelTest {
             files = listOf(),
             favorite = false
         )
-        whenever(favoriteGistInteractor.execute(any())).thenReturn(Completable.complete())
+        whenever(favoriteGistUseCase.execute(any())).thenReturn(Completable.complete())
         viewModel.favoriteClick(gist)
         verify(favoriteGistStateObserver, times(1)).onChanged(
             eq(
@@ -71,7 +71,7 @@ class GistListViewModelTest {
     }
 
     @Test
-    fun `should not favorite a gist given interactor throws error`() {
+    fun `should not favorite a gist given use case throws error`() {
         val gist = Gist(
             webId = "",
             description = "",
@@ -80,7 +80,7 @@ class GistListViewModelTest {
             files = listOf(),
             favorite = false
         )
-        whenever(favoriteGistInteractor.execute(any())).thenReturn(Completable.error(Exception()))
+        whenever(favoriteGistUseCase.execute(any())).thenReturn(Completable.error(Exception()))
         viewModel.favoriteClick(gist)
         verify(favoriteGistStateObserver, times(1)).onChanged(
             eq(

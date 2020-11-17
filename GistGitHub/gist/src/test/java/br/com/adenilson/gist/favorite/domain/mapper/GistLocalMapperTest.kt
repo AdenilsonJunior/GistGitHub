@@ -3,9 +3,9 @@ package br.com.adenilson.gist.favorite.domain.mapper
 import br.com.adenilson.database.entity.FileEntity
 import br.com.adenilson.database.entity.GistEntity
 import br.com.adenilson.database.entity.OwnerEntity
-import br.com.adenilson.gist.commons.domain.model.File
-import br.com.adenilson.gist.commons.domain.model.Gist
-import br.com.adenilson.gist.commons.domain.model.Owner
+import br.com.adenilson.gist.common.domain.model.File
+import br.com.adenilson.gist.common.domain.model.Gist
+import br.com.adenilson.gist.common.domain.model.Owner
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test

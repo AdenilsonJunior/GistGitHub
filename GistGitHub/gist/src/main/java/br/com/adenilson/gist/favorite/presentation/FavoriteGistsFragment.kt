@@ -16,7 +16,7 @@ import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
 import br.com.adenilson.gist.favorite.presentation.adapter.FavoriteGistsAdapter
 import br.com.adenilson.gist.list.presentation.adapter.ListSpaceItemDecoration
-import br.com.adenilson.gist.commons.domain.model.Gist
+import br.com.adenilson.gist.common.domain.model.Gist
 import kotlinx.android.synthetic.main.fragment_favorite_gists.layoutEmpty
 import kotlinx.android.synthetic.main.fragment_favorite_gists.layoutLoading
 import kotlinx.android.synthetic.main.fragment_favorite_gists.recyclerViewFavoriteGists

@@ -36,7 +36,7 @@
 
         <argument
             android:name="gist"
-            app:argType="br.com.adenilson.gist.commons.domain.model.Gist" />
+            app:argType="br.com.adenilson.gist.common.domain.model.Gist" />
 
     </fragment>
 

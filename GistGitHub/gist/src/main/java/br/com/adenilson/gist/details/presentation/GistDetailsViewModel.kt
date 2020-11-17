@@ -8,8 +8,8 @@ import br.com.adenilson.gist.details.presentation.adapter.FilesHeaderItem
 import br.com.adenilson.gist.details.presentation.adapter.GistDetailsItem
 import br.com.adenilson.gist.details.presentation.adapter.HeaderItem
 import br.com.adenilson.gist.details.presentation.adapter.UpdateDateItem
-import br.com.adenilson.gist.commons.domain.model.File
-import br.com.adenilson.gist.commons.domain.model.Gist
+import br.com.adenilson.gist.common.domain.model.File
+import br.com.adenilson.gist.common.domain.model.Gist
 import java.util.Date
 import javax.inject.Inject
 

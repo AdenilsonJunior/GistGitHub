@@ -4,16 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.com.adenilson.base.presentation.viewmodel.BaseViewModel
 import br.com.adenilson.core.domain.Executor
-import br.com.adenilson.gist.commons.domain.interactor.FavoriteGistInteractor
-import br.com.adenilson.gist.favorite.domain.interactor.GetFavoriteGistsInteractor
-import br.com.adenilson.gist.commons.domain.model.Gist
+import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCase
+import br.com.adenilson.gist.favorite.domain.usecase.GetFavoriteGistsUseCase
+import br.com.adenilson.gist.common.domain.model.Gist
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import javax.inject.Inject
 
 class FavoriteGistsViewModel @Inject constructor(
     private val executor: Executor,
-    private val getFavoriteGistsInteractor: GetFavoriteGistsInteractor,
-    private val favoriteGistsInteractor: FavoriteGistInteractor
+    private val getFavoriteGistsUseCase: GetFavoriteGistsUseCase,
+    private val favoriteGistsUseCase: FavoriteGistUseCase
 ) : BaseViewModel() {
 
     private val _loadingState: MutableLiveData<LoadingState> = MutableLiveData()
@@ -23,7 +23,7 @@ class FavoriteGistsViewModel @Inject constructor(
     val favoriteGistsState: LiveData<FavoriteGistsState> = _favoriteGistsState
 
     fun loadFavorites() {
-        executor.execute(getFavoriteGistsInteractor, Unit)
+        executor.execute(getFavoriteGistsUseCase, Unit)
             .doOnSubscribe { _loadingState.postValue(LoadingState.Start) }
             .doFinally { _loadingState.postValue(LoadingState.End) }
             .subscribeBy(
@@ -41,7 +41,7 @@ class FavoriteGistsViewModel @Inject constructor(
     }
 
     fun favoriteGist(gist: Gist) {
-        executor.execute(favoriteGistsInteractor, gist)
+        executor.execute(favoriteGistsUseCase, gist)
             .subscribeBy(
                 onComplete = {
                     if (gist.favorite) {

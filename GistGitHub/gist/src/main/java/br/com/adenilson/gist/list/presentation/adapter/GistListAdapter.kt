@@ -10,7 +10,7 @@ import br.com.adenilson.base.presentation.adapter.AbstractViewHolder
 import br.com.adenilson.base.presentation.adapter.ViewTypesFactory
 import br.com.adenilson.base.presentation.adapter.ViewTypesListener
 import br.com.adenilson.gist.R
-import br.com.adenilson.gist.commons.domain.model.Gist
+import br.com.adenilson.gist.common.domain.model.Gist
 
 class GistListAdapter(
     private val listener: ViewTypesListener<Gist>,

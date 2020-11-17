@@ -11,21 +11,21 @@ import javax.inject.Inject
 
 interface Executor {
     fun <PARAMS, RESPONSE> execute(
-        interactor: Interactor<PARAMS, Flowable<RESPONSE>>,
+        useCase: UseCase<PARAMS, Flowable<RESPONSE>>,
         params: PARAMS
     ): Flowable<RESPONSE>
 
     fun <PARAMS, RESPONSE> execute(
-        interactor: Interactor<PARAMS, Observable<RESPONSE>>,
+        useCase: UseCase<PARAMS, Observable<RESPONSE>>,
         params: PARAMS
     ): Observable<RESPONSE>
 
     fun <PARAMS, RESPONSE> execute(
-        interactor: Interactor<PARAMS, Single<RESPONSE>>,
+        useCase: UseCase<PARAMS, Single<RESPONSE>>,
         params: PARAMS
     ): Single<RESPONSE>
 
-    fun <PARAMS> execute(interactor: Interactor<PARAMS, Completable>, params: PARAMS): Completable
+    fun <PARAMS> execute(useCase: UseCase<PARAMS, Completable>, params: PARAMS): Completable
 }
 
 class ExecutorImpl @Inject constructor(
@@ -34,40 +34,40 @@ class ExecutorImpl @Inject constructor(
 ) : Executor {
 
     override fun <PARAMS, RESPONSE> execute(
-        interactor: Interactor<PARAMS, Flowable<RESPONSE>>,
+        useCase: UseCase<PARAMS, Flowable<RESPONSE>>,
         params: PARAMS
     ): Flowable<RESPONSE> {
-        return interactor
+        return useCase
             .execute(params)
             .observeOn(observeOn)
             .subscribeOn(subscribeOn)
     }
 
     override fun <PARAMS, RESPONSE> execute(
-        interactor: Interactor<PARAMS, Observable<RESPONSE>>,
+        useCase: UseCase<PARAMS, Observable<RESPONSE>>,
         params: PARAMS
     ): Observable<RESPONSE> {
-        return interactor
+        return useCase
             .execute(params)
             .observeOn(observeOn)
             .subscribeOn(subscribeOn)
     }
 
     override fun <PARAMS, RESPONSE> execute(
-        interactor: Interactor<PARAMS, Single<RESPONSE>>,
+        useCase: UseCase<PARAMS, Single<RESPONSE>>,
         params: PARAMS
     ): Single<RESPONSE> {
-        return interactor
+        return useCase
             .execute(params)
             .observeOn(observeOn)
             .subscribeOn(subscribeOn)
     }
 
     override fun <PARAMS> execute(
-        interactor: Interactor<PARAMS, Completable>,
+        useCase: UseCase<PARAMS, Completable>,
         params: PARAMS
     ): Completable {
-        return interactor
+        return useCase
             .execute(params)
             .observeOn(observeOn)
             .subscribeOn(subscribeOn)

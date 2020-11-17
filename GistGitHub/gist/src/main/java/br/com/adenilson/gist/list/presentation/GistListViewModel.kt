@@ -11,8 +11,8 @@ import androidx.paging.liveData
 import br.com.adenilson.base.presentation.viewmodel.BaseViewModel
 import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.gist.list.domain.datasource.GistListDataSource
-import br.com.adenilson.gist.commons.domain.interactor.FavoriteGistInteractor
-import br.com.adenilson.gist.commons.domain.model.Gist
+import br.com.adenilson.gist.common.domain.usecase.FavoriteGistUseCase
+import br.com.adenilson.gist.common.domain.model.Gist
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import javax.inject.Inject
 import javax.inject.Provider
@@ -20,7 +20,7 @@ import javax.inject.Provider
 class GistListViewModel @Inject constructor(
     private val executor: Executor,
     private val gistListDataSource: Provider<GistListDataSource>,
-    private val favoriteGistInteractor: FavoriteGistInteractor
+    private val favoriteGistUseCase: FavoriteGistUseCase
 ) : BaseViewModel() {
 
     companion object {
@@ -58,7 +58,7 @@ class GistListViewModel @Inject constructor(
     }
 
     fun favoriteClick(gist: Gist) {
-        executor.execute(favoriteGistInteractor, gist)
+        executor.execute(favoriteGistUseCase, gist)
             .subscribeBy(
                 onComplete = {
                     _favoriteGistState.postValue(FavoriteGistState.Success(gist))
