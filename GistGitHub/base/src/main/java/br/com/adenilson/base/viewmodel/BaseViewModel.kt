@@ -1,4 +1,4 @@
-package br.com.adenilson.base.presentation
+package br.com.adenilson.base.viewmodel
 
 import androidx.lifecycle.ViewModel
 

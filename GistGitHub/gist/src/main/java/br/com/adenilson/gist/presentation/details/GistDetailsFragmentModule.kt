@@ -1,7 +1,7 @@
 package br.com.adenilson.gist.presentation.details
 
 import androidx.lifecycle.ViewModel
-import br.com.adenilson.base.di.ViewModelKey
+import br.com.adenilson.base.viewmodel.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

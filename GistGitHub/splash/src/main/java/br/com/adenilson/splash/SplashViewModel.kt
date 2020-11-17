@@ -2,7 +2,7 @@ package br.com.adenilson.splash
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import br.com.adenilson.base.presentation.BaseViewModel
+import br.com.adenilson.base.viewmodel.BaseViewModel
 import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.core.domain.Interactor
 import io.reactivex.rxjava3.core.Completable

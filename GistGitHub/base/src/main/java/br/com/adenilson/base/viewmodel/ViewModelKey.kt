@@ -1,4 +1,4 @@
-package br.com.adenilson.base.di
+package br.com.adenilson.base.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

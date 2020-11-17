@@ -8,7 +8,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.liveData
-import br.com.adenilson.base.presentation.BaseViewModel
+import br.com.adenilson.base.viewmodel.BaseViewModel
 import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.gist.domain.datasource.GistListDataSource
 import br.com.adenilson.gist.domain.interactor.FavoriteGistInteractor

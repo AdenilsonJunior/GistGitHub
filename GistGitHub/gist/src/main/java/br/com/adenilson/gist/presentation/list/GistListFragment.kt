@@ -11,13 +11,13 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.cachedIn
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.adenilson.base.androidextensions.checkSourceLoadState
+import br.com.adenilson.base.androidextensions.createViewModel
 import br.com.adenilson.base.androidextensions.dismissSnackbar
 import br.com.adenilson.base.androidextensions.hideKeyboard
 import br.com.adenilson.base.androidextensions.showIndefiniteSnackBar
@@ -42,8 +42,8 @@ open class GistListFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val viewModel: GistListViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(GistListViewModel::class.java)
+    private val viewModel by lazy {
+        viewModelFactory.createViewModel<GistListViewModel>(this)
     }
 
     private val adapter by lazy {

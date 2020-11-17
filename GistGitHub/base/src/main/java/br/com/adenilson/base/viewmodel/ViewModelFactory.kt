@@ -1,4 +1,4 @@
-package br.com.adenilson.gistgithub.di.factory
+package br.com.adenilson.base.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -2,7 +2,7 @@ package br.com.adenilson.gist.presentation.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import br.com.adenilson.base.presentation.BaseViewModel
+import br.com.adenilson.base.viewmodel.BaseViewModel
 import br.com.adenilson.gist.presentation.details.adapter.FileItem
 import br.com.adenilson.gist.presentation.details.adapter.FilesHeaderItem
 import br.com.adenilson.gist.presentation.details.adapter.GistDetailsItem

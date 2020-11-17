@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.adenilson.base.androidextensions.createViewModel
 import br.com.adenilson.base.navigator.Navigator
 import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
@@ -28,8 +28,8 @@ open class GistDetailsFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val viewModel: GistDetailsViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(GistDetailsViewModel::class.java)
+    private val viewModel by lazy {
+        viewModelFactory.createViewModel<GistDetailsViewModel>(this)
     }
 
     private val args: GistDetailsFragmentArgs by navArgs()

@@ -1,7 +1,7 @@
 package br.com.adenilson.gistgithub.android.features.list
 
 import androidx.lifecycle.ViewModel
-import br.com.adenilson.base.di.ViewModelKey
+import br.com.adenilson.base.viewmodel.ViewModelKey
 import br.com.adenilson.core.domain.Executor
 import br.com.adenilson.gist.domain.datasource.GistListDataSource
 import br.com.adenilson.gist.domain.interactor.UpdateIsFavoriteGistsInteractor

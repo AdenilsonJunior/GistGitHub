@@ -1,7 +1,7 @@
 package br.com.adenilson.gistgithub.android.features.details
 
 import androidx.lifecycle.ViewModel
-import br.com.adenilson.base.di.ViewModelKey
+import br.com.adenilson.base.viewmodel.ViewModelKey
 import br.com.adenilson.gist.presentation.details.GistDetailsViewModel
 import dagger.Binds
 import dagger.Module

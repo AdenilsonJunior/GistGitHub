@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.adenilson.base.androidextensions.createViewModel
 import br.com.adenilson.base.androidextensions.hide
 import br.com.adenilson.base.androidextensions.show
 import br.com.adenilson.base.androidextensions.showSnackBar
@@ -27,8 +27,8 @@ class FavoriteGistsFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: FavoriteGistsViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(FavoriteGistsViewModel::class.java)
+    private val viewModel by lazy {
+        viewModelFactory.createViewModel<FavoriteGistsViewModel>(this)
     }
 
     private val adapter: FavoriteGistsAdapter by lazy {

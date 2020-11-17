@@ -2,8 +2,8 @@ package br.com.adenilson.splash
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
+import br.com.adenilson.base.androidextensions.createViewModel
 import br.com.adenilson.base.navigator.Navigator
 import br.com.adenilson.base.presentation.BaseActivity
 import javax.inject.Inject
@@ -16,8 +16,8 @@ class SplashActivity : BaseActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: SplashViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(SplashViewModel::class.java)
+    private val viewModel by lazy {
+        viewModelFactory.createViewModel<SplashViewModel>(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
