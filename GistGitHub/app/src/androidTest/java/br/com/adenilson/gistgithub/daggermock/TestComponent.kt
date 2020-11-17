@@ -1,6 +1,6 @@
 package br.com.adenilson.gistgithub.daggermock
 
-import br.com.adenilson.database.AppDatabaseModule
+import br.com.adenilson.database.di.AppDatabaseModule
 import br.com.adenilson.gistgithub.application.GistGitHubApplication
 import br.com.adenilson.gistgithub.application.di.GistGitHubApplicationModule
 import br.com.adenilson.network.di.NetworkModule

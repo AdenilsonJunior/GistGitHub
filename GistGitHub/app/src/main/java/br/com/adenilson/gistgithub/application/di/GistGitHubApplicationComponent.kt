@@ -1,8 +1,7 @@
 package br.com.adenilson.gistgithub.application.di
 
-import br.com.adenilson.database.AppDatabaseModule
+import br.com.adenilson.database.di.AppDatabaseModule
 import br.com.adenilson.gistgithub.application.GistGitHubApplication
-import br.com.adenilson.gistgithub.di.module.AndroidBindingModule
 import br.com.adenilson.network.di.NetworkModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule

@@ -3,7 +3,7 @@ package br.com.adenilson.gistgithub.android.features.activity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.test.filters.LargeTest
-import br.com.adenilson.gist.GistActivity
+import br.com.adenilson.gist.commons.presentation.GistActivity
 import br.com.adenilson.gistgithub.R
 import br.com.adenilson.gistgithub.android.helper.useActivity
 import br.com.adenilson.gistgithub.android.robot.ScreenRobot.Companion.withRobot

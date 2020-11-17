@@ -1,6 +1,6 @@
 package br.com.adenilson.network.api
 
-import br.com.adenilson.network.model.GistResponse
+import br.com.adenilson.network.response.GistResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

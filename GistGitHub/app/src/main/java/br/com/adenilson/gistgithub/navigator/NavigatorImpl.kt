@@ -5,7 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import br.com.adenilson.base.androidextensions.showLongToast
 import br.com.adenilson.base.navigator.Navigator
-import br.com.adenilson.gist.GistActivity
+import br.com.adenilson.gist.commons.presentation.GistActivity
 import br.com.adenilson.gistgithub.R
 import javax.inject.Inject
 

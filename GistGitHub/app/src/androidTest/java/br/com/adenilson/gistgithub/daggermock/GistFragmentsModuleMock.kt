@@ -1,9 +1,9 @@
 package br.com.adenilson.gistgithub.daggermock
 
-import br.com.adenilson.gist.presentation.favorite.FavoriteGistsFragment
-import br.com.adenilson.gist.presentation.favorite.FavoriteGistsFragmentModule
-import br.com.adenilson.gist.presentation.list.GistListFragment
-import br.com.adenilson.gist.presentation.list.GistListFragmentModule
+import br.com.adenilson.gist.favorite.presentation.FavoriteGistsFragment
+import br.com.adenilson.gist.favorite.presentation.di.FavoriteGistsFragmentModule
+import br.com.adenilson.gist.list.presentation.GistListFragment
+import br.com.adenilson.gist.list.presentation.di.GistListFragmentModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

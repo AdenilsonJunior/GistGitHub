@@ -3,7 +3,7 @@ package br.com.adenilson.gistgithub.android.features.details
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
-import br.com.adenilson.gist.presentation.details.adapter.FileViewHolder
+import br.com.adenilson.gist.details.presentation.adapter.FileViewHolder
 import br.com.adenilson.gistgithub.R
 import br.com.adenilson.gistgithub.android.actions.CustomViewActions
 import br.com.adenilson.gistgithub.android.robot.ScreenRobot

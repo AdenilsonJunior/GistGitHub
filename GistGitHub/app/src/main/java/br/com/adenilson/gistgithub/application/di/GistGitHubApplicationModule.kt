@@ -9,7 +9,7 @@ import br.com.adenilson.core.di.AndroidScheduler
 import br.com.adenilson.core.di.ApplicationContext
 import br.com.adenilson.core.di.IOScheduler
 import br.com.adenilson.gistgithub.application.GistGitHubApplication
-import br.com.adenilson.base.viewmodel.ViewModelFactory
+import br.com.adenilson.base.presentation.viewmodel.ViewModelFactory
 import br.com.adenilson.gistgithub.navigator.NavigatorImpl
 import dagger.Binds
 import dagger.Module

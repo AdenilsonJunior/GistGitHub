@@ -9,10 +9,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.filters.LargeTest
-import br.com.adenilson.gist.presentation.details.GistDetailsFragment
-import br.com.adenilson.gist.presentation.model.File
-import br.com.adenilson.gist.presentation.model.Gist
-import br.com.adenilson.gist.presentation.model.Owner
+import br.com.adenilson.gist.details.presentation.GistDetailsFragment
+import br.com.adenilson.gist.commons.domain.model.File
+import br.com.adenilson.gist.commons.domain.model.Gist
+import br.com.adenilson.gist.commons.domain.model.Owner
 import br.com.adenilson.gistgithub.android.helper.useFragmentInContainer
 import br.com.adenilson.gistgithub.android.robot.ScreenRobot.Companion.withRobot
 import org.hamcrest.Matchers

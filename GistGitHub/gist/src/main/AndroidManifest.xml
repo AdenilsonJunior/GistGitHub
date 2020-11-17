@@ -4,7 +4,7 @@
 
     <application>
         <activity
-            android:name=".GistActivity"
+            android:name=".commons.presentation.GistActivity"
             android:label="@string/gist_list_title"
             android:screenOrientation="portrait" />
     </application>

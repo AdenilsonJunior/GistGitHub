@@ -3,7 +3,7 @@ package br.com.adenilson.gistgithub.android.features.list
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import androidx.test.filters.LargeTest
-import br.com.adenilson.gist.presentation.list.GistListFragment
+import br.com.adenilson.gist.list.presentation.GistListFragment
 import br.com.adenilson.gistgithub.android.helper.useFragmentInContainer
 import br.com.adenilson.gistgithub.android.robot.ScreenRobot.Companion.withRobot
 import org.junit.Test

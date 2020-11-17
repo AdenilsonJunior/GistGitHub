@@ -3,6 +3,7 @@ package br.com.adenilson.splash
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import br.com.adenilson.core.domain.ExecutorMock
+import br.com.adenilson.splash.presentation.SplashViewModel
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times

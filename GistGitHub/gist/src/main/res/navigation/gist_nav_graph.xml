@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentGistList"
-        android:name="br.com.adenilson.gist.presentation.list.GistListFragment"
+        android:name="br.com.adenilson.gist.list.presentation.GistListFragment"
         android:label="@string/gist_list_title"
         tools:layout="@layout/fragment_gist_list">
 
@@ -30,19 +30,19 @@
 
     <fragment
         android:id="@+id/fragmentGistDetails"
-        android:name="br.com.adenilson.gist.presentation.details.GistDetailsFragment"
+        android:name="br.com.adenilson.gist.details.presentation.GistDetailsFragment"
         android:label="@string/gist_details_title"
         tools:layout="@layout/fragment_gist_details">
 
         <argument
             android:name="gist"
-            app:argType="br.com.adenilson.gist.presentation.model.Gist" />
+            app:argType="br.com.adenilson.gist.commons.domain.model.Gist" />
 
     </fragment>
 
     <fragment
         android:id="@+id/fragmentFavoriteGists"
-        android:name="br.com.adenilson.gist.presentation.favorite.FavoriteGistsFragment"
+        android:name="br.com.adenilson.gist.favorite.presentation.FavoriteGistsFragment"
         android:label="@string/gist_favorites_title"
         tools:layout="@layout/fragment_favorite_gists">
 
