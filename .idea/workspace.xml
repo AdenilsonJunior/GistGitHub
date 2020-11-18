@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <pickBest>false</pickBest>
+        <target>android-28</target>
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a7bed9c-cd21-4e6a-ba9a-32d306d3a495" name="Default Changelist" comment="" />
+    <list default="true" id="6a7bed9c-cd21-4e6a-ba9a-32d306d3a495" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/gist/src/main/java/br/com/adenilson/gist/list/presentation/adapter/GistListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/gist/src/main/java/br/com/adenilson/gist/list/presentation/adapter/GistListAdapter.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[278cc225c0217ece]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -19,30 +50,129 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GistGitHub" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GistGitHub" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GistGitHub" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="formatting" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GistGitHub" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="navigationResourceFile" />
+        <option value="resourceFile" />
+        <option value="Kotlin Interface" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Object" />
+        <option value="valueResourceFile" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/GistGitHub" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1jhy74reMWHTlTSnSfTcTRULf8T" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_g9650-278cc225c0217ece" />
+    <property name="DEBUGGABLE_PROCESS" value="br.com.adenilson.gist" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="278cc225c0217ece" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-17T22:12:07.608Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/GistGitHub" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="android-custom-view/home/adenilson/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/AppCompatImageButton.java_SELECTED" value="AppCompatImageButton" />
+    <property name="android-custom-view/home/adenilson/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
+    <property name="android-custom-view/home/adenilson/.gradle/caches/modules-2/files-2.1/androidx.swiperefreshlayout/swiperefreshlayout/1.1.0/72a6b0cee5591c000ac32d8f9686ced8675f3e49/swiperefreshlayout-1.1.0-sources.jar!/androidx/swiperefreshlayout/widget/SwipeRefreshLayout.java_SELECTED" value="SwipeRefreshLayout" />
+    <property name="android.recentlyUsedThemes" value="Base.Theme.MaterialComponents.Bridge&#10;Base.Theme.AppCompat.Light&#10;Base.Theme.AppCompat&#10;Base.Theme.AppCompat.Light.DarkActionBar" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/values" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/base/src/gitHubGist/res/values-night" />
+    <property name="multi-representation-preview/home/adenilson/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/AppCompatImageButton.java_selected" value="Custom views" />
+    <property name="multi-representation-preview/home/adenilson/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_selected" value="Custom views" />
+    <property name="multi-representation-preview/home/adenilson/.gradle/caches/modules-2/files-2.1/androidx.swiperefreshlayout/swiperefreshlayout/1.1.0/72a6b0cee5591c000ac32d8f9686ced8675f3e49/swiperefreshlayout-1.1.0-sources.jar!/androidx/swiperefreshlayout/widget/SwipeRefreshLayout.java_selected" value="Custom views" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Android App.gist">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/base/src/gitHubGist/res/values-night" />
+      <recent name="$PROJECT_DIR$/app/src/androidTest/java/br/com/adenilson/gistgithub/android" />
+      <recent name="$PROJECT_DIR$/core/src/test/java/br/com/adenilson/core/extensions" />
+      <recent name="$PROJECT_DIR$/app/src/gitHubGist/res/drawable" />
+      <recent name="$PROJECT_DIR$/app/src/gitHubGist" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="br.com.adenilson.gist.base" />
+      <recent name="br.com.adenilson.gist.domain" />
+      <recent name="br.com.adenilson.base" />
+      <recent name="br.com.adenilson.gist.presentation" />
+      <recent name="br.com.adenilson.gist" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="br.com.adenilson.gist.commons.presentation.di" />
+      <recent name="br.com.adenilson.gist.list.presentation.di" />
+      <recent name="br.com.adenilson.gist.favorite.presentation.di" />
+      <recent name="br.com.adenilson.gist.details.presentation.di" />
+      <recent name="br.com.adenilson.gistgithub.application.di" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="br.com.adenilson.gistgithub.android.robot" />
+      <recent name="br.com.adenilson.gistgithub.daggermock" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/gist/src/main/java/br/com/adenilson/gist/favorite/domain/mapper" />
+      <recent name="$PROJECT_DIR$/gist/src/main/java/br/com/adenilson/gist/details/presentation" />
+      <recent name="$PROJECT_DIR$/gist/src/main/java/br/com/adenilson/gist/favorite/domain/interactor" />
+      <recent name="$PROJECT_DIR$/gist/src/main/java/br/com/adenilson/gist/list/domain/interactor" />
+      <recent name="$PROJECT_DIR$/gist/src/main/java/br/com/adenilson/gist/data/repository" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="All in GistGitHub.gist" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GistGitHub.gist" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -50,7 +180,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="GistGitHub.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -164,7 +294,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="gist" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="gist" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="GistGitHub.gist" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -221,6 +351,123 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tests in 'br.com.adenilson.gistgithub.android.features'" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="GistGitHub.app" />
+      <option name="TESTING_TYPE" value="1" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="br.com.adenilson.gistgithub.android.features" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GistGitHub [ktlintFormat]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="ktlintFormat" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GistGitHub [ktlint]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="ktlint" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GistGitHub [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android Instrumented Tests.Tests in 'br.com.adenilson.gistgithub.android.features'" />
+        <item itemvalue="Android JUnit.All in GistGitHub.gist" />
+        <item itemvalue="Gradle.GistGitHub [test]" />
+        <item itemvalue="Gradle.GistGitHub [ktlintFormat]" />
+        <item itemvalue="Gradle.GistGitHub [ktlint]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -235,10 +482,220 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/home/adenilson/Documents/testes/GistGitHub/GistGitHub/infrastructure/src/main/java/br/com/adenilson/infrastructure/mapper" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="774" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1604270918516">
+    <state x="511" y="288" width="950" height="537" key="#PSD" timestamp="1604896511082">
       <screen x="62" y="27" width="1858" height="1053" />
     </state>
-    <state x="774" y="311" width="424" height="491" key="FileChooserDialogImpl/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604270918516" />
+    <state x="511" y="288" width="950" height="537" key="#PSD/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604896511082" />
+    <state x="162" y="127" width="1658" height="854" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1604887246996">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="162" y="127" width="1658" height="854" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604887246996" />
+    <state x="765" y="272" width="452" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1605591309541">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="765" y="272" width="452" height="569" key="#com.intellij.ide.util.MemberChooser/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605591309541" />
+    <state x="426" y="478" width="1289" height="158" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1605642242186">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="426" y="478" width="1289" height="158" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605642242186" />
+    <state x="646" y="435" width="690" height="244" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1605641874230">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="646" y="435" width="690" height="244" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605641874230" />
+    <state x="752" y="256" width="468" height="601" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605659599697">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="752" y="256" width="468" height="601" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605659599697" />
+    <state x="653" y="155" width="666" height="804" key="#gist" timestamp="1604272749569">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="653" y="155" width="666" height="804" key="#gist/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604272749569" />
+    <state x="621" y="328" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1605643475277">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="621" y="328" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605643475277" />
+    <state x="653" y="155" width="666" height="804" key="#should()_(1)" timestamp="1604897863701">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="653" y="155" width="666" height="804" key="#should()_(1)/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604897863701" />
+    <state x="973" y="149" width="947" height="677" key="#xdebugger.evaluate" timestamp="1605638218490">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="973" y="149" width="947" height="677" key="#xdebugger.evaluate/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605638218490" />
+    <state x="574" y="311" width="824" height="491" key="AndroidCreateResourceDirectoryDialog" timestamp="1605648508916">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="574" y="311" width="824" height="491" key="AndroidCreateResourceDirectoryDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605648508916" />
+    <state x="574" y="311" width="824" height="491" key="AndroidCreateResourceFileDialog" timestamp="1604860755749">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="574" y="311" width="824" height="491" key="AndroidCreateResourceFileDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604860755749" />
+    <state x="807" y="328" width="509" height="493" key="AndroidCreateXmlResourceDialog" timestamp="1605638863681">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="807" y="328" width="509" height="493" key="AndroidCreateXmlResourceDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605638863681" />
+    <state x="728" y="301" width="533" height="512" key="AndroidProcessChooserDialog" timestamp="1605637668801">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="728" y="301" width="533" height="512" key="AndroidProcessChooserDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605637668801" />
+    <state x="574" y="261" width="824" height="591" key="AndroidThemeDialog" timestamp="1604630955108">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="574" y="261" width="824" height="591" key="AndroidThemeDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604630955108" />
+    <state width="521" height="506" key="DebuggerActiveHint" timestamp="1605637694823">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="521" height="506" key="DebuggerActiveHint/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605637694823" />
+    <state x="162" y="127" width="1658" height="853" key="DiffContextDialog" timestamp="1605652843952">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="162" y="127" width="1658" height="853" key="DiffContextDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605652843952" />
+    <state x="650" y="311" key="Downloadable.Font.Dialog.Size" timestamp="1604276612049">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="650" y="311" key="Downloadable.Font.Dialog.Size/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604276612049" />
+    <state x="774" y="314" width="424" height="491" key="FileChooserDialogImpl" timestamp="1604859762689">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="774" y="314" width="424" height="491" key="FileChooserDialogImpl/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604859762689" />
+    <state width="1812" height="202" key="GridCell.Tab.0.bottom" timestamp="1605660630227">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="1812" height="202" key="GridCell.Tab.0.bottom/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605660630227" />
+    <state width="1812" height="202" key="GridCell.Tab.0.center" timestamp="1605660630227">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="1812" height="202" key="GridCell.Tab.0.center/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605660630227" />
+    <state width="1812" height="202" key="GridCell.Tab.0.left" timestamp="1605660630227">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="1812" height="202" key="GridCell.Tab.0.left/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605660630227" />
+    <state width="1812" height="202" key="GridCell.Tab.0.right" timestamp="1605660630227">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="1812" height="202" key="GridCell.Tab.0.right/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605660630227" />
+    <state width="1812" height="297" key="GridCell.Tab.1.bottom" timestamp="1605653734621">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="1812" height="297" key="GridCell.Tab.1.bottom/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605653734621" />
+    <state width="1812" height="297" key="GridCell.Tab.1.center" timestamp="1605653734621">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="1812" height="297" key="GridCell.Tab.1.center/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605653734621" />
+    <state width="1812" height="297" key="GridCell.Tab.1.left" timestamp="1605653734621">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="1812" height="297" key="GridCell.Tab.1.left/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605653734621" />
+    <state width="1812" height="297" key="GridCell.Tab.1.right" timestamp="1605653734621">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="1812" height="297" key="GridCell.Tab.1.right/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605653734621" />
+    <state x="480" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1604373571066">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="480" y="188" width="1022" height="737" key="SettingsEditor/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604373571066" />
+    <state x="720" y="284" width="540" height="524" key="StructurePopup" timestamp="1604888207330">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="720" y="284" width="540" height="524" key="StructurePopup/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604888207330" />
+    <state width="929" height="526" key="XDebugger.FullValuePopup" timestamp="1605587432080">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="929" height="526" key="XDebugger.FullValuePopup/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605587432080" />
+    <state x="763" y="333" width="446" height="447" key="chooseDestDirectoryDialog" timestamp="1604276101490">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="763" y="333" width="446" height="447" key="chooseDestDirectoryDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604276101490" />
+    <state x="534" y="265" width="904" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1605652358029">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="534" y="265" width="904" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605652358029" />
+    <state x="321" y="96" width="1367" height="741" key="find.popup" timestamp="1605659947905">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="321" y="96" width="1367" height="741" key="find.popup/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605659947905" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1604806624921">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604806624921" />
+    <state x="770" y="326" width="432" height="462" key="refactoring.ChangeSignatureDialog" timestamp="1604550707507">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="770" y="326" width="432" height="462" key="refactoring.ChangeSignatureDialog/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1604550707507" />
+    <state x="655" y="252" key="run.anything.popup" timestamp="1605643736376">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="655" y="252" key="run.anything.popup/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605643736376" />
+    <state x="655" y="196" width="672" height="676" key="search.everywhere.popup" timestamp="1605660839298">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="655" y="196" width="672" height="676" key="search.everywhere.popup/62.27.1858.1053/1920.0.1920.1080@62.27.1858.1053" timestamp="1605660839298" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/gist/src/main/java/br/com/adenilson/gist/list/domain/usecase/GetGistListUseCase.kt</url>
+          <line>40</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="216" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/gist/src/main/java/br/com/adenilson/gist/list/domain/datasource/GistListDataSource.kt</url>
+          <line>44</line>
+          <option name="timeStamp" value="217" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
