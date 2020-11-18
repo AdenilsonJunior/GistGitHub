@@ -18,7 +18,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import java.util.Date
 
 @RunWith(MockitoJUnitRunner::class)
 class UpdateIsFavoriteGistsUseCaseTest {
@@ -66,7 +65,7 @@ class UpdateIsFavoriteGistsUseCaseTest {
             files = listOf(Mockito.mock(FileEntity::class.java)),
             owner = Mockito.mock(OwnerEntity::class.java),
             favorite = false,
-            lastUpdate = Mockito.mock(Date::class.java),
+            htmlUrl = "htmlUrl",
             description = "",
             webId = "favorite1",
             id = 1
@@ -75,7 +74,7 @@ class UpdateIsFavoriteGistsUseCaseTest {
             files = listOf(Mockito.mock(FileEntity::class.java)),
             owner = Mockito.mock(OwnerEntity::class.java),
             favorite = false,
-            lastUpdate = Mockito.mock(Date::class.java),
+            htmlUrl = "htmlUrl",
             description = "",
             webId = "favorite2",
             id = 2
@@ -84,7 +83,7 @@ class UpdateIsFavoriteGistsUseCaseTest {
             files = listOf(Mockito.mock(FileEntity::class.java)),
             owner = Mockito.mock(OwnerEntity::class.java),
             favorite = false,
-            lastUpdate = Mockito.mock(Date::class.java),
+            htmlUrl = "htmlUrl",
             description = "",
             webId = "favorite3",
             id = 3
@@ -96,7 +95,7 @@ class UpdateIsFavoriteGistsUseCaseTest {
             files = listOf(Mockito.mock(File::class.java)),
             owner = Mockito.mock(Owner::class.java),
             favorite = false,
-            lastUpdate = Mockito.mock(Date::class.java),
+            htmlUrl = "htmlUrl",
             description = "",
             webId = "favorite1"
         ),
@@ -104,7 +103,7 @@ class UpdateIsFavoriteGistsUseCaseTest {
             files = listOf(Mockito.mock(File::class.java)),
             owner = Mockito.mock(Owner::class.java),
             favorite = false,
-            lastUpdate = Mockito.mock(Date::class.java),
+            htmlUrl = "htmlUrl",
             description = "",
             webId = "webId"
         ),
@@ -112,7 +111,7 @@ class UpdateIsFavoriteGistsUseCaseTest {
             files = listOf(Mockito.mock(File::class.java)),
             owner = Mockito.mock(Owner::class.java),
             favorite = false,
-            lastUpdate = Mockito.mock(Date::class.java),
+            htmlUrl = "htmlUrl",
             description = "",
             webId = "favorite2"
         )
@@ -123,7 +122,7 @@ class UpdateIsFavoriteGistsUseCaseTest {
             files = listOf(Mockito.mock(File::class.java)),
             owner = Mockito.mock(Owner::class.java),
             favorite = true,
-            lastUpdate = Mockito.mock(Date::class.java),
+            htmlUrl = "htmlUrl",
             description = "",
             webId = "favorite1"
         ),
@@ -131,7 +130,7 @@ class UpdateIsFavoriteGistsUseCaseTest {
             files = listOf(Mockito.mock(File::class.java)),
             owner = Mockito.mock(Owner::class.java),
             favorite = false,
-            lastUpdate = Mockito.mock(Date::class.java),
+            htmlUrl = "htmlUrl",
             description = "",
             webId = "webId"
         ),
@@ -139,7 +138,7 @@ class UpdateIsFavoriteGistsUseCaseTest {
             files = listOf(Mockito.mock(File::class.java)),
             owner = Mockito.mock(Owner::class.java),
             favorite = true,
-            lastUpdate = Mockito.mock(Date::class.java),
+            htmlUrl = "htmlUrl",
             description = "",
             webId = "favorite2"
         )

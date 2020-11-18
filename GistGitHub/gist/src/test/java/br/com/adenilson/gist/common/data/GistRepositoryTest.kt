@@ -30,7 +30,6 @@ import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
-import java.util.Date
 
 @RunWith(MockitoJUnitRunner::class)
 class GistRepositoryTest {
@@ -238,7 +237,6 @@ class GistRepositoryTest {
         }
     }
 
-    private val currentDate = Date()
     private val gistEntity = GistEntity(
         id = null,
         owner = OwnerEntity(
@@ -258,7 +256,7 @@ class GistRepositoryTest {
         ),
         webId = "webId",
         favorite = true,
-        lastUpdate = currentDate,
+        htmlUrl = "htmlUrl",
         description = "description"
     )
 

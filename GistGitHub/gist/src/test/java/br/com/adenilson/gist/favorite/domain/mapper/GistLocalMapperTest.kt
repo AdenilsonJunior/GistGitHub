@@ -11,7 +11,6 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
-import java.util.Date
 
 @RunWith(MockitoJUnitRunner::class)
 class GistLocalMapperTest {
@@ -25,11 +24,10 @@ class GistLocalMapperTest {
 
     @Test
     fun `should map entity to model with success`() {
-        val currentDate = Date()
         val entity = GistEntity(
             id = 1,
             description = "description",
-            lastUpdate = currentDate,
+            htmlUrl = "htmlUrl",
             favorite = true,
             webId = "webId",
             files = listOf(
@@ -58,7 +56,7 @@ class GistLocalMapperTest {
                 name = "name",
                 avatarUrl = "avatarUrl"
             ),
-            lastUpdate = currentDate,
+            htmlUrl = "htmlUrl",
             description = "description",
             files = listOf(
                 File(

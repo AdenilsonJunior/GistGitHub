@@ -19,7 +19,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import java.util.Date
 
 @RunWith(MockitoJUnitRunner::class)
 class FavoriteGistUseCaseTest {
@@ -38,7 +37,7 @@ class FavoriteGistUseCaseTest {
         val gist = Gist(
             webId = "",
             description = "",
-            lastUpdate = Date(),
+            htmlUrl = "htmlUrl",
             favorite = false,
             owner = Mockito.mock(Owner::class.java),
             files = listOf()
@@ -62,7 +61,7 @@ class FavoriteGistUseCaseTest {
         val gist = Gist(
             webId = "",
             description = "",
-            lastUpdate = Date(),
+            htmlUrl = "htmlUrl",
             favorite = true,
             owner = Mockito.mock(Owner::class.java),
             files = listOf()
@@ -86,7 +85,7 @@ class FavoriteGistUseCaseTest {
         val gist = Gist(
             webId = "",
             description = "",
-            lastUpdate = Date(),
+            htmlUrl = "htmlUrl",
             favorite = true,
             owner = Mockito.mock(Owner::class.java),
             files = listOf()
@@ -108,7 +107,7 @@ class FavoriteGistUseCaseTest {
         val gist = Gist(
             webId = "",
             description = "",
-            lastUpdate = Date(),
+            htmlUrl = "htmlUrl",
             favorite = false,
             owner = Mockito.mock(Owner::class.java),
             files = listOf()

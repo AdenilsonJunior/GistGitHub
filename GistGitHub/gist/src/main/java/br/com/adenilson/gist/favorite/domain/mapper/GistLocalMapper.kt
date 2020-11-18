@@ -16,7 +16,7 @@ class GistLocalMapperImpl @Inject constructor() : GistLocalMapper {
         return Gist(
             id = params.id,
             description = params.description,
-            lastUpdate = params.lastUpdate,
+            htmlUrl = params.htmlUrl,
             webId = params.webId,
             favorite = params.favorite,
             files = mapFilesModel(params.files),

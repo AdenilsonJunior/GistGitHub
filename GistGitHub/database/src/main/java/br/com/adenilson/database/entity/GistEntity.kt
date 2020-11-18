@@ -6,7 +6,6 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.squareup.moshi.JsonClass
-import java.util.Date
 
 @JsonClass(generateAdapter = true)
 @Entity(tableName = "gist", indices = [Index(value = ["web_id"], unique = true)])
@@ -19,8 +18,8 @@ data class GistEntity(
     val owner: OwnerEntity,
     val files: List<FileEntity>,
     val description: String?,
-    @ColumnInfo(name = "last_update")
-    val lastUpdate: Date?,
+    @ColumnInfo(name = "html_url")
+    val htmlUrl: String,
     var favorite: Boolean
 )
 

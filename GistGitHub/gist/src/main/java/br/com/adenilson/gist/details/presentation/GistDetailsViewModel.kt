@@ -3,14 +3,13 @@ package br.com.adenilson.gist.details.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.com.adenilson.base.presentation.viewmodel.BaseViewModel
+import br.com.adenilson.gist.common.domain.model.File
+import br.com.adenilson.gist.common.domain.model.Gist
 import br.com.adenilson.gist.details.presentation.adapter.FileItem
 import br.com.adenilson.gist.details.presentation.adapter.FilesHeaderItem
 import br.com.adenilson.gist.details.presentation.adapter.GistDetailsItem
 import br.com.adenilson.gist.details.presentation.adapter.HeaderItem
-import br.com.adenilson.gist.details.presentation.adapter.UpdateDateItem
-import br.com.adenilson.gist.common.domain.model.File
-import br.com.adenilson.gist.common.domain.model.Gist
-import java.util.Date
+import br.com.adenilson.gist.details.presentation.adapter.HtmlUrlItem
 import javax.inject.Inject
 
 class GistDetailsViewModel @Inject constructor() : BaseViewModel() {
@@ -23,16 +22,14 @@ class GistDetailsViewModel @Inject constructor() : BaseViewModel() {
             addHeaderItem(gist)
             addFileHeader(gist.files.size)
             addFilesItem(gist.files)
-            addDateItem(gist.lastUpdate)
+            addHtmlUrlItem(gist.htmlUrl)
         }.also { detailsItems ->
             _gistDetailsState.postValue(GistDetailsState.Prepared(detailsItems))
         }
     }
 
-    private fun MutableList<GistDetailsItem>.addDateItem(lastUpdate: Date?) {
-        lastUpdate?.let { date ->
-            add(UpdateDateItem(date))
-        }
+    private fun MutableList<GistDetailsItem>.addHtmlUrlItem(htmlUrl: String) {
+        add(HtmlUrlItem(htmlUrl))
     }
 
     private fun MutableList<GistDetailsItem>.addFileHeader(size: Int) {
@@ -45,7 +42,7 @@ class GistDetailsViewModel @Inject constructor() : BaseViewModel() {
                 FileItem(
                     filename = file.filename,
                     type = file.type,
-                    rawUrl = file.rawUrl,
+                    url = file.rawUrl,
                     language = file.language,
                     size = file.size
                 )

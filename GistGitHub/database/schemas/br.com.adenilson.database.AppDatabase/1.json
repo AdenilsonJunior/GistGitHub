@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d128783e6c65207d9509d98d96a90491",
+    "identityHash": "4d20ce67969a7144681214397984defb",
     "entities": [
       {
         "tableName": "gist",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `web_id` TEXT NOT NULL, `files` TEXT NOT NULL, `description` TEXT, `last_update` TEXT, `favorite` INTEGER NOT NULL, `owner_id` INTEGER, `owner_avatar_url` TEXT NOT NULL, `owner_name` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `web_id` TEXT NOT NULL, `files` TEXT NOT NULL, `description` TEXT, `html_url` TEXT NOT NULL, `favorite` INTEGER NOT NULL, `owner_id` INTEGER, `owner_avatar_url` TEXT NOT NULL, `owner_name` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -33,10 +33,10 @@
             "notNull": false
           },
           {
-            "fieldPath": "lastUpdate",
-            "columnName": "last_update",
+            "fieldPath": "htmlUrl",
+            "columnName": "html_url",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "favorite",
@@ -167,7 +167,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd128783e6c65207d9509d98d96a90491')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4d20ce67969a7144681214397984defb')"
     ]
   }
 }

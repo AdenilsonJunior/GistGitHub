@@ -14,9 +14,9 @@ import br.com.adenilson.base.presentation.BaseFragment
 import br.com.adenilson.gist.R
 import br.com.adenilson.gist.common.domain.model.Gist
 import br.com.adenilson.gist.details.presentation.adapter.DetailsSpaceItemDecoration
-import br.com.adenilson.gist.details.presentation.adapter.FileItem
 import br.com.adenilson.gist.details.presentation.adapter.GistDetailsAdapter
 import br.com.adenilson.gist.details.presentation.adapter.GistDetailsItem
+import br.com.adenilson.gist.details.presentation.adapter.NavigableUrlItem
 import kotlinx.android.synthetic.main.fragment_gist_details.recyclerViewDetails
 import javax.inject.Inject
 
@@ -47,7 +47,7 @@ open class GistDetailsFragment : BaseFragment() {
     private val adapter by lazy {
         GistDetailsAdapter {
             when (it) {
-                is FileItem -> navigator.navigateToBrowser(requireContext(), it.rawUrl)
+                is NavigableUrlItem -> navigator.navigateToBrowser(requireContext(), it.url)
             }
         }
     }

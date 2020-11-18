@@ -49,7 +49,7 @@ class GistDetailsAdapter(private val viewTypesListener: ViewTypesListener<GistDe
                 is HeaderItem -> R.layout.item_gist_header
                 is FilesHeaderItem -> R.layout.item_file_header
                 is FileItem -> R.layout.item_file
-                is UpdateDateItem -> R.layout.item_update_date
+                is HtmlUrlItem -> R.layout.item_html_url
                 else -> throw InvalidViewTypeException()
             }
         }
@@ -63,7 +63,7 @@ class GistDetailsAdapter(private val viewTypesListener: ViewTypesListener<GistDe
                 R.layout.item_gist_header -> HeaderViewHolder(view)
                 R.layout.item_file_header -> FilesHeaderViewHolder(view)
                 R.layout.item_file -> FileViewHolder(view, listener[0])
-                R.layout.item_update_date -> UpdateDateViewHolder(view)
+                R.layout.item_html_url -> HtmlUrlViewHolder(view, listener[0])
                 else -> throw InvalidViewTypeException()
             }
         }

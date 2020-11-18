@@ -9,8 +9,8 @@ data class GistResponse(
     val owner: OwnerResponse,
     val files: Map<String, FileResponse>,
     val description: String?,
-    @Json(name = "updated_at")
-    val lastUpdate: String
+    @Json(name = "html_url")
+    val htmlUrl: String
 )
 
 @JsonClass(generateAdapter = true)

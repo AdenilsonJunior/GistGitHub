@@ -2,7 +2,6 @@ package br.com.adenilson.gist.common.domain.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import java.util.Date
 
 @Parcelize
 data class Gist(
@@ -11,8 +10,8 @@ data class Gist(
     val owner: Owner,
     val files: List<File>,
     val description: String?,
-    val lastUpdate: Date?,
-    var favorite: Boolean = false
+    var favorite: Boolean = false,
+    val htmlUrl: String
 ) : Parcelable {
     val gistType: String
         get() = files.minByOrNull { it.filename }?.filename.orEmpty()

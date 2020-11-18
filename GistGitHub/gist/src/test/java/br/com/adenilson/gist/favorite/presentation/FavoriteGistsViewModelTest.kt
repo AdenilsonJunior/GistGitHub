@@ -50,7 +50,7 @@ class FavoriteGistsViewModelTest {
         val gist = Gist(
             webId = "",
             description = "",
-            lastUpdate = null,
+            htmlUrl = "htmlUrl",
             owner = Mockito.mock(Owner::class.java),
             files = listOf(),
             favorite = false
@@ -67,7 +67,7 @@ class FavoriteGistsViewModelTest {
         val gist = Gist(
             webId = "",
             description = "",
-            lastUpdate = null,
+            htmlUrl = "htmlUrl",
             owner = Mockito.mock(Owner::class.java),
             files = listOf(),
             favorite = true
@@ -84,7 +84,7 @@ class FavoriteGistsViewModelTest {
         val gist = Gist(
             webId = "",
             description = "",
-            lastUpdate = null,
+            htmlUrl = "htmlUrl",
             owner = Mockito.mock(Owner::class.java),
             files = listOf(),
             favorite = false

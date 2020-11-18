@@ -35,7 +35,7 @@ class GistEntityMapperTest {
                 name = "name",
                 avatarUrl = "avatarUrl"
             ),
-            lastUpdate = currentDate,
+            htmlUrl = "htmlUrl",
             description = "description",
             files = listOf(
                 File(
@@ -52,7 +52,7 @@ class GistEntityMapperTest {
         val expected = GistEntity(
             id = 1,
             description = "description",
-            lastUpdate = currentDate,
+            htmlUrl = "htmlUrl",
             favorite = true,
             webId = "webId",
             files = listOf(

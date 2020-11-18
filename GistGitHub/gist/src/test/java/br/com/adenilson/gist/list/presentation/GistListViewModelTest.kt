@@ -56,7 +56,7 @@ class GistListViewModelTest {
         val gist = Gist(
             webId = "",
             description = "",
-            lastUpdate = null,
+            htmlUrl = "htmlUrl",
             owner = Mockito.mock(Owner::class.java),
             files = listOf(),
             favorite = false
@@ -75,7 +75,7 @@ class GistListViewModelTest {
         val gist = Gist(
             webId = "",
             description = "",
-            lastUpdate = null,
+            htmlUrl = "htmlUrl",
             owner = Mockito.mock(Owner::class.java),
             files = listOf(),
             favorite = false

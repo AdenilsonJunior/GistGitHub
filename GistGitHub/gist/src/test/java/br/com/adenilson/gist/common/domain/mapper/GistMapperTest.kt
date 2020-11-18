@@ -1,7 +1,5 @@
 package br.com.adenilson.gist.common.domain.mapper
 
-import br.com.adenilson.core.extensions.SERVER_PATTERN
-import br.com.adenilson.core.extensions.parseToString
 import br.com.adenilson.gist.common.domain.model.File
 import br.com.adenilson.gist.common.domain.model.Gist
 import br.com.adenilson.gist.common.domain.model.Owner
@@ -13,7 +11,6 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
-import java.util.Date
 
 @RunWith(MockitoJUnitRunner::class)
 class GistMapperTest {
@@ -35,14 +32,13 @@ class GistMapperTest {
             assertEquals(expected.files, files)
             assertEquals(expected.owner, owner)
             assertEquals(expected.favorite, favorite)
-            assertEquals(expected.lastUpdate.toString(), lastUpdate.toString())
+            assertEquals(expected.htmlUrl, htmlUrl)
         }
     }
 
-    private val currentDate = Date()
     private val gistResponse = GistResponse(
         description = "description",
-        lastUpdate = currentDate.parseToString(SERVER_PATTERN),
+        htmlUrl = "htmlUrl",
         id = "webId",
         owner = OwnerResponse(
             avatarUrl = "avatarUrl",
@@ -77,7 +73,7 @@ class GistMapperTest {
         ),
         webId = "webId",
         favorite = false,
-        lastUpdate = currentDate,
+        htmlUrl = "htmlUrl",
         description = "description"
     )
 }

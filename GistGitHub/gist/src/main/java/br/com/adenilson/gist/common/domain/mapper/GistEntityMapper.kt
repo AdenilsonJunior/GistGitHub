@@ -17,7 +17,7 @@ class GistEntityMapperImpl @Inject constructor() : GistEntityMapper {
         return GistEntity(
             id = params.id,
             webId = params.webId,
-            lastUpdate = params.lastUpdate,
+            htmlUrl = params.htmlUrl,
             description = params.description,
             files = mapFiles(params.files),
             owner = mapOwner(params.owner),

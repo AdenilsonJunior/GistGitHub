@@ -1,7 +1,5 @@
 package br.com.adenilson.gist.details.presentation.adapter
 
-import java.util.Date
-
 abstract class GistDetailsItem
 
 data class HeaderItem(
@@ -18,11 +16,13 @@ data class FilesHeaderItem(
 data class FileItem(
     val filename: String,
     val type: String,
-    val rawUrl: String,
+    override val url: String,
     val language: String?,
     val size: Long
-) : GistDetailsItem()
+) : NavigableUrlItem(url)
 
-data class UpdateDateItem(
-    val date: Date
-) : GistDetailsItem()
+data class HtmlUrlItem(
+    override val url: String
+) : NavigableUrlItem(url)
+
+abstract class NavigableUrlItem(open val url: String) : GistDetailsItem()

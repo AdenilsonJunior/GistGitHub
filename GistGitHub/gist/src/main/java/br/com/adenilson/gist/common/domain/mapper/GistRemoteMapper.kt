@@ -1,7 +1,6 @@
 package br.com.adenilson.gist.common.domain.mapper
 
 import br.com.adenilson.core.domain.Mapper
-import br.com.adenilson.core.extensions.parseToDate
 import br.com.adenilson.gist.common.domain.model.File
 import br.com.adenilson.gist.common.domain.model.Gist
 import br.com.adenilson.gist.common.domain.model.Owner
@@ -17,8 +16,8 @@ class GistRemoteMapperImpl @Inject constructor() : GistRemoteMapper {
     override fun mapTo(params: GistResponse): Gist {
         return Gist(
             description = params.description,
-            lastUpdate = params.lastUpdate.parseToDate(),
             webId = params.id,
+            htmlUrl = params.htmlUrl,
             owner = mapOwner(params.owner),
             files = mapFiles(params.files.values.toList())
         )

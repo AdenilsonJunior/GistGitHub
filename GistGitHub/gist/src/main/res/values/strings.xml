@@ -5,7 +5,7 @@
     <string name="gist_connection_message_error">Connection Error.</string>
     <string name="gist_details_title">Details</string>
     <string name="gist_text_file_size">%1$d bytes</string>
-    <string name="gist_last_update">Updated at: %1$s</string>
+    <string name="gist_html_url">See more: %1$s</string>
     <string name="gists_favorites">Favorites</string>
     <string name="gist_favorites_title">Favorites</string>
     <string name="gist_list_empty">There is nothing here :/</string>
