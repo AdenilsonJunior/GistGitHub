@@ -52,9 +52,8 @@ abstract class GistListFragmentModuleMock {
         @Provides
         fun providesGistDataSource(
             getGistListUseCase: GetGistListUseCase,
-            updateIsFavoriteGistsUseCase: UpdateIsFavoriteGistsUseCase,
             executor: Executor
         ): GistListDataSource =
-            GistListDataSource(executor, getGistListUseCase, updateIsFavoriteGistsUseCase)
+            GistListDataSource(executor, getGistListUseCase)
     }
 }

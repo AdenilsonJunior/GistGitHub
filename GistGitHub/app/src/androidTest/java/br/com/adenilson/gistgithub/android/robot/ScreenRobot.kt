@@ -11,8 +11,11 @@ import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers
+import br.com.adenilson.base.presentation.adapter.AbstractViewHolder
+import br.com.adenilson.gistgithub.android.actions.CustomViewActions
 import br.com.adenilson.gistgithub.android.matchers.RecyclerViewMatcher
 import junit.framework.Assert.assertTrue
 import org.hamcrest.CoreMatchers
@@ -182,6 +185,20 @@ abstract class ScreenRobot<T : ScreenRobot<T>> {
             )
         )
             .perform(ViewActions.click())
+    }
+
+    fun <ViewHolder : AbstractViewHolder<*>> clickInRecyclerView(
+        recyclerViewId: Int,
+        rootIdItem: Int,
+        positionInLayout: Int
+    ): T {
+        Espresso.onView(ViewMatchers.withId(recyclerViewId)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(
+                positionInLayout,
+                CustomViewActions.clickChildViewWithId(rootIdItem)
+            )
+        )
+        return this as T
     }
 
     companion object {
